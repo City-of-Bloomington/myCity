@@ -1,13 +1,13 @@
 # Translation
-# Copyright (C) 2013-2015 City of Bloomington
-# This file is distributed under the same license as the Blossom package.
+# Copyright (C) 2015 City of Bloomington
+# This file is distributed under the same license as the myCity application.
 #
-# Cliff Ingham, 2013-2015.
+# Cliff Ingham, 2015.
 domain "labels"
 
 msgid ""
 msgstr ""
-"Project-Id-Version: Blossom\n"
+"Project-Id-Version: My City\n"
 "Report-Msgid-Bugs-To: dev@bloomington.in.gov\n"
 "POT-Creation-Date: 2013-09-20 16:33-0400\n"
 "PO-Revision-Date: 2015-01-30 15:42-0500\n"
@@ -17,9 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
 "Language: en_US\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 
 msgid "home"
 msgstr "Home"
@@ -32,6 +30,14 @@ msgstr "Edit"
 
 msgid "delete"
 msgstr "Delete"
+
+msgid "search"
+msgstr "Search"
+
+msgid "address"
+msgid_plural "addresses"
+msgstr[0] "Address"
+msgstr[1] "Addresses"
 
 msgid "submit"
 msgstr "Submit"
@@ -114,3 +120,90 @@ msgstr "Delete Account"
 
 msgid "user_info"
 msgstr "Account Info"
+
+msgid "service"
+msgid_plural "services"
+msgstr[0] "Service"
+msgstr[1] "Services"
+
+msgid "government"
+msgstr "Government"
+
+msgid "gis"
+msgstr "GIS"
+
+msgid "city"
+msgstr "City"
+
+msgid "state"
+msgstr "State"
+
+msgid "zip"
+msgstr "Zip"
+
+msgid "status"
+msgstr "Status"
+
+msgid "jurisdiction"
+msgstr "Jurisdiction"
+
+msgid "plat"
+msgstr "Plat"
+
+msgid "lot"
+msgstr "Lot"
+
+msgid "section"
+msgstr "Section"
+
+msgid "quarter"
+msgstr "Quarter Section"
+
+msgid "trashDay"
+msgstr "Trash Pickup Day"
+
+msgid "recycleWeek"
+msgstr "Recycle Week"
+
+msgid "township"
+msgstr "Township"
+
+msgid "latitude"
+msgstr "Latitude"
+
+msgid "longitude"
+msgstr "Longitude"
+
+msgid "statePlane"
+msgstr "State Plane"
+
+msgid "locationUseType"
+msgstr "Location Use"
+
+msgid "parkingZone"
+msgid_plural "parkingZones"
+msgstr[0] "Parking Zone"
+msgstr[1] "Parking Zones"
+
+msgid "neighborhoodAssociation"
+msgid_plural "neighborhoodAssociations"
+msgstr[0] "Neighborhood Association"
+msgstr[1] "Neighborhood Associations"
+
+msgid "historicDistrict"
+msgid_plural "historicDistricts"
+msgstr[0] "Historic District"
+msgstr[1] "Historic Districts"
+
+msgid "economicDevelopmentArea"
+msgid_plural "economicDevelopmentAreas"
+msgstr[0] "Economic Development Area"
+msgstr[1] "Economic Development Areas"
+
+msgid "councilDistrict"
+msgid_plural "councilDistricts"
+msgstr[0] "Council District"
+msgstr[1] "Council Districts"
+
+msgid "councilAtLargeMembers"
+msgstr "At Large Council Members"

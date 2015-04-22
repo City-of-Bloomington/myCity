@@ -1,13 +1,13 @@
 # Translation
-# Copyright (C) 2013-2015 City of Bloomington
-# This file is distributed under the same license as the Blossom package.
+# Copyright (C) 2015 City of Bloomington
+# This file is distributed under the same license as the My City application
 #
 # Cliff Ingham, 2013-2015
 domain "messages"
 
 msgid ""
 msgstr ""
-"Project-Id-Version: Blossom\n"
+"Project-Id-Version: My City\n"
 "Report-Msgid-Bugs-To: dev@bloomington.in.gov\n"
 "PO-Revision-Date: 2015-01-30 15:13-0500\n"
 "Last-Translator: Cliff Ingham <inghamn@bloomington.in.gov>\n"
@@ -16,10 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
 "Language: en_US\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "POT-Creation-Date: \n"
 
 msgid "signed_in_as"
 msgstr "Signed in as %s"
+
+msgid "no_results_found"
+msgstr "No results found"
