@@ -25,10 +25,10 @@ else {
     <tbody>
     <?php
         foreach ($this->results as $address) {
-            $url = BASE_URI.'?address_id='.$address->id;
+            $url = BASE_URI.'?address_id='.$address['id'];
             echo "
-            <tr><td><a href=\"$url\">{$address->streetAddress}</a></td>
-                <td>{$address->city} {$address->state} {$address->zip}</td>
+            <tr><td><a href=\"$url\">$address[streetAddress]</a></td>
+                <td>$address[city] $address[state] $address[zip]</td>
             </tr>
             ";
         }
