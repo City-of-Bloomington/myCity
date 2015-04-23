@@ -129,6 +129,9 @@ msgstr[1] "Services"
 msgid "government"
 msgstr "Government"
 
+msgid "votingInfo"
+msgstr "Voting Information"
+
 msgid "gis"
 msgstr "GIS"
 
@@ -205,5 +208,5 @@ msgid_plural "councilDistricts"
 msgstr[0] "Council District"
 msgstr[1] "Council Districts"
 
-msgid "councilAtLargeMembers"
+msgid "atLarge"
 msgstr "At Large Council Members"

@@ -19,9 +19,10 @@ class IndexController extends Controller
         $this->template->blocks[] = new Block('address/searchForm.inc');
 
         if (!empty($_GET['address_id'])) {
-            $address = MasterAddressGateway::info($_GET['address_id']);
-            $this->template->blocks[] = new Block('address/info.inc', ['address'=>$address]);
+            $this->template->blocks[] = new Block('address/info.inc');
         }
+
+
         if (!empty($_GET['address'])) {
             $json = MasterAddressGateway::search($_GET['address']);
             $this->template->blocks[] = new Block('address/searchResults.inc', ['results'=>$json]);

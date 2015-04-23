@@ -8,7 +8,8 @@ define('APPLICATION_NAME','application');
 define('BASE_URL','http://localhost/application');
 define('BASE_URI','/application');
 
-define('MASTER_ADDRESS', 'http://apps.bloomington.in.gov/master_address');
+define('MASTER_ADDRESS',    'http://apps.bloomington.in.gov/master_address');
+define('CIVIC_LEGISLATION', 'http://apps.bloomington.in.gov/onboard');
 
 /**
  * Used when there's an error on the site.  The Framework will

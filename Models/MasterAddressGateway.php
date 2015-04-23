@@ -27,19 +27,10 @@ class MasterAddressGateway
         }
     }
 
-    private static function loadJsonResponse($url)
-    {
-        $response = Url::get($url);
-        if ($response) {
-            $json = json_decode($response, true);
-            return $json;
-        }
-    }
-
     public static function search($query)
     {
         $url = MASTER_ADDRESS.'?format=json;queryType=address;query='.urlencode($_GET['address']);
-        return self::loadJsonResponse($url);
+        return WebService::loadJsonResponse($url);
     }
 
     public static function info($address_id)
@@ -47,10 +38,9 @@ class MasterAddressGateway
         $address_id = (int)$address_id;
         if ($address_id) {
             $url = MASTER_ADDRESS.'/addresses/viewAddress.php?format=json;address_id='.urlencode($address_id);
-            $json = self::loadJsonResponse($url);
+            $json = WebService::loadJsonResponse($url);
             self::createPurposeVariables($json);
             return $json;
         }
     }
-
 }
