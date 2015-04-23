@@ -19,10 +19,12 @@ class MasterAddressGateway
     ];
     private static function createPurposeVariables(&$json)
     {
-        foreach ($json['purposes'] as $p) {
-            if (array_key_exists($p['type'], self::$purposeMap)) {
-                $f = self::$purposeMap[$p['type']];
-                $json[$f][] = $p['description'];
+        if (  !empty($json['purposes'])) {
+            foreach ($json['purposes'] as $p) {
+                if (array_key_exists($p['type'], self::$purposeMap)) {
+                    $f = self::$purposeMap[$p['type']];
+                    $json[$f][] = $p['description'];
+                }
             }
         }
     }

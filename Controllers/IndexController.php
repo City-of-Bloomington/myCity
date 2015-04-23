@@ -6,6 +6,7 @@
  */
 namespace Application\Controllers;
 
+use Application\Models\Address;
 use Application\Models\MasterAddressGateway;
 
 use Blossom\Classes\Block;
@@ -19,7 +20,17 @@ class IndexController extends Controller
         $this->template->blocks[] = new Block('address/searchForm.inc');
 
         if (!empty($_GET['address_id'])) {
-            $this->template->blocks[] = new Block('address/info.inc');
+            $address = new Address($_GET['address_id']);
+            if (!$address['active']) {
+                $oldAddress = $address;
+                $address    = $oldAddress->getCurrentAddress();
+            }
+            if (isset($oldAddress)) {
+                $this->template->blocks[] = new Block('address/oldAddressNotice.inc', ['address'=>$oldAddress]);
+            }
+            if ($address) {
+                $this->template->blocks[] = new Block('address/info.inc', ['address'=>$address]);
+            }
         }
 
 

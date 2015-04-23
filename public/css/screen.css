@@ -71,8 +71,8 @@ header nav a { font-weight:bold; color:black; margin-right:1em; }
 /**
  * Main Content
  */
-#errorMessages { background-color:#fcc; padding:4px; border-radius:10px; }
-#errorMessages h2 { }
+#errorMessages, .notice { background-color:#fcc; padding:4px; border-radius:10px; }
+#errorMessages h2, .notice h2 { }
 
 .pageNavigation ul { list-style-type:none; }
 .pageNavigation li { display:inline; margin-right:1em; }

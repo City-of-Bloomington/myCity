@@ -3,12 +3,13 @@
  * @copyright 2015 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
+ * @param Address $this->address
  * @param int $_GET['address_id']
  */
 use Application\Models\MasterAddressGateway;
 use Application\Models\CityCouncilGateway;
 
-$address = MasterAddressGateway::info($_GET['address_id']);
+$address = $this->address;
 foreach (MasterAddressGateway::$purposeMap as $p) {
     $l  = $p.'s';
     $$l = '';

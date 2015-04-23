@@ -2,14 +2,14 @@
 # Copyright (C) 2015 City of Bloomington
 # This file is distributed under the same license as the My City application
 #
-# Cliff Ingham, 2013-2015
+# Cliff Ingham, 2015
 domain "messages"
 
 msgid ""
 msgstr ""
 "Project-Id-Version: My City\n"
+"PO-Revision-Date: 2-15-04-24 12:25-0500\n"
 "Report-Msgid-Bugs-To: dev@bloomington.in.gov\n"
-"PO-Revision-Date: 2015-01-30 15:13-0500\n"
 "Last-Translator: Cliff Ingham <inghamn@bloomington.in.gov>\n"
 "Language-Team: City of Bloomington <dev@bloomington.in.gov>\n"
 "MIME-Version: 1.0\n"
@@ -17,10 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: en_US\n"
-"POT-Creation-Date: \n"
 
 msgid "signed_in_as"
 msgstr "Signed in as %s"
 
 msgid "no_results_found"
 msgstr "No results found"
+
+msgid "oldAddressNotice"
+msgstr "%s is an old address, and is no longer valid."
