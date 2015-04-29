@@ -84,6 +84,18 @@ echo "
         <tr><th>{$this->_('statePlane')} x/y</th>
             <td>{$address['statePlane']['x']} {$address['statePlane']['y']}</td>
         </tr>
+        <tr><th>{$this->_('plat')}</th>
+            <td>$address[plat]</td>
+        </tr>
+        <tr><th>{$this->_('lot')}</th>
+            <td>$address[lot]</td>
+        </tr>
+        <tr><th>{$this->_('section')}</th>
+            <td>$address[section]</td>
+        </tr>
+        <tr><th>{$this->_('quarter')}</th>
+            <td>$address[quarter]</td>
+        </tr>
     </table>
 </section>
 ";

@@ -24,17 +24,20 @@ use Blossom\Classes\Url;
             </div>
         </div>
         <nav>
+            <?php
+                $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
+            ?>
             <div class="menuLauncher">Menu</div>
             <div class="menuLinks closed">
-                <a href="/drupal2/residents">Residents</a>
-                <a href="/drupal2/taxonomy/term/2">Business</a>
-                <a href="/drupal2/taxonomy/term/13">Visitors</a>
-                <a href="/drupal2/taxonomy/term/3">Students</a>
-                <a href="/drupal2/taxonomy/term/4">Government</a>
+                <a href="http://rogue.bloomington.in.gov/drupal2/residents">Residents</a>
+                <a href="http://rogue.bloomington.in.gov/drupal2/taxonomy/term/2">Business</a>
+                <a href="http://rogue.bloomington.in.gov/drupal2/taxonomy/term/13">Visitors</a>
+                <a href="http://rogue.bloomington.in.gov/drupal2/taxonomy/term/3">Students</a>
+                <a href="http://rogue.bloomington.in.gov/drupal2/taxonomy/term/4">Government</a>
             </div>
         </nav>
 
-        <a href="/drupal2/" class="cob-siteHeader-logo" title="Home" rel="home" id="logo">
+        <a href="http://rogue.bloomington.in.gov/drupal2/" class="cob-siteHeader-logo" title="Home" rel="home" id="logo">
             <img src="http://rogue.bloomington.in.gov/drupal2/themes/cob/logo.svg" alt="City of Bloomington, Indiana" />
         </a>
     </div>
