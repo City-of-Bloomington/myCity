@@ -21,7 +21,7 @@ class IndexController extends Controller
 
         if (!empty($_GET['address_id'])) {
             $address = new Address($_GET['address_id']);
-            if (!$address['active']) {
+            if (!$address['active'] || $address['active'] != 'yes') {
                 $oldAddress = $address;
                 $address    = $oldAddress->getCurrentAddress();
             }
