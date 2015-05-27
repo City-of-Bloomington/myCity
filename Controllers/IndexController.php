@@ -17,7 +17,7 @@ class IndexController extends Controller
 {
 	public function index()
 	{
-        $this->template->blocks[] = new Block('address/searchForm.inc');
+//        $this->template->blocks[] = new Block('address/searchForm.inc');
 
         if (!empty($_GET['address_id'])) {
             $address = new Address($_GET['address_id']);
@@ -30,6 +30,7 @@ class IndexController extends Controller
             }
             if ($address) {
                 $this->template->blocks[] = new Block('address/info.inc', ['address'=>$address]);
+				$this->template->address = $address;
             }
         }
 

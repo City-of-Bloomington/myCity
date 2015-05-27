@@ -1,0 +1,111 @@
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+@mixin visuallyHidden() {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+
+$cob-blue: #315da6;
+$cob-blue-light: #4975ba;
+$cob-blue-dark: #143a7a;
+$cob-blue-darkest: #06204b;
+
+// Cornflower
+$cornflower-brightest: #acf2ff;
+$cornflower-darkest: #12314c;
+
+// Action Green
+$cob-green: #20ac59;
+$cob-green-light: #70bf88;
+$cob-green-lightest: #aaffac;
+
+// Blue-ish gray
+$cob-gray: #bcc9d8;
+$cob-gray-dark: #8d98a5;
+$cob-gray-darkest: #585f68;
+$cob-nightshade: #2a2e32; // Darker than darkest
+
+// Font families
+$font-body-copy: 'PT Sans', Verdana, sans-serif;
+$font-headings: Lato, 'Helvetica Neue', Arial, sans-serif;
+
+
+// Viewport size variables
+$screen-large: (1024em/16);
+$screen-medium: (700em/16);
+$screen-small: (400em/16);
+
+
+
+
+
+
+.cob-pageHeader {
+    background-image: none;
+    color: #fff;
+    position: relative;
+    &:after {
+        background: url('img/MyBloomington.svg') no-repeat 50% 0;
+        content: ' ';
+        display: inline-block;
+        height: (45rem/16);
+        margin: 0 0 0 (-185rem/16);
+        position: absolute;
+            top: 46%;
+            left: 50%;
+        width: (370rem/16);
+    }
+    &-mapCanvas {
+        height: (246rem/16);
+    }
+}
+
+
+.myCity {
+    &-searchForm {
+        margin: 0 0 0 (-225rem/16);
+        position: absolute;
+            top: 70%;
+            left: 50%;
+        text-align: center;
+        width: (450rem/16);
+
+        > label {
+            @include visuallyHidden();
+        }
+        > input[name="address"] {
+            border: 1px solid $cob-blue-darkest;
+            border-radius: .5rem 0 0 .5rem;
+            box-sizing: border-box;
+            font-size: (18rem/16);
+            line-height: 1em;
+            padding: .5rem;
+            width: (370rem/16);
+        }
+        > button[type="submit"] {
+            background: url('img/search.svg') no-repeat 50% 50% / 60% 60% $cob-green;
+            border: 1px solid $cob-blue-darkest;
+            border-radius: 0 .5rem .5rem 0;
+            font-size: (18rem/16);
+            line-height: 1em;
+            overflow: hidden;
+            padding: .7rem 2rem;
+            position: relative;
+                right: .5rem;
+            text-indent: -10rem;
+        }
+    }
+}
+
+
+

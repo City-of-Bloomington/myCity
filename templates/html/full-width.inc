@@ -1,5 +1,6 @@
 <?php
-header('Content-type: application/xhtml+xml; charset=utf-8');
+//header('Content-type: application/xhtml+xml; charset=utf-8');
+// ^^^ Breaks Google Maps API; console complains that document.write is not a function.
 ?>
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>

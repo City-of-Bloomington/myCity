@@ -7,3 +7,9 @@ tests/configuration.inc
 build
 dist
 *.mo
+node_modules
+gulpfile.js
+.sass-cache
+.build
+.ftppass
+package.json
