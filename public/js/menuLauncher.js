@@ -1,6 +1,7 @@
 "use strict";
 (function () {
     var launcherClick = function(e)  {
+            document.addEventListener('click', documentClick, false);
             var openMenus  = document.querySelectorAll('.menuLinks.open'),
                 menu = e.target.parentElement.querySelector('.menuLinks'),
                 len = openMenus.length,
@@ -11,6 +12,7 @@
             }
             menu.classList.remove('closed');
             menu.classList.add('open');
+
             e.stopPropagation();
         },
         documentClick = function(e) {
@@ -21,6 +23,7 @@
                 openMenus[i].classList.remove('open');
                 setTimeout(function() { openMenus[i].classList.add('closed'); }, 300);
             }
+            document.removeEventListener('click', documentClick, false);
         };
 
     var launchers = document.querySelectorAll('.menuLauncher'),
@@ -29,5 +32,4 @@
     for (i=0; i<len; i++) {
         launchers[i].addEventListener('click', launcherClick);
     }
-    document.addEventListener('click', documentClick);
 })()
