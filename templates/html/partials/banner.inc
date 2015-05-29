@@ -55,16 +55,19 @@ use Blossom\Classes\Url;
         if (isset($this->address)) {
             $lat   = $this->address['latitude'];
             $lon   = $this->address['longitude'];
-            $title = $this->address['streetAddress'];
-        } else {
+            $data_title = "data-title=\"{$this->address['streetAddress']}\"";
+        }
+        else {
             $lat = DEFAULT_LATITUDE;
             $lon = DEFAULT_LONGITUDE;
+            $data_title = '';
         }
-    ?>
-    <div class="cob-pageHeader-mapCanvas" data-latitude="<?= $lat ?>" data-longitude="<?= $lon ?>" <?= $title ? 'data-title="'.$title.'"' : '' ?> id="map-canvas"></div>
-    <?php 
         $address = !empty($_GET['address']) ? View::escape($_GET['address']) : '';
     ?>
+    <div class="cob-pageHeader-mapCanvas"
+        data-latitude="<?= $lat ?>"
+        data-longitude="<?= $lon ?>"
+        <?= $data_title; ?> id="map-canvas"></div>
     <form method="get" action="<?php echo BASE_URI; ?>" class="myCity-searchForm">
         <label  for="address"><?= $this->_('address'); ?></label>
         <input name="address" id="address" value="<?= $address; ?>" />

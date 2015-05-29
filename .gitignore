@@ -6,6 +6,8 @@ data/blocks/*
 tests/configuration.inc
 build
 dist
+screen.css
+screen.css.map
 *.mo
 node_modules
 gulpfile.js

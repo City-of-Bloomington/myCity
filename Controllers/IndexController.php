@@ -17,10 +17,23 @@ class IndexController extends Controller
 {
 	public function index()
 	{
-//        $this->template->blocks[] = new Block('address/searchForm.inc');
-
-        if (!empty($_GET['address_id'])) {
+        // Handle search results
+        if (!empty($_GET['address'])) {
+            $json = MasterAddressGateway::search($_GET['address']);
+            if (count($json) === 1) {
+                $address = new Address($json[0]);
+            }
+            else {
+                $this->template->blocks[] = new Block('address/searchResults.inc', ['results'=>$json]);
+            }
+        }
+        // Handle single address info
+        elseif (!empty($_GET['address_id'])) {
             $address = new Address($_GET['address_id']);
+        }
+
+        // If we've got a single address, display the information
+        if (isset($address)) {
             if (!$address['active'] || $address['active'] != 'yes') {
                 $oldAddress = $address;
                 $address    = $oldAddress->getCurrentAddress();
@@ -28,16 +41,8 @@ class IndexController extends Controller
             if (isset($oldAddress)) {
                 $this->template->blocks[] = new Block('address/oldAddressNotice.inc', ['address'=>$oldAddress]);
             }
-            if ($address) {
-                $this->template->blocks[] = new Block('address/info.inc', ['address'=>$address]);
-				$this->template->address = $address;
-            }
-        }
-
-
-        if (!empty($_GET['address'])) {
-            $json = MasterAddressGateway::search($_GET['address']);
-            $this->template->blocks[] = new Block('address/searchResults.inc', ['results'=>$json]);
+            $this->template->blocks[] = new Block('address/info.inc', ['address'=>$address]);
+            $this->template->address = $address;
         }
 	}
 }

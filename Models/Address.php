@@ -10,9 +10,14 @@ class Address implements \ArrayAccess
 {
     public $data = [];
 
-    public function __construct($address_id)
+    /**
+     * @param int|array $address_id
+     */
+    public function __construct($address)
     {
-        $this->data = MasterAddressGateway::info($address_id);
+        $this->data = is_array($address)
+            ? $address
+            : MasterAddressGateway::info($address);
     }
 
     public function __get($field)
