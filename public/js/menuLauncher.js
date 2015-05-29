@@ -20,8 +20,9 @@
                 len = openMenus.length,
                 i = 0;
             for (i=0; i<len; i++) {
-                openMenus[i].classList.remove('open');
-                setTimeout(function() { openMenus[i].classList.add('closed'); }, 300);
+                var thisMenu = openMenus[i];
+                thisMenu.classList.remove('open');
+                setTimeout(function() { thisMenu.classList.add('closed'); }, 300);
             }
             document.removeEventListener('click', documentClick, false);
         };
