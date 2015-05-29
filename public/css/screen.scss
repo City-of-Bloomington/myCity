@@ -14,6 +14,15 @@
     width: 1px;
 }
 
+@mixin clearfix() {
+    &:before, &:after {
+        clear: both;
+        content: ' ';
+        display: table;
+    }
+}
+
+
 
 $cob-blue: #315da6;
 $cob-blue-light: #4975ba;
@@ -61,7 +70,7 @@ $screen-small: (400em/16);
         height: (45rem/16);
         margin: 0 0 0 (-185rem/16);
         position: absolute;
-            top: 46%;
+            top: (112rem/16);
             left: 50%;
         width: (370rem/16);
     }
@@ -75,7 +84,7 @@ $screen-small: (400em/16);
     &-searchForm {
         margin: 0 0 0 (-225rem/16);
         position: absolute;
-            top: 70%;
+            top: (162rem/16);
             left: 50%;
         text-align: center;
         width: (450rem/16);
@@ -89,21 +98,62 @@ $screen-small: (400em/16);
             box-sizing: border-box;
             color: $cob-gray-darkest;
             font-size: (18rem/16);
-            line-height: 1em;
+            line-height: 1.3em;
+            overflow: hidden;
             padding: .5rem;
             width: (370rem/16);
         }
         > button[type="submit"] {
-            background: url('img/search.svg') no-repeat 50% 50% / 60% 60% $cob-green;
+            background: url('img/search.svg') no-repeat 50% 50% / 1.1em 1.1em $cob-green;
             border: 1px solid $cob-blue-darkest;
             border-radius: 0 .5rem .5rem 0;
+            box-sizing: border-box;
+            display: inline-block;
             font-size: (18rem/16);
-            line-height: 1em;
+            line-height: 1.3em;
             overflow: hidden;
-            padding: .7rem 2rem;
+            padding: .5rem 2rem;
             position: relative;
                 right: .5rem;
             text-indent: -10rem;
+        }
+    }
+    &-resultsHeading {
+        @include visuallyHidden();
+    }
+
+
+    &-addressInfo {
+        &-container {
+            border-top: solid (4rem/16) $cob-blue;
+        }
+        &-keyValuePair { /* <- Meant for DL */
+            display: inline-block;
+
+            > dt {
+                font-size: (14rem/16);
+                line-height: 1em;
+                text-transform: uppercase;
+            }
+            > dd {
+                color: $cob-blue-darkest;
+                font-size: (30rem/16);
+                line-height: (36em/30);
+                margin: 0;
+            }
+        }
+    }
+    &-trash {
+        &-container {
+            border-bottom: 1px solid $cob-gray;
+            @include clearfix();
+        }
+        &-details {
+            display: inline-block;
+            font-size: (16rem/16);
+            line-height: (24em/16);
+            margin: 0;
+            width: 25em;
         }
     }
 }

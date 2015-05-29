@@ -53,16 +53,17 @@ use Blossom\Classes\Url;
 <header class="cob-pageHeader ">
     <?php
         if (isset($this->address)) {
-            $lat   = $this->address['latitude'];
-            $lon   = $this->address['longitude'];
+            $lat        = $this->address['latitude'];
+            $lon        = $this->address['longitude'];
             $data_title = "data-title=\"{$this->address['streetAddress']}\"";
+            $address    = $this->address['streetAddress'];
         }
         else {
             $lat = DEFAULT_LATITUDE;
             $lon = DEFAULT_LONGITUDE;
             $data_title = '';
+            $address = !empty($_GET['address']) ? View::escape($_GET['address']) : '';
         }
-        $address = !empty($_GET['address']) ? View::escape($_GET['address']) : '';
     ?>
     <div class="cob-pageHeader-mapCanvas"
         data-latitude="<?= $lat ?>"
@@ -73,4 +74,10 @@ use Blossom\Classes\Url;
         <input name="address" id="address" value="<?= $address; ?>" />
         <button type="submit" class="search"><?= $this->_('search'); ?></button>
     </form>
+
+    <div class="cob-pageOverview">
+        <div class="cob-pageOverview-container">
+            <h1>Test</h1>
+        </div>
+    </div>
 </header>

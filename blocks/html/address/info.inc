@@ -36,24 +36,34 @@ if (!empty($address['councilDistrict'])) {
         }
     $atLargeMembers.= "</ul></td></tr>";
 }
+?>
+<h1 class="myCity-resultsHeading">Information about <?= $address['streetAddress'] ?></h1>
 
-echo "
-<h1>{$address['streetAddress']}</h1>
 <section>
-    <h2>{$this->_(['service', 'services', 2])}</h2>
-    <table>
-        <tr><th>{$this->_('trashDay')}</th>
-            <td>{$address['trashDay']}</td>
-        </tr>
-        <tr><th>{$this->_('recycleWeek')}</th>
-            <td>{$address['recycleWeek']}</td>
-        </tr>
-        $neighborhoodAssociations
-        $historicDistricts
-        $economicDevelopmentAreas
-    </table>
+    <h2><?= $this->_('aboutThisAddress') ?></h2>
+
+    <div class="myCity-addressInfo-container">
+        <div class="myCity-trash-container">
+            <dl class="myCity-addressInfo-keyValuePair myCity-trash-day">
+                <dt><?= $this->_('trashDay') ?></dt>
+                <dd><?= ucfirst(strtolower($address['trashDay'])) ?></dd>
+            </dl>
+            <dl class="myCity-addressInfo-keyValuePair myCity-trash-recycleWeek">
+                <dt><?= $this->_('nextRecyclePickup') ?></dt>
+                <dd>Week <?= $address['recycleWeek'] ?></dd>
+            </dl>
+            <p class="myCity-trash-details">Trash pick-up dates are according to the regular schedule. Some conditions may cause delays to the schedule. Please see <a href="/trash">Trash & Recycling Pickup</a> for details.</p>
+        </div>
+    </div>
+        <?= $neighborhoodAssociations ?>
+        <?= $historicDistricts ?>
+        <?= $economicDevelopmentAreas ?>
+
 </section>
 
+
+<?php
+echo "
 <section>
     <h2>{$this->_('government')}</h2>
     <table>

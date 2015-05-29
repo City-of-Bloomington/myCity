@@ -19,10 +19,9 @@
             var openMenus   = document.querySelectorAll('.menuLinks.open'),
                 len = openMenus.length,
                 i = 0;
-            console.log(openMenus);
             for (i=0; i<len; i++) {
-                openMenus[i].classList.remove('open');
                 var thisMenu = (openMenus[i]);
+                openMenus[i].classList.remove('open');
                 setTimeout(function() { thisMenu.classList.add('closed'); }, 300);
             }
             document.removeEventListener('click', documentClick, false);

@@ -13,7 +13,7 @@
 	<?php
 		$this->_include('partials/banner.inc');
 	?>
-	<div id="panel-container">
+	<div class="cob-main-container">
 		<div id="content-panel">
 			<?php
 				include BLOSSOM.'/errorMessages.php';
