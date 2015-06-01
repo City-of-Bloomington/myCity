@@ -18,6 +18,8 @@ class Address implements \ArrayAccess
         $this->data = is_array($address)
             ? $address
             : MasterAddressGateway::info($address);
+
+        $this->data['county'] = DEFAULT_COUNTY;
     }
 
     public function __get($field)
@@ -49,6 +51,29 @@ class Address implements \ArrayAccess
                 }
             }
         }
+    }
+
+    /**
+     * Returns the address purposes in a more usable form
+     *
+     * Returns an array using the possible purpose types as the key.
+     * Each key's value is an array of all the values from the adress
+     * for that purpose type.
+     *
+     * @return array
+     */
+    public function getPurposeValuesByType()
+    {
+        $out = [];
+        if (  !empty($this->data['purposes'])) {
+            foreach ($this->data['purposes'] as $purpose) {
+                if (array_key_exists($purpose['type'], MasterAddressGateway::$purposeMap)) {
+                    $variableName = MasterAddressGateway::$purposeMap[$purpose['type']];
+                    $out[$variableName][] = $purpose['description'];
+                }
+            }
+        }
+        return $out;
     }
 
     //------------------------------------------------

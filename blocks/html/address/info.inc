@@ -8,38 +8,30 @@
  */
 use Application\Models\MasterAddressGateway;
 use Application\Models\CityCouncilGateway;
+use Application\Models\DirectoryGateway;
 
-$address = $this->address;
-foreach (MasterAddressGateway::$purposeMap as $p) {
-    $l  = $p.'s';
-    $$l = '';
+use Blossom\Classes\Block;
+use Blossom\Classes\View;
 
-    if (!empty($address[$p])) {
-        $$l = "<tr><th>{$this->_([$p, $l, 2])}</th><td><ul>";
-        foreach ($address[$p] as $value) {
-            $$l.= "<li>$value</li>";
-        }
-        $$l.= "</ul></td></tr>";
-    }
-}
+$address  = $this->address;
 
-$districtMember = '';
-$atLargeMembers = '';
-if (!empty($address['councilDistrict'])) {
-    $districtName = $address['councilDistrict'][0];
-    $district = CityCouncilGateway::members($districtName);
-    $atLarge  = CityCouncilGateway::members(CityCouncilGateway::AT_LARGE);
-    $districtMember = "<tr><th>$districtName</th><td>{$district[0]['name']}</td></tr>";
-    $atLargeMembers = "<tr><th>{$this->_('atLarge')}</th><td><ul>";
-        foreach ($atLarge as $member) {
-            $atLargeMembers.= "<li>$member[name]</li>";
-        }
-    $atLargeMembers.= "</ul></td></tr>";
-}
 ?>
-<h1 class="myCity-resultsHeading">Information about <?= $address['streetAddress'] ?></h1>
+<div class="pageOverview">
+    <div class="container">
+        <div>
+            <p><?= $this->_('pageOverview_address', 'messages'); ?></p>
+        </div>
+        <aside>
+            <dl></dl>
+            <dd><?= $this->_('aboutThisAddress'); ?></dd>
+            <dd><?= $this->_('governmentLinks'); ?></dd>
+            <dd><?= $this->_('votingInfo'); ?></dd>
 
-<section>
+        </aside>
+    </div>
+</div>
+
+<section id="aboutThisAddress">
     <h2><?= $this->_('aboutThisAddress') ?></h2>
 
     <div class="myCity-addressInfo-container">
@@ -55,57 +47,151 @@ if (!empty($address['councilDistrict'])) {
             <p class="myCity-trash-details">Trash pick-up dates are according to the regular schedule. Some conditions may cause delays to the schedule. Please see <a href="/trash">Trash & Recycling Pickup</a> for details.</p>
         </div>
     </div>
-        <?= $neighborhoodAssociations ?>
-        <?= $historicDistricts ?>
-        <?= $economicDevelopmentAreas ?>
 
+    <div class="location">
+        <div class="container">
+            <dl class="jurisdiction">
+                <dt><?= $this->_('jurisdiction'); ?></dt>
+                <dd><?= $address['jurisdiction']; ?></dd>
+            </dl>
+            <dl class="township">
+                <dt><?= $this->_('township'); ?></dt>
+                <dd><?= $address['township']; ?></dd>
+            </dl>
+            <?php
+                $purposes = $address->getPurposeValuesByType();
+
+                $purposesToDisplayHere = [
+                    'neighborhoodAssociation',
+                    'historicDistrict',
+                    'economicDevelopmentArea'
+                ];
+                foreach ($purposesToDisplayHere as $p) {
+                    if (!empty($purposes[$p])) {
+                        echo "<dl class=\"$p\"><dt>{$this->_($p)}</dt>";
+                        foreach ($purposes[$p] as $value) {
+                            $value = View::escape($value);
+                            echo "<dd>$value</dd>";
+                        }
+                        echo "</dl>";
+                    }
+                }
+            ?>
+        </div>
+    </div>
+
+    <?php
+        if (!empty($purposes['parkingZone'])) {
+            echo "
+            <div class=\"parking\">
+                <div class=\"container\">
+            ";
+                foreach ($purposes['parkingZone'] as $zone) {
+                    $zone = View::escape($zone);
+                    echo "
+                    <dl><dt>$zone</dt>
+                        <dd></dd>
+                    </dl>
+                    ";
+                }
+            echo "
+                </div>
+            </div>
+            ";
+        }
+    ?>
+
+    <div class="government">
+        <div class="container">
+            <dl class="city">
+                <dt><?= $this->_('city'); ?></dt>
+                <dd><?= $address['city']; ?></dt>
+            </dl>
+            <dl class="township">
+                <dt><?= $this->_('township'); ?></dt>
+                <dd><?= $address['township']; ?></dt>
+            </dl>
+        </div>
+    </div>
 </section>
 
+<section id="governmentLinks">
+    <h1><?= $this->_('governmentLinks'); ?></h1>
 
-<?php
-echo "
-<section>
-    <h2>{$this->_('government')}</h2>
-    <table>
-        <tr><th>{$this->_('jurisdiction')}</th>
-            <td>{$address['jurisdiction']}</td>
-        </tr>
-        <tr><th>{$this->_('township')}</th>
-            <td>{$address['township']}</td>
-        </tr>
-        $councilDistricts
-    </table>
+    <div>
+        <div>
+            <dl class="state">
+                <dt><?= $this->_('state'); ?></dt>
+                <dd><?= $address['state']; ?></dd>
+            </dl>
+            <dl class="county">
+                <dt><?= $this->_('county'); ?></dt>
+                <dd><?= $address['county']; ?></dd>
+            </dl>
+            <dl class="city">
+                <dt><?= $this->_('city'); ?></dt>
+                <dd><?= $address['city']; ?></dd>
+            </dl>
+        </div>
+    </div>
 </section>
 
-<section>
-    <h2>{$this->_('votingInfo')}</h2>
-    <table>
-        $districtMember
-        $atLargeMembers
-    </table>
-</section>
+<section id="votingInfo">
+    <h1><?= $this->_('votingInfo'); ?></h1>
 
-<section>
-    <h2>{$this->_('gis')}</h2>
-    <table>
-        <tr><th>{$this->_('latitude')}/{$this->_('longitude')}</th>
-            <td>{$address['latitude']} {$address['longitude']}</td>
-        </tr>
-        <tr><th>{$this->_('statePlane')} x/y</th>
-            <td>{$address['statePlane']['x']} {$address['statePlane']['y']}</td>
-        </tr>
-        <tr><th>{$this->_('plat')}</th>
-            <td>$address[plat]</td>
-        </tr>
-        <tr><th>{$this->_('lot')}</th>
-            <td>$address[lot]</td>
-        </tr>
-        <tr><th>{$this->_('section')}</th>
-            <td>$address[section]</td>
-        </tr>
-        <tr><th>{$this->_('quarter')}</th>
-            <td>$address[quarter]</td>
-        </tr>
-    </table>
+    <div class="mayor">
+        <h2><?= $this->_('mayor'); ?></h2>
+        <?php
+            $contactInfo = new Block('directory/contactInfo.inc');
+
+            $contactInfo->entry = DirectoryGateway::info('mayor');
+            echo $contactInfo->render('html', $this->template);
+        ?>
+    </div>
+    <?php
+        $districtMember = '';
+        $atLargeMembers = '';
+        if (!empty(         $purposes['councilDistrict'])) {
+            $districtName = $purposes['councilDistrict'][0];
+            $district = CityCouncilGateway::members($districtName);
+            $atLarge  = CityCouncilGateway::members(CityCouncilGateway::AT_LARGE);
+
+            $districtName = View::escape($districtName);
+
+
+            if (count($atLarge)) {
+                echo "<div class=\"council\"><h2>{$this->_('atLarge')}</h2>";
+                foreach ($atLarge as $member) {
+                    if (   !empty($member['email'])
+                        && false !== strpos($member['email'], DIRECTORY_DOMAIN)
+                        && preg_match('|([a-z]+)@'.DIRECTORY_DOMAIN.'|',$member['email'], $matches)) {
+
+                        $contactInfo->entry = DirectoryGateway::info($matches[1]);
+                        echo $contactInfo->render('html', $this->template);
+                    }
+                }
+                echo "</div>";
+            }
+            if (count($district)) {
+                echo "<div class=\"council\"><h2>$districtName</h2>";
+                foreach ($district as $member) {
+                    if (   !empty($member['email'])
+                        && false !== strpos($member['email'], DIRECTORY_DOMAIN)
+                        && preg_match('|([a-z]+)@'.DIRECTORY_DOMAIN.'|',$member['email'], $matches)) {
+
+                        $contactInfo->entry = DirectoryGateway::info($matches[1]);
+                        echo $contactInfo->render('html', $this->template);
+                    }
+                }
+                echo "</div>";
+            }
+        }
+    ?>
+    <div class="clerk">
+        <h2><?= $this->_('clerk'); ?></h2>
+        <?php
+            $contactInfo->entry = DirectoryGateway::info('clerk');
+            echo $contactInfo->render('html', $this->template);
+        ?>
+    </div>
 </section>
-";

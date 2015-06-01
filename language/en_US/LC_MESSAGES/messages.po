@@ -26,3 +26,6 @@ msgstr "No results found"
 
 msgid "oldAddressNotice"
 msgstr "%s is an old address, and is no longer valid."
+
+msgid "pageOverview_address"
+msgstr "Here is an overview of services offered by the City of Bloomington to the address you've requested."

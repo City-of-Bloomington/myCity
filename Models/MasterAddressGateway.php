@@ -15,7 +15,8 @@ class MasterAddressGateway
         'CITY COUNCIL DISTRICT'     => 'councilDistrict',
         'HISTORIC DISTRICT'         => 'historicDistrict',
         'NEIGHBORHOOD ASSOCIATION'  => 'neighborhoodAssociation',
-        'RESIDENTIAL PARKING ZONE'  => 'parkingZone'
+        'RESIDENTIAL PARKING ZONE'  => 'parkingZone',
+        'REDEVELOPMENT ZONE'        => 'redevelopmentZone'
     ];
     private static function createPurposeVariables(&$json)
     {

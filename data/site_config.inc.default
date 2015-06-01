@@ -20,9 +20,6 @@ define('ADMINISTRATOR_NAME','Site Admin');
 define('ADMINISTRATOR_EMAIL','admin@servername.com');
 
 
-define('DATE_FORMAT', 'n/j/Y H:i:s');
-define('LOCALE', 'en_US');
-
 /**
  * Default coordinates for map center
  * This should probably be the center of your city
@@ -30,3 +27,8 @@ define('LOCALE', 'en_US');
  */
 define('DEFAULT_LATITUDE', ini_get('date.default_latitude'));
 define('DEFAULT_LONGITUDE',ini_get('date.default_longitude'));
+
+define('DEFAULT_COUNTY', 'Monroe');
+
+define('DATE_FORMAT', 'n/j/Y H:i:s');
+define('LOCALE', 'en_US');
