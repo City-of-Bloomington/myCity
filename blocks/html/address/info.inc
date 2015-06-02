@@ -19,20 +19,56 @@ $address  = $this->address;
     <h2><?= $this->_('aboutThisAddress') ?></h2>
 
     <div class="myCity-addressInfo-container">
-        <div class="myCity-trash-container">
-            <dl class="myCity-addressInfo-keyValuePair myCity-trash-day">
-                <dt><?= $this->_('trashDay') ?></dt>
-                <dd><?= ucfirst(strtolower($address['trashDay'])) ?></dd>
-            </dl>
-            <dl class="myCity-addressInfo-keyValuePair myCity-trash-recycleWeek">
-                <dt><?= $this->_('nextRecyclePickup') ?></dt>
-                <dd>Week <?= $address['recycleWeek'] ?></dd>
-            </dl>
-            <p class="myCity-trash-details">
-            <?php
-                echo sprintf($this->_('sanitationDetails', 'messages'), '<a href="/trash">', '</a>');
-            ?>
-            </p>
+        <?php if(isset($address['trashDay'])): ?>
+            <div class="myCity-trash-container">
+                <dl class="myCity-addressInfo-keyValuePair modTrashDay">
+                    <dt><?= $this->_('trashDay') ?></dt>
+                    <dd><?= ucfirst(strtolower($address['trashDay'])) ?></dd>
+                </dl>
+                <dl class="myCity-addressInfo-keyValuePair modRecycleWeek">
+                    <dt><?= $this->_('nextRecyclePickup') ?></dt>
+                    <dd>Week <?= $address['recycleWeek'] ?></dd>
+                </dl>
+                <p class="myCity-trash-details">
+                <?php
+                    echo sprintf($this->_('sanitationDetails', 'messages'), '<a href="/trash">', '</a>');
+                ?>
+                </p>
+            </div>
+        <?php endif; ?>
+        <div class="myCity-location-container">
+            <div class="myCity-location-latLon">
+                <dl class="myCity-addressInfo-keyValuePair modLatLon">
+                    <dt>Latitude</dt>
+                    <dd><?= $address['latitude'] ?></dd>
+                </dl>
+                <dl class="myCity-addressInfo-keyValuePair modLatLon">
+                    <dt>Longitude</dt>
+                    <dd><?= $address['longitude'] ?></dd>
+                </dl>
+            </div>
+            <div class="myCity-location-additionalInfo">
+                <?php
+                    $purposes = $address->getPurposeValuesByType();
+    
+                    $purposesToDisplayHere = [
+                        'neighborhoodAssociation',
+                        'historicDistrict',
+                        'economicDevelopmentArea'
+                    ];
+                    foreach ($purposesToDisplayHere as $p) {
+                        if (!empty($purposes[$p])) {
+                            echo "<dl class=\"myCity-addressInfo-keyValuePair modLocation\"><dt>{$this->_($p)}</dt>";
+                            foreach ($purposes[$p] as $value) {
+                                $value = View::escape($value);
+                                echo "<dd>$value</dd>";
+                            }
+                            echo "</dl>";
+                        }
+                    }
+                ?>
+
+            </div>
         </div>
     </div>
 
@@ -46,25 +82,6 @@ $address  = $this->address;
                 <dt><?= $this->_('township'); ?></dt>
                 <dd><?= $address['township']; ?></dd>
             </dl>
-            <?php
-                $purposes = $address->getPurposeValuesByType();
-
-                $purposesToDisplayHere = [
-                    'neighborhoodAssociation',
-                    'historicDistrict',
-                    'economicDevelopmentArea'
-                ];
-                foreach ($purposesToDisplayHere as $p) {
-                    if (!empty($purposes[$p])) {
-                        echo "<dl class=\"$p\"><dt>{$this->_($p)}</dt>";
-                        foreach ($purposes[$p] as $value) {
-                            $value = View::escape($value);
-                            echo "<dd>$value</dd>";
-                        }
-                        echo "</dl>";
-                    }
-                }
-            ?>
         </div>
     </div>
 
@@ -104,7 +121,7 @@ $address  = $this->address;
 </section>
 
 <section id="governmentLinks">
-    <h1><?= $this->_('governmentLinks'); ?></h1>
+    <h2><?= $this->_('governmentLinks'); ?></h2>
 
     <div>
         <div>
@@ -138,10 +155,10 @@ $address  = $this->address;
 </section>
 
 <section id="votingInfo">
-    <h1><?= $this->_('votingInfo'); ?></h1>
+    <h2><?= $this->_('votingInfo'); ?></h2>
 
     <div class="mayor">
-        <h2><?= $this->_('mayor'); ?></h2>
+        <h3><?= $this->_('mayor'); ?></h3>
         <?php
             $contactInfo = new Block('directory/contactInfo.inc');
 
@@ -189,7 +206,7 @@ $address  = $this->address;
         }
     ?>
     <div class="clerk">
-        <h2><?= $this->_('clerk'); ?></h2>
+        <h3><?= $this->_('clerk'); ?></h3>
         <?php
             $contactInfo->entry = DirectoryGateway::info('clerk');
             echo $contactInfo->render('html', $this->template);

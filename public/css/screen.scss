@@ -50,9 +50,9 @@ $font-headings: Lato, 'Helvetica Neue', Arial, sans-serif;
 
 
 // Viewport size variables
-$screen-large: (1024em/16);
-$screen-medium: (700em/16);
-$screen-small: (400em/16);
+$screen-large: (990rem/16);
+$screen-medium: (600rem/16);
+$screen-small: (350rem/16);
 
 
 
@@ -79,6 +79,12 @@ $screen-small: (400em/16);
     }
 }
 
+section > h2:first-child {
+    font-size: (20rem/16);
+    font-weight: normal;
+    line-height: (26em/20);
+    text-transform: uppercase;
+}
 
 .myCity {
     &-searchForm {
@@ -129,6 +135,7 @@ $screen-small: (400em/16);
         }
         &-keyValuePair { /* <- Meant for DL */
             display: inline-block;
+            margin: 0;
 
             > dt {
                 font-size: (14rem/16);
@@ -141,19 +148,148 @@ $screen-small: (400em/16);
                 line-height: (36em/30);
                 margin: 0;
             }
+            &.modTrashDay {
+                box-sizing: border-box;
+                padding: 0 1rem;
+                text-align: center;
+                width: 49%;
+            }
+            &.modRecycleWeek {
+                box-sizing: border-box;
+                padding: 0 1rem;
+                text-align: center;
+                width: 49%;
+            }
+            &.modLatLon {
+                box-sizing: border-box;
+                padding: 0 1rem;
+                text-align: center;
+                width: 49%;
+            }
+            &.modLocation {
+                > dt {
+                    font-size: (12rem/16);
+                    line-height: (18em/12);
+                }
+                > dd {
+                    font-size: (18rem/16);
+                    line-height: (26em/18);
+                }
+            }
         }
     }
     &-trash {
         &-container {
             border-bottom: 1px solid $cob-gray;
             @include clearfix();
+
+            &:before {
+                background: url('img/icon-trash.svg') no-repeat 0 0 / 100% 100%;
+                content: ' ';
+                display: block;
+                height: (83rem/16);
+                margin: 1rem auto;
+                width: (83rem/16);
+            }
         }
         &-details {
             display: inline-block;
             font-size: (16rem/16);
             line-height: (24em/16);
-            margin: 0;
-            width: 25em;
+            margin: 1rem;
+        }
+    }
+    &-location {
+        &-container {
+            &:before {
+                background: url('img/icon-map.svg') no-repeat 0 0 / 100% 100%;
+                content: ' ';
+                display: block;
+                height: (83rem/16);
+                margin: 1rem auto;
+                width: (83rem/16);
+            }
+        }
+    }
+    @media screen and (max-width: $screen-small) {
+        &-addressInfo {
+            &-keyValuePair {
+                > dt {
+                    font-size: (12rem/16);
+                    line-height: (18em/12);
+                }
+                > dd {
+                    font-size: (20rem/16);
+                    line-height: (25em/30);
+                }
+            }
+        }
+        
+    }
+    @media screen and (min-width: $screen-medium) {
+        &-addressInfo {
+            &-keyValuePair {
+                &.modRecycleWeek  {
+                    margin: 0 (20rem/16) 0 0;
+                    padding: 0;
+                    text-align: left;
+                    width: (167rem/16);
+                }
+                &.modTrashDay {
+                    margin: 0 (20rem/16) 0 (20rem/16);
+                    padding: 0;
+                    text-align: left;
+                    width: (167rem/16);
+                }
+                &.modLatLon {
+                    margin: 0 (20rem/16) 1rem (20rem/16);
+                    padding: 0;
+                    text-align: left;
+                }
+            }
+        }
+        &-trash {
+            &-container {
+                &:before {
+                    display: inline-block;
+                    margin-bottom: -1rem;
+                }
+            }
+        }
+        &-location {
+            &-container {
+                @include clearfix();
+                &:before {
+                    display: block;
+                    float: left;
+                    margin-bottom: -1rem;
+                }
+            }
+            &-latLon {
+                display: block;
+                float: left;
+                margin: 1rem 0 1rem ;
+            }
+        }
+    }
+    @media screen and (min-width: $screen-large) {
+        &-trash {
+            &-container {
+                > dl, > div, > p, &:before { vertical-align: middle; }
+                &:before {
+                    margin: 1rem 0;
+                }
+            }
+            &-details {
+                display: inline-block;
+                width: 25em;
+            }
+        }
+        &-location {
+            &-container {
+                &:before {
+                }
+            }
         }
     }
 }
