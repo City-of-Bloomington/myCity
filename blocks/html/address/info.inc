@@ -14,23 +14,7 @@ use Blossom\Classes\Block;
 use Blossom\Classes\View;
 
 $address  = $this->address;
-
 ?>
-<div class="pageOverview">
-    <div class="container">
-        <div>
-            <p><?= $this->_('pageOverview_address', 'messages'); ?></p>
-        </div>
-        <aside>
-            <dl></dl>
-            <dd><?= $this->_('aboutThisAddress'); ?></dd>
-            <dd><?= $this->_('governmentLinks'); ?></dd>
-            <dd><?= $this->_('votingInfo'); ?></dd>
-
-        </aside>
-    </div>
-</div>
-
 <section id="aboutThisAddress">
     <h2><?= $this->_('aboutThisAddress') ?></h2>
 

@@ -11,7 +11,7 @@
 ?>
 <body>
 	<?php
-		$this->_include('partials/banner.inc');
+		$this->_include('partials/siteHeader.inc');
 	?>
 	<div class="cob-main-container">
 		<div id="content-panel">

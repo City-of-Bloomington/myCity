@@ -17,6 +17,8 @@ class IndexController extends Controller
 {
 	public function index()
 	{
+        $searchForm = new Block('address/searchForm.inc');
+
         // Handle search results
         if (!empty($_GET['address'])) {
             $json = MasterAddressGateway::search($_GET['address']);
@@ -41,8 +43,12 @@ class IndexController extends Controller
             if (isset($oldAddress)) {
                 $this->template->blocks[] = new Block('address/oldAddressNotice.inc', ['address'=>$oldAddress]);
             }
-            $this->template->blocks[] = new Block('address/info.inc', ['address'=>$address]);
-            $this->template->address = $address;
+            
+            $this->template->blocks['pageOverview'][] = new Block('address/tableOfContentsLinks.inc');
+            $this->template->blocks[]                 = new Block('address/info.inc', ['address'=>$address]);
+
+            $searchForm->address = $address;
         }
+        $this->template->blocks['pageHeader'][] = $searchForm;
 	}
 }
