@@ -87,6 +87,21 @@ msgstr "Authentication"
 msgid "role"
 msgstr "Role"
 
+msgid "office"
+msgstr "Office"
+
+msgid "fax"
+msgstr "Fax"
+
+msgid "cell"
+msgstr "Cell"
+
+msgid "pager"
+msgstr "Pager"
+
+msgid "other"
+msgstr "Other"
+
 msgid "email"
 msgid_plural "emails"
 msgstr[0] "Email"
@@ -132,7 +147,7 @@ msgid "government"
 msgstr "Government"
 
 msgid "votingInfo"
-msgstr "Voting Information"
+msgstr "Key City Officials"
 
 msgid "gis"
 msgstr "GIS"
@@ -145,6 +160,9 @@ msgstr "State"
 
 msgid "zip"
 msgstr "Zip"
+
+msgid "county"
+msgstr "County"
 
 msgid "status"
 msgstr "Status"
@@ -212,3 +230,15 @@ msgstr[1] "Council Districts"
 
 msgid "atLarge"
 msgstr "At Large Council Members"
+
+msgid "aboutThisAddress"
+msgstr "About This Address"
+
+msgid "governmentLinks"
+msgstr "Where to Find Your Government Online"
+
+msgid "mayor"
+msgstr "Mayor"
+
+msgid "clerk"
+msgstr "Clerk"

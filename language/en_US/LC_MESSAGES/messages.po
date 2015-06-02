@@ -29,3 +29,8 @@ msgstr "%s is an old address, and is no longer valid."
 
 msgid "pageOverview_address"
 msgstr "Here is an overview of services offered by the City of Bloomington to the address you've requested."
+
+msgid "sanitationDetails"
+msgstr "Trash pick-up dates are according to the regular schedule. "
+"Some conditions may cause delays to the schedule. "
+"Please see %sTrash &amp; Recycling Pickup%s for details. "

@@ -28,7 +28,11 @@ $address  = $this->address;
                 <dt><?= $this->_('nextRecyclePickup') ?></dt>
                 <dd>Week <?= $address['recycleWeek'] ?></dd>
             </dl>
-            <p class="myCity-trash-details">Trash pick-up dates are according to the regular schedule. Some conditions may cause delays to the schedule. Please see <a href="/trash">Trash & Recycling Pickup</a> for details.</p>
+            <p class="myCity-trash-details">
+            <?php
+                echo sprintf($this->_('sanitationDetails', 'messages'), '<a href="/trash">', '</a>');
+            ?>
+            </p>
         </div>
     </div>
 
@@ -104,18 +108,31 @@ $address  = $this->address;
 
     <div>
         <div>
-            <dl class="state">
-                <dt><?= $this->_('state'); ?></dt>
-                <dd><?= $address['state']; ?></dd>
-            </dl>
-            <dl class="county">
-                <dt><?= $this->_('county'); ?></dt>
-                <dd><?= $address['county']; ?></dd>
-            </dl>
-            <dl class="city">
-                <dt><?= $this->_('city'); ?></dt>
-                <dd><?= $address['city']; ?></dd>
-            </dl>
+        <?php
+            global $GOVERNMENTAL_LINKS;
+            foreach (['state', 'county', 'city'] as $region) {
+                echo "
+                <dl class=\"$region\">
+                    <dt>{$this->_($region)}</dt>
+                    <dd>{$address[$region]}</dd>
+                ";
+                    if (array_key_exists($address[$region], $GOVERNMENTAL_LINKS)) {
+                        echo '<dd><table>';
+                        foreach ($GOVERNMENTAL_LINKS[$address[$region]] as $type=>$link) {
+                            $label = $this->_($type);
+                            echo "
+                            <tr><th>$label:</th>
+                                <td><a href=\"$link[url]\">$link[text]</a></td>
+                            </tr>
+                            ";
+                        }
+                        echo '</table></dd>';
+                    }
+                echo "
+                </dl>
+                ";
+            }
+        ?>
         </div>
     </div>
 </section>
