@@ -51,7 +51,7 @@ $address  = $this->address;
                 <div class="myCity-location-additionalInfo">
                     <?php
                         $purposes = $address->getPurposeValuesByType();
-        
+
                         $purposesToDisplayHere = [
                             'neighborhoodAssociation',
                             'historicDistrict',
@@ -68,7 +68,7 @@ $address  = $this->address;
                             }
                         }
                     ?>
-    
+
                 </div>
             </div>
         <?php endif; ?>
