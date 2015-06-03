@@ -36,40 +36,57 @@ $address  = $this->address;
                 </p>
             </div>
         <?php endif; ?>
-        <div class="myCity-location-container">
-            <div class="myCity-location-latLon">
-                <dl class="myCity-addressInfo-keyValuePair modLatLon">
-                    <dt>Latitude</dt>
-                    <dd><?= $address['latitude'] ?></dd>
-                </dl>
-                <dl class="myCity-addressInfo-keyValuePair modLatLon">
-                    <dt>Longitude</dt>
-                    <dd><?= $address['longitude'] ?></dd>
-                </dl>
-            </div>
-            <div class="myCity-location-additionalInfo">
-                <?php
-                    $purposes = $address->getPurposeValuesByType();
-    
-                    $purposesToDisplayHere = [
-                        'neighborhoodAssociation',
-                        'historicDistrict',
-                        'economicDevelopmentArea'
-                    ];
-                    foreach ($purposesToDisplayHere as $p) {
-                        if (!empty($purposes[$p])) {
-                            echo "<dl class=\"myCity-addressInfo-keyValuePair modLocation\"><dt>{$this->_($p)}</dt>";
-                            foreach ($purposes[$p] as $value) {
-                                $value = View::escape($value);
-                                echo "<dd>$value</dd>";
+        <?php if(isset($address['latitude']) && isset($address['longitude'])): ?>
+            <div class="myCity-location-container">
+                <div class="myCity-location-latLon">
+                    <dl class="myCity-addressInfo-keyValuePair modLatLon">
+                        <dt>Latitude</dt>
+                        <dd><?= $address['latitude'] ?></dd>
+                    </dl>
+                    <dl class="myCity-addressInfo-keyValuePair modLatLon">
+                        <dt>Longitude</dt>
+                        <dd><?= $address['longitude'] ?></dd>
+                    </dl>
+                </div>
+                <div class="myCity-location-additionalInfo">
+                    <?php
+                        $purposes = $address->getPurposeValuesByType();
+        
+                        $purposesToDisplayHere = [
+                            'neighborhoodAssociation',
+                            'historicDistrict',
+                            'economicDevelopmentArea'
+                        ];
+                        foreach ($purposesToDisplayHere as $p) {
+                            if (!empty($purposes[$p])) {
+                                echo "<dl class=\"myCity-addressInfo-keyValuePair modLocation\"><dt>{$this->_($p)}</dt>";
+                                foreach ($purposes[$p] as $value) {
+                                    $value = View::escape($value);
+                                    echo "<dd>$value</dd>";
+                                }
+                                echo "</dl>";
                             }
-                            echo "</dl>";
                         }
+                    ?>
+    
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if (!empty($purposes['parkingZone'])): ?>
+            <div class="myCity-parking-container">
+                <?php
+                    foreach ($purposes['parkingZone'] as $zone) {
+                        $zone = ucwords(strtolower(View::escape($zone)));
+                        echo "
+                            <dl class=\"myCity-parking-details\">
+                                <dt>$zone</dt>
+                                <dd>Permit required Monday &ndash; Friday, 8:00am &ndash; 5:00pm</dd>
+                            </dl>
+                        ";
                     }
                 ?>
-
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 
     <div class="location">
@@ -85,26 +102,6 @@ $address  = $this->address;
         </div>
     </div>
 
-    <?php
-        if (!empty($purposes['parkingZone'])) {
-            echo "
-            <div class=\"parking\">
-                <div class=\"container\">
-            ";
-                foreach ($purposes['parkingZone'] as $zone) {
-                    $zone = View::escape($zone);
-                    echo "
-                    <dl><dt>$zone</dt>
-                        <dd></dd>
-                    </dl>
-                    ";
-                }
-            echo "
-                </div>
-            </div>
-            ";
-        }
-    ?>
 
     <div class="government">
         <div class="container">

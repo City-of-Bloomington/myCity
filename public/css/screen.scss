@@ -167,9 +167,11 @@ section > h2:first-child {
                 width: 49%;
             }
             &.modLocation {
+                display: block;
+                margin-bottom: 1rem;
                 > dt {
                     font-size: (12rem/16);
-                    line-height: (18em/12);
+                    line-height: (14em/12);
                 }
                 > dd {
                     font-size: (18rem/16);
@@ -201,6 +203,8 @@ section > h2:first-child {
     }
     &-location {
         &-container {
+            border-bottom: 1px solid $cob-gray;
+            @include clearfix();
             &:before {
                 background: url('img/icon-map.svg') no-repeat 0 0 / 100% 100%;
                 content: ' ';
@@ -208,6 +212,38 @@ section > h2:first-child {
                 height: (83rem/16);
                 margin: 1rem auto;
                 width: (83rem/16);
+            }
+        }
+        &-additionalInfo {
+            margin: 1rem 0 0 0;
+            text-align: center;
+        }
+    }
+    &-parking {
+        &-container {
+            border-bottom: 1px solid $cob-gray;
+            &:before {
+                background: url('img/icon-parking.svg') no-repeat 0 0 / 100% 100%;
+                content: ' ';
+                display: block;
+                height: (83rem/16);
+                margin: 1rem auto;
+                width: (83rem/16);
+            }
+        }
+        &-details {
+            margin: 1rem 0;
+            text-align: center;
+            > dt {
+                color: $cob-blue-darkest;
+                font-family: $font-headings;
+                font-size: (24rem/16);
+                line-height: (30em/24);
+                margin: 0;
+            }
+            > dd {
+                font-size: (14rem/16);
+                margin: 0;
             }
         }
     }
@@ -242,7 +278,8 @@ section > h2:first-child {
                     width: (167rem/16);
                 }
                 &.modLatLon {
-                    margin: 0 (20rem/16) 1rem (20rem/16);
+                    display: block;
+                    margin: 0 (50rem/16) 1rem (20rem/16);
                     padding: 0;
                     text-align: left;
                 }
@@ -268,11 +305,41 @@ section > h2:first-child {
             &-latLon {
                 display: block;
                 float: left;
-                margin: 1rem 0 1rem ;
+                margin: 1rem 0;
+            }
+            &-additionalInfo {
+                float: left;
+                margin: 0;
+                padding: 1rem 0 0;
+                text-align: left;
+                width: 40%;
+            }
+        }
+        &-parking {
+            &-container {
+                &:before {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+            &-details {
+                display: inline-block;
+                margin: 0 0 0 (20rem/16);
+                text-align: left;
+                vertical-align: middle;
             }
         }
     }
     @media screen and (min-width: $screen-large) {
+        &-addressInfo {
+            &-keyValuePair {
+                width: (334rem/16);
+
+                &.modLatLon {
+                    width: (354rem/16);
+                }
+            }
+        }
         &-trash {
             &-container {
                 > dl, > div, > p, &:before { vertical-align: middle; }
@@ -289,6 +356,9 @@ section > h2:first-child {
             &-container {
                 &:before {
                 }
+            }
+            &-additionalInfo {
+                width: 25rem;
             }
         }
     }
