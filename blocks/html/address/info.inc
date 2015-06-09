@@ -89,72 +89,44 @@ $address  = $this->address;
         <?php endif; ?>
     </div>
 
-    <div class="location">
-        <div class="container">
-            <dl class="jurisdiction">
-                <dt><?= $this->_('jurisdiction'); ?></dt>
-                <dd><?= $address['jurisdiction']; ?></dd>
-            </dl>
-            <dl class="township">
-                <dt><?= $this->_('township'); ?></dt>
-                <dd><?= $address['township']; ?></dd>
-            </dl>
-        </div>
-    </div>
-
-
-    <div class="government">
-        <div class="container">
-            <dl class="city">
-                <dt><?= $this->_('city'); ?></dt>
-                <dd><?= $address['city']; ?></dt>
-            </dl>
-            <dl class="township">
-                <dt><?= $this->_('township'); ?></dt>
-                <dd><?= $address['township']; ?></dt>
-            </dl>
-        </div>
-    </div>
 </section>
 
 <section id="governmentLinks">
     <h2><?= $this->_('governmentLinks'); ?></h2>
 
-    <div>
-        <div>
+    <div class="myCity-govOnline">
         <?php
             global $GOVERNMENTAL_LINKS;
-            foreach (['state', 'county', 'city'] as $region) {
+            foreach (['state', 'county', 'jurisdiction'] as $region) {
                 echo "
-                <dl class=\"$region\">
+                <dl>
                     <dt>{$this->_($region)}</dt>
                     <dd>{$address[$region]}</dd>
                 ";
                     if (array_key_exists($address[$region], $GOVERNMENTAL_LINKS)) {
-                        echo '<dd><table>';
+                        echo '<dd><dl>';
                         foreach ($GOVERNMENTAL_LINKS[$address[$region]] as $type=>$link) {
-                            $label = $this->_($type);
+                            $label = ucfirst($this->_($type));
                             echo "
-                            <tr><th>$label:</th>
-                                <td><a href=\"$link[url]\">$link[text]</a></td>
-                            </tr>
+                            <dt>$label:</dt>
+                                <dd><a href=\"$link[url]\">$link[text]</a></dd>
                             ";
                         }
-                        echo '</table></dd>';
+                        echo '</dl></dd>';
                     }
                 echo "
                 </dl>
                 ";
             }
         ?>
-        </div>
     </div>
 </section>
 
 <section id="votingInfo">
     <h2><?= $this->_('votingInfo'); ?></h2>
 
-    <div class="mayor">
+    <div class="myCity-mayor">
+        <img srcset="css/img/mayor-1x.jpg 1x, css/img/mayor-2x.jpg 2x" sizes="437px" src="css/img/mayor-1x.jpg" />
         <h3><?= $this->_('mayor'); ?></h3>
         <?php
             $contactInfo = new Block('directory/contactInfo.inc');

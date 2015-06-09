@@ -31,6 +31,7 @@ $cob-blue-darkest: #06204b;
 
 // Cornflower
 $cornflower-brightest: #acf2ff;
+$cornflower-light: #5991c2;
 $cornflower-darkest: #12314c;
 
 // Action Green
@@ -83,7 +84,31 @@ section > h2:first-child {
     font-size: (20rem/16);
     font-weight: normal;
     line-height: (26em/20);
+    margin: 4rem 0 2rem 0;
     text-transform: uppercase;
+}
+
+.cob-main-container > section:not(:first-child) {
+    &:before {
+        background-image: url('img/bloomington-section-divider-mobile.svg');
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        content: ' ';
+        display: block;
+        margin: 4rem 0;
+        width: 100%;
+        height: 31px;
+        @media screen and (min-width: $screen-medium){
+            background-image: url('img/bloomington-section-divider.svg');
+        }
+    }
+}
+
+// ACT I
+
+a {
+    color: $cornflower-light;
 }
 
 .myCity {
@@ -132,6 +157,9 @@ section > h2:first-child {
     &-addressInfo {
         &-container {
             border-top: solid (4rem/16) $cob-blue;
+            > div:last-of-type {
+                border-bottom: none;
+            }
         }
         &-keyValuePair { /* <- Meant for DL */
             display: inline-block;
@@ -247,6 +275,40 @@ section > h2:first-child {
             }
         }
     }
+    &-govOnline {
+        > dl {
+            margin-bottom: 0;
+
+            > dt {
+                font-family: $font-headings;
+                font-size: (14rem/16);
+                text-transform: uppercase;
+            }
+            > dd:first-of-type {
+                font-family: $font-headings;
+                font-size: (36rem/16);
+                font-weight: 300;
+                line-height: 1em;
+                margin: 0 0 (16rem/16) 0;
+            }
+            > dd {
+                margin: 0;
+                > dl {
+                    @include clearfix();
+
+                    > dt {
+                        clear: left;
+                        float: left;
+                        margin: 0 1ex 0 0;
+                    }
+                    > dd {
+                        float: left;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
     @media screen and (max-width: $screen-small) {
         &-addressInfo {
             &-keyValuePair {
@@ -329,6 +391,16 @@ section > h2:first-child {
                 vertical-align: middle;
             }
         }
+        &-govOnline {
+            > dl {
+                display: inline-block;
+                width: 30%;
+
+                > dd {
+                    
+                }
+            }
+        }
     }
     @media screen and (min-width: $screen-large) {
         &-addressInfo {
@@ -360,6 +432,33 @@ section > h2:first-child {
             &-additionalInfo {
                 width: 25rem;
             }
+        }
+        &-govOnline {
+            > dl {
+                width: 33%;
+            }
+        }
+    }
+}
+
+// ACT II
+
+.myCity {
+    &-mayor {
+        &-photo {
+        }
+        &-detailsContainer {
+        }
+    }
+    @media screen and (min-width: $screen-medium) {
+        
+    }
+    @media screen and (min-width: $screen-large) {
+        &-photo {
+            display: inline-block;
+        }
+        &-detailsContainer {
+            display: inline-block;
         }
     }
 }

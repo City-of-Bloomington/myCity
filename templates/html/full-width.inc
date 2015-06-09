@@ -13,8 +13,8 @@
 	<?php
 		$this->_include('partials/siteHeader.inc');
 	?>
-	<div class="cob-main-container">
-		<div id="content-panel">
+	<div class="cob-main">
+		<div class="cob-main-container" id="content-panel">
 			<?php
 				include BLOSSOM.'/errorMessages.php';
 
