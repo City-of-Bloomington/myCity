@@ -12,7 +12,7 @@ $name = !empty(    $this->entry['displayname'])
     ? View::escape($this->entry['displayname'])
     : View::escape("{$this->entry['firstname']} {$this->entry['lastname']}");
 
-echo "<h3>$name</h3><table>";
+echo "<h3>$name</h3><table class=\"contact\">";
 
 $contactInfoFields = array_merge(['email', 'address'], DirectoryGateway::$phoneNumberFields);
 foreach ($contactInfoFields as $field) {

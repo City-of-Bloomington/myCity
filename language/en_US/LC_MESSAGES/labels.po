@@ -242,3 +242,6 @@ msgstr "Mayor"
 
 msgid "clerk"
 msgstr "Clerk"
+
+msgid "IN"
+msgstr "Indiana"

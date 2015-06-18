@@ -127,7 +127,7 @@ $address  = $this->address;
 
     <div class="myCity-mayor">
         <img srcset="css/img/mayor-1x.jpg 1x, css/img/mayor-2x.jpg 2x" sizes="437px" src="css/img/mayor-1x.jpg" />
-        <h3><?= $this->_('mayor'); ?></h3>
+        <div class="myCity-mayor-title"><?= $this->_('mayor'); ?></div>
         <?php
             $contactInfo = new Block('directory/contactInfo.inc');
 

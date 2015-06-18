@@ -70,6 +70,7 @@ $screen-small: (350rem/16);
         display: inline-block;
         height: (45rem/16);
         margin: 0 0 0 (-185rem/16);
+        pointer-events: none;
         position: absolute;
             top: (112rem/16);
             left: 50%;
@@ -322,7 +323,7 @@ a {
                 }
             }
         }
-        
+
     }
     @media screen and (min-width: $screen-medium) {
         &-addressInfo {
@@ -397,7 +398,7 @@ a {
                 width: 30%;
 
                 > dd {
-                    
+
                 }
             }
         }
@@ -451,7 +452,7 @@ a {
         }
     }
     @media screen and (min-width: $screen-medium) {
-        
+
     }
     @media screen and (min-width: $screen-large) {
         &-photo {
@@ -462,6 +463,3 @@ a {
         }
     }
 }
-
-
-
