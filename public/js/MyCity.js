@@ -5,9 +5,10 @@ var MyCity = {
         var mapCanvas  = document.getElementById('map-canvas'),
             myLatLon   = new google.maps.LatLng( mapCanvas.getAttribute('data-latitude'), mapCanvas.getAttribute('data-longitude')),
             mapOptions = {
-                center: myLatLon,
-                disableDefaultUI: true,
-                zoom: 12
+              center: myLatLon,
+              scrollwheel: false,
+              disableDefaultUI: true,
+              zoom: 12
             },
             myMap     = new google.maps.Map(mapCanvas, mapOptions);
 
