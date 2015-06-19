@@ -122,20 +122,39 @@ $address  = $this->address;
     </div>
 </section>
 
-<section id="votingInfo">
+<section id="mayorInfo">
     <h2><?= $this->_('votingInfo'); ?></h2>
 
     <div class="myCity-mayor">
-        <img srcset="css/img/mayor-1x.jpg 1x, css/img/mayor-2x.jpg 2x" sizes="437px" src="css/img/mayor-1x.jpg" />
-        <div class="myCity-mayor-title"><?= $this->_('mayor'); ?></div>
-        <?php
-            $contactInfo = new Block('directory/contactInfo.inc');
+        <img class="myCity-mayor-photo" srcset="css/img/mayor-1x.jpg 1x, css/img/mayor-2x.jpg 2x" sizes="437px" src="css/img/mayor-1x.jpg" />
+        <div class="myCity-mayor-details">
+<?php $mayorInfo = DirectoryGateway::info('mayor'); ?>
 
-            $contactInfo->entry = DirectoryGateway::info('mayor');
-            echo $contactInfo->render('html', $this->template);
-        ?>
+            <div class="myCity-mayor-title"><?= $this->_('mayor'); ?></div>
+            <h2 class="myCity-mayor-name"><?= $mayorInfo['firstname'] ?> <?= $mayorInfo['lastname'] ?></h2>
+            <table class="table-contact">
+                <tr>
+                    <th>Email</th>
+                    <td><?= $mayorInfo['email'] ?></td>
+                </tr>
+                <tr>
+                    <th>Mailing Address</th>
+                    <td>Office Of The Mayor<br />401 N Morton St<br />Bloomington, IN 47404</td>
+                </tr>
+                <tr>
+                    <th>Telephone</th>
+                    <td><?= $mayorInfo['office'] ?></td>
+                </tr>
+            </table>
+            <div class="myCity-mayor-biography">
+                <h3>About the Mayor</h3>
+                <p>Mark Kruzan served as an Adjunct Professor at the IU School of Public and Environmental Affairs starting in 1990, where he taught &ldquo;Indiana Politics &amp; Policy&rdquo;. In 1986, he was elected as State Representative for Bloomington. In 1994, he was appointed House Minority Whip. Two years later, he was elected Majority Leader of the Indiana House of Representatives by his colleagues&mdash;a post he held until he decided not to run for re-election in 2002.</p>
+                <p>He was elected Mayor of Bloomington in November 2003. As Mayor, he leads a city with incredible opportunities ahead of it&mdash;and he works hard to address its challenges.</p>
+            </div>
+        </div>
     </div>
     <?php
+        $contactInfo = new Block('directory/atLargeContact.inc');
         $districtMember = '';
         $atLargeMembers = '';
         if (!empty(         $purposes['councilDistrict'])) {

@@ -444,22 +444,84 @@ a {
 
 // ACT II
 
+.table-contact {
+    width: 100%;
+    tr:first-child > td, tr:first-child > th {
+        border-top: (4rem/16) solid $cob-blue;
+    }
+    th, td {
+        border-top: 1px solid $cob-gray;
+        padding: .5em 0;
+    }
+    th {
+        color: $cob-blue-darkest;
+        font-weight: normal;
+        text-align: left;
+        vertical-align: top;
+    }
+}
 .myCity {
     &-mayor {
+        @include clearfix();
         &-photo {
+            display: block;
+            margin: 0 auto;
+            width: 66.66%;
         }
-        &-detailsContainer {
+        &-details {
+            margin: 2rem 0 4rem 0;
+        }
+        &-title {
+            color: $cob-gray-darkest;
+            font-family: $font-headings;
+            font-size: (14rem/16);
+            line-height: .8em;
+            text-transform: uppercase;
+        }
+        &-name {
+            font-size: (36rem/16);
+            line-height: 1em;
+            margin: 0 0 1rem (-2rem/16);
+        }
+        &-biography {
+            > h3 {
+                font-weight: normal;
+                font-size: (20rem/16);
+                margin: 2rem 0 .5rem 0;
+            }
         }
     }
     @media screen and (min-width: $screen-medium) {
-
+        &-mayor {
+            &-title {
+                margin: 0 0 0 0;
+            }
+            &-photo {
+                float: left;
+                width: 40%;
+            }
+            &-details {
+                box-sizing: border-box;
+                margin: 0 0 0 40%;
+                padding-left: 2rem;
+            }
+        }
     }
     @media screen and (min-width: $screen-large) {
-        &-photo {
-            display: inline-block;
-        }
-        &-detailsContainer {
-            display: inline-block;
+        &-mayor {
+            &-photo {
+                width: auto;
+            }
+            &-details {
+                margin: 0 0 0 (500rem/16);
+            }
+            &-title {
+                font-size: (18rem/16);
+            }
+            &-name {
+                font-size: (50rem/16);
+                margin: 0 0 2rem (-3rem/16);
+            }
         }
     }
 }
