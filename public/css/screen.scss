@@ -462,6 +462,7 @@ a {
 }
 .myCity {
     &-mayor {
+        margin-bottom: 2rem;
         @include clearfix();
         &-photo {
             display: block;
@@ -469,7 +470,7 @@ a {
             width: 66.66%;
         }
         &-details {
-            margin: 2rem 0 4rem 0;
+            margin: 2rem 0 0 0;
         }
         &-title {
             color: $cob-gray-darkest;
@@ -490,9 +491,7 @@ a {
                 margin: 2rem 0 .5rem 0;
             }
         }
-    }
-    @media screen and (min-width: $screen-medium) {
-        &-mayor {
+        @media screen and (min-width: $screen-medium) {
             &-title {
                 margin: 0 0 0 0;
             }
@@ -506,9 +505,7 @@ a {
                 padding-left: 2rem;
             }
         }
-    }
-    @media screen and (min-width: $screen-large) {
-        &-mayor {
+        @media screen and (min-width: $screen-large) {
             &-photo {
                 width: auto;
             }
@@ -523,5 +520,30 @@ a {
                 margin: 0 0 2rem (-3rem/16);
             }
         }
+    }
+
+    &-atLarge {
+        @include clearfix();
+
+        &-individual {
+        }
+        @media screen and (min-width: $screen-large) {
+            @include clearfix();
+            &-individual {
+                display: block;
+                float: left;
+                margin: 0;
+                width: 31%;
+                &:nth-child(0n+2) {
+                    margin-left: 3%;
+                    margin-right: 3%;
+                }
+            }
+        }
+    }
+
+    &-councilDistrict {
+        @include clearfix();
+
     }
 }

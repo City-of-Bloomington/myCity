@@ -166,20 +166,31 @@ $address  = $this->address;
 
 
             if (count($atLarge)) {
-                echo "<div class=\"council\"><h2>{$this->_('atLarge')}</h2>";
-                foreach ($atLarge as $member) {
-                    if (   !empty($member['email'])
-                        && false !== strpos($member['email'], DIRECTORY_DOMAIN)
-                        && preg_match('|([a-z]+)@'.DIRECTORY_DOMAIN.'|',$member['email'], $matches)) {
+                ?>
+                    <div class="myCity-atLarge">
+                        <h2><?= $this->_('atLarge'); ?></h2>
+                        <div>
+                            <?php
+                                foreach ($atLarge as $member) {
+                                    if (   !empty($member['email'])
+                                        && false !== strpos($member['email'], DIRECTORY_DOMAIN)
+                                        && preg_match('|([a-z]+)@'.DIRECTORY_DOMAIN.'|',$member['email'], $matches)) {
 
-                        $contactInfo->entry = DirectoryGateway::info($matches[1]);
-                        echo $contactInfo->render('html', $this->template);
-                    }
-                }
-                echo "</div>";
+                                        $contactInfo->entry = DirectoryGateway::info($matches[1]);
+                                        echo $contactInfo->render('html', $this->template);
+                                    }
+                                }
+                            ?>
+                        </div>
+                    </div>
+                <?php
             }
+
+
+
+
             if (count($district)) {
-                echo "<div class=\"council\"><h2>$districtName</h2>";
+                echo "<div class=\"myCity-councilDistrict\"><h2>$districtName</h2>";
                 foreach ($district as $member) {
                     if (   !empty($member['email'])
                         && false !== strpos($member['email'], DIRECTORY_DOMAIN)

@@ -13,7 +13,7 @@ $name = !empty(    $this->entry['displayname'])
     : View::escape("{$this->entry['firstname']} {$this->entry['lastname']}");
 ?>
 
-<div class="myCity-atLargeRepresentative-container">
+<div class="myCity-atLarge-individual">
     <h3><?= $name ?></h3>
     <table class="table-contact">
         <?php
