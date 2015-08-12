@@ -12,7 +12,7 @@ use Blossom\Classes\Url;
         <div class="region region-header-site">
             <div id="block-search-form" class="block block-search">
                 <div class="content">
-                    <form action="http://rogue.bloomington.in.gov/drupal2" method="post" id="search-block-form" accept-charset="UTF-8">
+                    <form action="//bloomington.in.gov/alpha/search" method="post" id="search-block-form" accept-charset="UTF-8">
                         <div>
                             <div class="form-item form-type-textfield form-item-search-block-form">
                                 <label for="edit-search-block-form--2">How can we help you today? </label>
@@ -34,16 +34,16 @@ use Blossom\Classes\Url;
             ?>
             <div class="menuLauncher">Menu</div>
             <div class="menuLinks closed">
-                <a href="http://rogue.bloomington.in.gov/drupal2/residents">Residents</a>
-                <a href="http://rogue.bloomington.in.gov/drupal2/taxonomy/term/2">Business</a>
-                <a href="http://rogue.bloomington.in.gov/drupal2/taxonomy/term/13">Visitors</a>
-                <a href="http://rogue.bloomington.in.gov/drupal2/taxonomy/term/3">Students</a>
-                <a href="http://rogue.bloomington.in.gov/drupal2/taxonomy/term/4">Government</a>
+                <a href="//bloomington.in.gov/alpha/residents">Residents</a>
+                <a href="//bloomington.in.gov/alpha/business">Business</a>
+                <a href="//bloomington.in.gov/alpha/visitors">Visitors</a>
+                <a href="//bloomington.in.gov/alpha/students">Students</a>
+                <a href="//bloomington.in.gov/alpha/government">Government</a>
             </div>
         </nav>
 
-        <a href="http://rogue.bloomington.in.gov/drupal2/" class="cob-siteHeader-logo" title="Home" rel="home" id="logo">
-            <img src="http://rogue.bloomington.in.gov/drupal2/themes/cob/logo.svg" alt="City of Bloomington, Indiana" />
+        <a href="//bloomington.in.gov/alpha/" class="cob-siteHeader-logo" title="Home" rel="home" id="logo">
+            <img src="//bloomington.in.gov/static/assets/img/bloomington-logo.svg" alt="City of Bloomington, Indiana" />
         </a>
     </div>
 </header>
