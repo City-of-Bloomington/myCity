@@ -7,17 +7,8 @@
 use Blossom\Classes\View;
 use Blossom\Classes\Url;
 ?>
-<div class="cob-alphaHeader">
-  <div class="cob-alphaHeader-container">
-    <div class="cob-alphaHeader-content">
-      <h1>Welcome to bloomington.in.gov/alpha</h1>
-      <p>This website is a work in progress. It is missing some information. We welcome feedback from our community during construction. <a href="/alpha/about">Learn more about our process.</a></p>
-    </div>
-    <div class="cob-alphaHeader-sidebar">
-      <!-- Content for this area deferred for now -->
-    </div>
-  </div>
-</div>
+
+<?php include(ASSETS_HOME."/alphaHeader.html"); ?>
 
 <header class="cob-siteHeader">
     <div class="cob-siteHeader-container">
