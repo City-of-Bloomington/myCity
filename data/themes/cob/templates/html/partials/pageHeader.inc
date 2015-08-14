@@ -6,6 +6,8 @@
  */
 use Blossom\Classes\View;
 use Blossom\Classes\Url;
+
+$this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
 ?>
 <header class="cob-siteHeader">
     <div class="cob-siteHeader-container">
@@ -28,34 +30,10 @@ use Blossom\Classes\Url;
                 </div>
             </div>
         </div>
-        <nav>
-            <?php
-                $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
-            ?>
-            <div class="menuLauncher">Menu</div>
-            <div class="menuLinks closed">
-                <a href="//bloomington.in.gov/alpha/residents">Residents</a>
-                <a href="//bloomington.in.gov/alpha/business">Business</a>
-                <a href="//bloomington.in.gov/alpha/visitors">Visitors</a>
-                <a href="//bloomington.in.gov/alpha/students">Students</a>
-                <a href="//bloomington.in.gov/alpha/government">Government</a>
-            </div>
-        </nav>
-
-        <a href="//bloomington.in.gov/alpha/" class="cob-siteHeader-logo" title="Home" rel="home" id="logo">
-            <img src="//bloomington.in.gov/static/assets/img/bloomington-logo.svg" alt="City of Bloomington, Indiana" />
-        </a>
-    </div>
-</header>
-<header class="cob-pageHeader ">
-    <?php
-        echo $this->includeBlocks('pageHeader');
-    ?>
-    <div class="cob-pageOverview">
-        <div class="cob-pageOverview-container">
         <?php
-            echo $this->includeBlocks('pageOverview');
+            echo Url::get(ASSETS.'/html/cob-siteHeader-menu.html');
+            echo Url::get(ASSETS.'/html/cob-siteHeader-logo.html');
         ?>
-        </div>
     </div>
 </header>
+<?php include APPLICATION_HOME.'/templates/html/partials/pageHeader.inc'; ?>

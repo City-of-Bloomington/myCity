@@ -8,6 +8,7 @@ namespace Blossom\Classes;
 
 abstract class View
 {
+    protected $theme;
 	protected $vars = array();
 
 	abstract public function render();
@@ -17,6 +18,11 @@ abstract class View
 	 */
 	public function __construct(array $vars=null)
 	{
+        if (defined('THEME')
+                 && is_dir(SITE_HOME.'/themes/'.THEME)) {
+            $this->theme = SITE_HOME.'/themes/'.THEME;
+        }
+        
 		if (count($vars)) {
 			foreach ($vars as $name=>$value) {
 				$this->vars[$name] = $value;
