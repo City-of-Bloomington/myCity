@@ -8,7 +8,7 @@ use Blossom\Classes\View;
 use Blossom\Classes\Url;
 ?>
 
-<?php include(ASSETS_HOME."/alphaHeader.html"); ?>
+<?php include(ASSETS_HOME."/html/alphaHeader.html"); ?>
 
 <header class="cob-siteHeader">
     <div class="cob-siteHeader-container">
@@ -31,23 +31,11 @@ use Blossom\Classes\Url;
                 </div>
             </div>
         </div>
-        <nav>
-            <?php
-                $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
-            ?>
-            <div class="menuLauncher">Menu</div>
-            <div class="menuLinks closed">
-                <a href="//bloomington.in.gov/alpha/residents">Residents</a>
-                <a href="//bloomington.in.gov/alpha/business">Business</a>
-                <a href="//bloomington.in.gov/alpha/visitors">Visitors</a>
-                <a href="//bloomington.in.gov/alpha/students">Students</a>
-                <a href="//bloomington.in.gov/alpha/government">Government</a>
-            </div>
-        </nav>
-
-        <a href="//bloomington.in.gov/alpha/" class="cob-siteHeader-logo" title="Home" rel="home" id="logo">
-            <img src="//bloomington.in.gov/static/assets/img/bloomington-logo.svg" alt="City of Bloomington, Indiana" />
-        </a>
+        <?php
+            $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
+            include(ASSETS_HOME.'/html/cob-siteHeader-menu.html');
+            include(ASSETS_HOME.'/html/cob-siteHeader-logo.html');
+        ?>
     </div>
 </header>
 <header class="cob-pageHeader ">
