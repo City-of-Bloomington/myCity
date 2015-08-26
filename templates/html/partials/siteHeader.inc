@@ -8,7 +8,7 @@ use Blossom\Classes\View;
 use Blossom\Classes\Url;
 ?>
 
-<?php include(ASSETS_HOME."/html/alphaHeader.html"); ?>
+<?php include(ASSETS_HOME."/html/cob-alphaHeader.html"); ?>
 
 <header class="cob-siteHeader">
     <div class="cob-siteHeader-container">
