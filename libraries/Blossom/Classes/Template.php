@@ -4,7 +4,7 @@
  *
  * The template collects all the blocks from the controller
  *
- * @copyright 2006-2014 City of Bloomington, Indiana
+ * @copyright 2006-2015 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
@@ -32,9 +32,9 @@ class Template extends View
 		$this->filename = $filename;
 		$this->outputFormat = preg_replace('/[^a-zA-Z]/','',$outputFormat);
 
-		// Check for a SITE_HOME override
-		$this->path = is_file(SITE_HOME."/templates/{$this->outputFormat}/{$this->filename}.inc")
-			? SITE_HOME.'/templates'
+		// Check for a THEME override
+		$this->path = $this->theme && is_file($this->theme."/templates/{$this->outputFormat}/{$this->filename}.inc")
+			? $this->theme.'/templates'
 			: APPLICATION_HOME.'/templates';
 
 		// Make sure the output format exists
@@ -49,14 +49,15 @@ class Template extends View
 	 */
 	public function setFilename($filename)
 	{
-		if (      is_file(SITE_HOME."/templates/{$this->outputFormat}/{$this->filename}.inc")) {
-			$this->path = SITE_HOME.'/templates';
+		if ($this->theme
+               && is_file($this->theme."/templates/{$this->outputFormat}/{$this->filename}.inc")) {
+			$this->path = $this->theme.'/templates';
 		}
 		elseif (  is_file(APPLICATION_HOME."/templates/{$this->outputFormat}/$filename.inc")) {
 			$this->path = APPLICATION_HOME.'/templates';
 		}
 		else {
-			throw new \Exception('unknownTemplate');
+			throw new \Exception('template/unknown');
 		}
 
 		$this->filename = $filename;
@@ -69,14 +70,15 @@ class Template extends View
 	{
 		$format = preg_replace('/[^a-zA-Z]/','',$format);
 
-		if (      is_file(SITE_HOME."/templates/$format/{$this->filename}.inc")) {
-			$this->path = SITE_HOME.'/templates';
+		if ($this->theme
+               && is_file($this->theme."/templates/$format/{$this->filename}.inc")) {
+			$this->path = $this->theme.'/templates';
 		}
 		elseif (  is_file(APPLICATION_HOME."/templates/$format/{$this->filename}.inc")) {
 			$this->path = APPLICATION_HOME.'/templates';
 		}
 		else {
-			throw new \Exception('unknownOutputFormat');
+			throw new \Exception('outputFormat/unknown');
 		}
 
 		$this->outputFormat = $format;
@@ -194,8 +196,9 @@ class Template extends View
 			$class = ucfirst($functionName);
 			$file = "/templates/{$this->outputFormat}/helpers/$class.php";
 
-			if (     is_file(SITE_HOME.$file)) {
-				require_once SITE_HOME.$file;
+			if ($this->theme
+                  && is_file($this->theme.$file)) {
+				require_once $this->theme.$file;
 			}
 			else {
 				require_once APPLICATION_HOME.$file;
@@ -209,7 +212,7 @@ class Template extends View
 	/**
 	 * Includes the given filename.
 	 *
-	 * Supports SITE_HOME overriding.
+	 * Supports THEME overriding.
 	 * Specify a relative path starting from /templates/
 	 * $file paths should not start with a slash.
 	 *
@@ -217,8 +220,9 @@ class Template extends View
 	 */
 	public function _include($file)
 	{
-		if (is_file(SITE_HOME."/templates/{$this->outputFormat}/$file")) {
-			include SITE_HOME."/templates/{$this->outputFormat}/$file";
+		if ($this->theme
+            && is_file($this->theme."/templates/{$this->outputFormat}/$file")) {
+			include    $this->theme."/templates/{$this->outputFormat}/$file";
 		}
 		else {
 			include APPLICATION_HOME."/templates/{$this->outputFormat}/$file";

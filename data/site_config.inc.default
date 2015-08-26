@@ -7,10 +7,22 @@ define('APPLICATION_NAME','application');
  */
 define('BASE_URL','http://localhost/application');
 define('BASE_URI','/application');
-define('ASSETS_HOME', '/path/to/common/assets');
 
 define('MASTER_ADDRESS',    'http://apps.bloomington.in.gov/master_address');
 define('CIVIC_LEGISLATION', 'http://apps.bloomington.in.gov/onboard');
+
+/**
+ * Specify the theme directory
+ *
+ * Remember to create a symbolic link in public/css to the theme CSS
+ * that you declare here.
+ *
+ * A theme can consist of templates, blocks which will override core.
+ * The current theme's screen.css will be included in the HTML head.
+ */
+#define('THEME', 'cob');
+#define('ASSETS_HOME', '/path/to/common/assets');
+#define('ASSETS_URI', '//path/to/common/assets');
 
 /**
  * Used when there's an error on the site.  The Framework will

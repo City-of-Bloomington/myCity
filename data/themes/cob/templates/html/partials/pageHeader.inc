@@ -6,6 +6,8 @@
  */
 use Blossom\Classes\View;
 use Blossom\Classes\Url;
+
+$this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
 ?>
 
 <?php include(ASSETS_HOME."/html/cob-alphaHeader.html"); ?>
@@ -38,15 +40,4 @@ use Blossom\Classes\Url;
         ?>
     </div>
 </header>
-<header class="cob-pageHeader ">
-    <?php
-        echo $this->includeBlocks('pageHeader');
-    ?>
-    <div class="cob-pageOverview">
-        <div class="cob-pageOverview-container">
-        <?php
-            echo $this->includeBlocks('pageOverview');
-        ?>
-        </div>
-    </div>
-</header>
+<?php include APPLICATION_HOME.'/templates/html/partials/pageHeader.inc'; ?>
