@@ -21,6 +21,8 @@ define('CIVIC_LEGISLATION', 'http://apps.bloomington.in.gov/onboard');
  * The current theme's screen.css will be included in the HTML head.
  */
 #define('THEME', 'cob');
+#define('ASSETS_HOME', '/path/to/common/assets');
+#define('ASSETS_URI', '//path/to/common/assets');
 
 /**
  * Used when there's an error on the site.  The Framework will

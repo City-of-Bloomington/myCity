@@ -9,6 +9,9 @@ use Blossom\Classes\Url;
 
 $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
 ?>
+
+<?php include(ASSETS_HOME."/html/cob-alphaHeader.html"); ?>
+
 <header class="cob-siteHeader">
     <div class="cob-siteHeader-container">
         <div class="region region-header-site">
@@ -31,8 +34,9 @@ $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
             </div>
         </div>
         <?php
-            echo Url::get(ASSETS.'/html/cob-siteHeader-menu.html');
-            echo Url::get(ASSETS.'/html/cob-siteHeader-logo.html');
+            $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
+            include(ASSETS_HOME.'/html/cob-siteHeader-menu.html');
+            include(ASSETS_HOME.'/html/cob-siteHeader-logo.html');
         ?>
     </div>
 </header>
