@@ -26,6 +26,6 @@ else {
     <?= $data_title; ?> id="map-canvas"></div>
 <form method="get" action="<?php echo BASE_URI; ?>" class="myCity-searchForm">
     <label  for="address"><?= $this->_('address'); ?></label>
-    <input name="address" id="address" value="<?= $address; ?>" />
+    <input name="address" id="address" value="<?= $address; ?>" placeholder="Search for your address" />
     <button type="submit" class="search"><?= $this->_('search'); ?></button>
 </form>
