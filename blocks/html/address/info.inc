@@ -207,8 +207,13 @@ $address  = $this->address;
     <div class="clerk">
         <h3><?= $this->_('clerk'); ?></h3>
         <?php
-            $contactInfo->entry = DirectoryGateway::info('clerk');
+            $clerkInfo = DirectoryGateway::info('clerk');
+            $clerkInfo['firstname'] = 'Regina';
+            $clerkInfo['lastname'] = 'Moore';
+            $clerkInfo['displayname'] = 'Regina Moore';
+            $contactInfo->entry = $clerkInfo;
             echo $contactInfo->render('html', $this->template);
         ?>
+
     </div>
 </section>
