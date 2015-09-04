@@ -11,18 +11,27 @@ use Blossom\Classes\View;
 $name = !empty(    $this->entry['displayname'])
     ? View::escape($this->entry['displayname'])
     : View::escape("{$this->entry['firstname']} {$this->entry['lastname']}");
-
-echo "<h3>$name</h3><table class=\"contact\">";
-
 $contactInfoFields = array_merge(['email', 'address'], DirectoryGateway::$phoneNumberFields);
-foreach ($contactInfoFields as $field) {
-    if (!empty($this->entry[$field])) {
-        $value = View::escape($this->entry[$field]);
-        echo "
-        <tr><th>{$this->_($field)}</th>
-            <td>$value</td>
-        </tr>
-        ";
-    }
-}
-echo "</table>";
+$imgName = strtolower(View::escape($this->entry['lastname']));
+?>
+
+
+
+
+<img srcset="css/img/<?= $imgName ?>-1x.jpg 1x, css/img/<?= $imgName ?>/-2x.jpg 2x" sizes="299px" src="css/img/<?= $imgName ?>-1x.jpg" alt="<?= $name ?>" />
+<h3><?= $name ?></h3>
+<table class="contact">
+    <?php
+        foreach ($contactInfoFields as $field) {
+            if (!empty($this->entry[$field])) {
+                $value = View::escape($this->entry[$field]);
+                echo "
+                <tr>
+                    <th>{$this->_($field)}</th>
+                    <td>$value</td>
+                </tr>
+                ";
+            }
+        }
+    ?>
+</table>

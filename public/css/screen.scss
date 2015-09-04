@@ -58,6 +58,10 @@ $screen-small: (350rem/16);
 
 
 
+h3 {
+    font-size: (24rem/16);
+    margin: 1em 0 .5em;
+}
 
 
 .cob-pageHeader {
@@ -290,7 +294,7 @@ a {
                 font-size: (36rem/16);
                 font-weight: 300;
                 line-height: 1em;
-                margin: 0 0 (16rem/16) 0;
+                margin: 0 0 (16rem/16) (-2em/36);
             }
             > dd {
                 margin: 0;
@@ -534,7 +538,7 @@ a {
                 float: left;
                 margin: 0;
                 width: 31%;
-                &:nth-child(0n+2) {
+                &:nth-of-type(2n) {
                     margin-left: 3%;
                     margin-right: 3%;
                 }
@@ -544,6 +548,14 @@ a {
 
     &-councilDistrict {
         @include clearfix();
-
+        &-map {
+            background: $cob-gray;
+            float: left;
+            min-height: 20rem;
+            width: 48%;
+        }
+        &-details {
+            margin: 0 0 0 52%;
+        }
     }
 }

@@ -229,7 +229,7 @@ msgstr[0] "Council District"
 msgstr[1] "Council Districts"
 
 msgid "atLarge"
-msgstr "At Large Council Members"
+msgstr "At Large City Council Members"
 
 msgid "aboutThisAddress"
 msgstr "About This Address"

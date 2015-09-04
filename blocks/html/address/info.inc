@@ -15,7 +15,7 @@ use Blossom\Classes\View;
 
 $address  = $this->address;
 ?>
-<section id="aboutThisAddress">
+<section>
     <h2><?= $this->_('aboutThisAddress') ?></h2>
 
     <div class="myCity-addressInfo-container">
@@ -91,17 +91,22 @@ $address  = $this->address;
 
 </section>
 
-<section id="governmentLinks">
+<section>
     <h2><?= $this->_('governmentLinks'); ?></h2>
 
     <div class="myCity-govOnline">
         <?php
             global $GOVERNMENTAL_LINKS;
             foreach (['state', 'county', 'jurisdiction'] as $region) {
+                if($address[$region] !== 'IN') {
+                    $regionName = $address[$region];
+                } else {
+                    $regionName = 'Indiana';
+                }
                 echo "
                 <dl>
                     <dt>{$this->_($region)}</dt>
-                    <dd>{$address[$region]}</dd>
+                    <dd>$regionName</dd>
                 ";
                     if (array_key_exists($address[$region], $GOVERNMENTAL_LINKS)) {
                         echo '<dd><dl>';
@@ -122,39 +127,42 @@ $address  = $this->address;
     </div>
 </section>
 
-<section id="mayorInfo">
+<section>
     <h2><?= $this->_('votingInfo'); ?></h2>
 
-    <div class="myCity-mayor">
-        <img class="myCity-mayor-photo" srcset="css/img/mayor-1x.jpg 1x, css/img/mayor-2x.jpg 2x" sizes="437px" src="css/img/mayor-1x.jpg" />
-        <div class="myCity-mayor-details">
-<?php $mayorInfo = DirectoryGateway::info('mayor'); ?>
+    <?php $mayorInfo = DirectoryGateway::info('mayor'); ?>
+    <?php if(count($mayorInfo)): ?>
+        <div class="myCity-mayor">
+            <img class="myCity-mayor-photo" srcset="css/img/mayor-1x.jpg 1x, css/img/mayor-2x.jpg 2x" sizes="437px" src="css/img/mayor-1x.jpg" />
+            <div class="myCity-mayor-details">
 
-            <div class="myCity-mayor-title"><?= $this->_('mayor'); ?></div>
-            <h2 class="myCity-mayor-name"><?= $mayorInfo['firstname'] ?> <?= $mayorInfo['lastname'] ?></h2>
-            <table class="table-contact">
-                <tr>
-                    <th>Email</th>
-                    <td><?= $mayorInfo['email'] ?></td>
-                </tr>
-                <tr>
-                    <th>Mailing Address</th>
-                    <td>Office Of The Mayor<br />401 N Morton St<br />Bloomington, IN 47404</td>
-                </tr>
-                <tr>
-                    <th>Telephone</th>
-                    <td><?= $mayorInfo['office'] ?></td>
-                </tr>
-            </table>
-            <div class="myCity-mayor-biography">
-                <h3>About the Mayor</h3>
-                <p>Mark Kruzan served as an Adjunct Professor at the IU School of Public and Environmental Affairs starting in 1990, where he taught &ldquo;Indiana Politics &amp; Policy&rdquo;. In 1986, he was elected as State Representative for Bloomington. In 1994, he was appointed House Minority Whip. Two years later, he was elected Majority Leader of the Indiana House of Representatives by his colleagues&mdash;a post he held until he decided not to run for re-election in 2002.</p>
-                <p>He was elected Mayor of Bloomington in November 2003. As Mayor, he leads a city with incredible opportunities ahead of it&mdash;and he works hard to address its challenges.</p>
+
+                <div class="myCity-mayor-title"><?= $this->_('mayor'); ?></div>
+                <h2 class="myCity-mayor-name"><?= $mayorInfo['firstname'] ?> <?= $mayorInfo['lastname'] ?></h2>
+                <table class="table-contact">
+                    <tr>
+                        <th>Email</th>
+                        <td><?= $mayorInfo['email'] ?></td>
+                    </tr>
+                    <tr>
+                        <th>Mailing Address</th>
+                        <td>Office Of The Mayor<br />401 N Morton St<br />Bloomington, IN 47404</td>
+                    </tr>
+                    <tr>
+                        <th>Telephone</th>
+                        <td><?= $mayorInfo['office'] ?></td>
+                    </tr>
+                </table>
+                <div class="myCity-mayor-biography">
+                    <h3>About the Mayor</h3>
+                    <p>Mark Kruzan served as an Adjunct Professor at the IU School of Public and Environmental Affairs starting in 1990, where he taught &ldquo;Indiana Politics &amp; Policy&rdquo;. In 1986, he was elected as State Representative for Bloomington. In 1994, he was appointed House Minority Whip. Two years later, he was elected Majority Leader of the Indiana House of Representatives by his colleagues&mdash;a post he held until he decided not to run for re-election in 2002.</p>
+                    <p>He was elected Mayor of Bloomington in November 2003. As Mayor, he leads a city with incredible opportunities ahead of it&mdash;and he works hard to address its challenges.</p>
+                </div>
             </div>
         </div>
-    </div>
+    <?php endif ?>
     <?php
-        $contactInfo = new Block('directory/atLargeContact.inc');
+        $atLargeContact = new Block('directory/atLargeContact.inc');
         $districtMember = '';
         $atLargeMembers = '';
         if (!empty(         $purposes['councilDistrict'])) {
@@ -163,47 +171,70 @@ $address  = $this->address;
             $atLarge  = CityCouncilGateway::members(CityCouncilGateway::AT_LARGE);
 
             $districtName = View::escape($districtName);
-
-
-            if (count($atLarge)) {
-                ?>
-                    <div class="myCity-atLarge">
-                        <h2><?= $this->_('atLarge'); ?></h2>
-                        <div>
-                            <?php
-                                foreach ($atLarge as $member) {
-                                    if (   !empty($member['email'])
-                                        && false !== strpos($member['email'], DIRECTORY_DOMAIN)
-                                        && preg_match('|([a-z]+)@'.DIRECTORY_DOMAIN.'|',$member['email'], $matches)) {
-
-                                        $contactInfo->entry = DirectoryGateway::info($matches[1]);
-                                        echo $contactInfo->render('html', $this->template);
-                                    }
-                                }
-                            ?>
-                        </div>
-                    </div>
-                <?php
-            }
-
-
-
-
-            if (count($district)) {
-                echo "<div class=\"myCity-councilDistrict\"><h2>$districtName</h2>";
-                foreach ($district as $member) {
-                    if (   !empty($member['email'])
-                        && false !== strpos($member['email'], DIRECTORY_DOMAIN)
-                        && preg_match('|([a-z]+)@'.DIRECTORY_DOMAIN.'|',$member['email'], $matches)) {
-
-                        $contactInfo->entry = DirectoryGateway::info($matches[1]);
-                        echo $contactInfo->render('html', $this->template);
-                    }
-                }
-                echo "</div>";
-            }
         }
     ?>
+    <?php if(count($atLarge)): ?>
+        <div class="myCity-atLarge">
+            <h2><?= $this->_('atLarge'); ?></h2>
+            <?php
+                foreach ($atLarge as $member) {
+                    if (
+                        !empty($member['email'])
+                        && false !== strpos($member['email'], DIRECTORY_DOMAIN)
+                        && preg_match('|([a-z]+)@'.DIRECTORY_DOMAIN.'|',$member['email'], $matches)
+                    ) {
+                        $atLargeContact->entry = DirectoryGateway::info($matches[1]);
+                        echo $atLargeContact->render('html', $this->template);
+                    }
+                }
+            ?>
+        </div>
+    <?php endif ?>
+
+
+    <?php if(count($district)): ?>
+        <?php
+            // Define some variables for the City Council District Representative
+            if (
+                !empty($district[0]['email'])
+                && false !== strpos($district[0]['email'], DIRECTORY_DOMAIN)
+                && preg_match('|([a-z]+)@'.DIRECTORY_DOMAIN.'|',$district[0]['email'], $matches)
+            ) {
+                $districtEntry = DirectoryGateway::info($matches[1]);
+                $districtFields = array_merge(['email', 'address'], DirectoryGateway::$phoneNumberFields);
+                $districtRepName = View::escape($districtEntry['firstname']).' '.View::escape($districtEntry['lastname']);
+                $districtImgName = strtolower($districtEntry['lastname']);
+            }
+        ?>
+        <div class="myCity-councilDistrict">
+            <h2>Your City Council District</h2>
+            <div class="myCity-councilDistrict-map">
+                <p>[Placeholder for map of your City Council District]</p>
+            </div>
+            <div class="myCity-councilDistrict-details">
+                <img srcset="css/img/<?= $districtImgName ?>-1x.jpg 1x, css/img/<?= $districtImgName ?>/-2x.jpg 2x" sizes="299px" src="css/img/<?= $districtImgName ?>-1x.jpg" alt="<?= $districtEntry['displayname'] ?>" />
+                <h3><?= $districtRepName ?></h3>
+                <table class="table-contact">
+                    <?php
+                        foreach ($districtFields as $field) {
+                            if (!empty($districtEntry[$field])) {
+                                $value = View::escape($districtEntry[$field]);
+                                echo "
+                                    <tr>
+                                        <th>{$this->_($field)}</th>
+                                        <td>$value</td>
+                                    </tr>
+                                ";
+                            }
+                        }
+                    ?>
+                </table>
+            </div>
+
+
+        </div>
+    <?php endif ?>
+
     <div class="clerk">
         <h3><?= $this->_('clerk'); ?></h3>
         <?php
@@ -211,8 +242,8 @@ $address  = $this->address;
             $clerkInfo['firstname'] = 'Regina';
             $clerkInfo['lastname'] = 'Moore';
             $clerkInfo['displayname'] = 'Regina Moore';
-            $contactInfo->entry = $clerkInfo;
-            echo $contactInfo->render('html', $this->template);
+            $atLargeContact->entry = $clerkInfo;
+            echo $atLargeContact->render('html', $this->template);
         ?>
 
     </div>
