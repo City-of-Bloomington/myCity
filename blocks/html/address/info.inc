@@ -133,7 +133,9 @@ $address  = $this->address;
     <?php $mayorInfo = DirectoryGateway::info('mayor'); ?>
     <?php if(count($mayorInfo)): ?>
         <div class="myCity-mayor">
-            <img class="myCity-mayor-photo" srcset="css/img/mayor-1x.jpg 1x, css/img/mayor-2x.jpg 2x" sizes="437px" src="css/img/mayor-1x.jpg" />
+            <div class="myCity-mayor-photoContainer">
+                <img class="myCity-mayor-photo" srcset="css/img/mayor-1x.jpg 1x, css/img/mayor-2x.jpg 2x" sizes="437px" src="css/img/mayor-1x.jpg" />
+            </div>
             <div class="myCity-mayor-details">
 
 
@@ -208,8 +210,10 @@ $address  = $this->address;
         ?>
         <div class="myCity-councilDistrict">
             <h2>Your City Council District</h2>
-            <div class="myCity-councilDistrict-map">
-                <p>[Placeholder for map of your City Council District]</p>
+            <div class="myCity-councilDistrict-mapContainer">
+                <div class="myCity-councilDistrict-map">
+                    <p>[Placeholder for map of your City Council District]</p>
+                </div>
             </div>
             <div class="myCity-councilDistrict-details">
                 <img srcset="css/img/<?= $districtImgName ?>-1x.jpg 1x, css/img/<?= $districtImgName ?>/-2x.jpg 2x" sizes="299px" src="css/img/<?= $districtImgName ?>-1x.jpg" alt="<?= $districtEntry['displayname'] ?>" />

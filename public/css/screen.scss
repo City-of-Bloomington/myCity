@@ -1,62 +1,4 @@
-/*
- * Hide only visually, but have it available for screen readers:
- * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- */
-
-@mixin visuallyHidden() {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
-
-@mixin clearfix() {
-    &:before, &:after {
-        clear: both;
-        content: ' ';
-        display: table;
-    }
-}
-
-
-
-$cob-blue: #315da6;
-$cob-blue-light: #4975ba;
-$cob-blue-dark: #143a7a;
-$cob-blue-darkest: #06204b;
-
-// Cornflower
-$cornflower-brightest: #acf2ff;
-$cornflower-light: #5991c2;
-$cornflower-darkest: #12314c;
-
-// Action Green
-$cob-green: #20ac59;
-$cob-green-light: #70bf88;
-$cob-green-lightest: #aaffac;
-
-// Blue-ish gray
-$cob-gray: #bcc9d8;
-$cob-gray-dark: #8d98a5;
-$cob-gray-darkest: #585f68;
-$cob-nightshade: #2a2e32; // Darker than darkest
-
-// Font families
-$font-body-copy: 'PT Sans', Verdana, sans-serif;
-$font-headings: Lato, 'Helvetica Neue', Arial, sans-serif;
-
-
-// Viewport size variables
-$screen-large: (990rem/16);
-$screen-medium: (600rem/16);
-$screen-small: (350rem/16);
-
-
-
+@import 'modules/_vars-mixins';
 
 h3 {
     font-size: (24rem/16);
@@ -85,7 +27,8 @@ h3 {
     }
 }
 
-section > h2:first-child {
+section > h2:first-child, section > div > h2 {
+    @include grid-12col();
     font-size: (20rem/16);
     font-weight: normal;
     line-height: (26em/20);
@@ -161,7 +104,13 @@ a {
 
     &-addressInfo {
         &-container {
-            border-top: solid (4rem/16) $cob-blue;
+            @include grid-12col();
+            &:before {
+                background-color: $cob-blue;
+                content: ' ';
+                display: block;
+                height: (4rem/16);
+            }
             > div:last-of-type {
                 border-bottom: none;
             }
@@ -397,9 +346,13 @@ a {
             }
         }
         &-govOnline {
+            @include clearfix();
+
             > dl {
-                display: inline-block;
-                width: 30%;
+                box-sizing: border-box;
+                float: left;
+                padding: 0 $grid-gutter;
+                width: 33.33%;
 
                 > dd {
 
@@ -426,7 +379,7 @@ a {
             }
             &-details {
                 display: inline-block;
-                width: 25em;
+                width: 23em;
             }
         }
         &-location {
@@ -435,12 +388,7 @@ a {
                 }
             }
             &-additionalInfo {
-                width: 25rem;
-            }
-        }
-        &-govOnline {
-            > dl {
-                width: 33%;
+                width: 23rem;
             }
         }
     }
@@ -466,15 +414,18 @@ a {
 }
 .myCity {
     &-mayor {
+        @include container();
         margin-bottom: 2rem;
-        @include clearfix();
         &-photo {
             display: block;
             margin: 0 auto;
             width: 66.66%;
+            &Container {
+                @include grid-6col();
+            }
         }
         &-details {
-            margin: 2rem 0 0 0;
+            @include grid-6col();
         }
         &-title {
             color: $cob-gray-darkest;
@@ -501,20 +452,19 @@ a {
             }
             &-photo {
                 float: left;
-                width: 40%;
+                width: 100%;
             }
             &-details {
                 box-sizing: border-box;
-                margin: 0 0 0 40%;
+                float: left;
                 padding-left: 2rem;
             }
         }
         @media screen and (min-width: $screen-large) {
             &-photo {
-                width: auto;
+                width: 100%;
             }
             &-details {
-                margin: 0 0 0 (500rem/16);
             }
             &-title {
                 font-size: (18rem/16);
@@ -530,17 +480,12 @@ a {
         @include clearfix();
 
         &-individual {
+            @include grid-4col();
         }
         @media screen and (min-width: $screen-large) {
-            @include clearfix();
             &-individual {
-                display: block;
-                float: left;
-                margin: 0;
-                width: 31%;
-                &:nth-of-type(2n) {
-                    margin-left: 3%;
-                    margin-right: 3%;
+                > img {
+                    width: 100% !important;
                 }
             }
         }
@@ -550,12 +495,13 @@ a {
         @include clearfix();
         &-map {
             background: $cob-gray;
-            float: left;
             min-height: 20rem;
-            width: 48%;
+            &Container {
+                @include grid-6col();
+            }
         }
         &-details {
-            margin: 0 0 0 52%;
+            @include grid-6col();
         }
     }
 }

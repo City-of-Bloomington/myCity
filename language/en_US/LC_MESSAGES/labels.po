@@ -147,7 +147,7 @@ msgid "government"
 msgstr "Government"
 
 msgid "votingInfo"
-msgstr "Key City Officials"
+msgstr "Elected Officials"
 
 msgid "gis"
 msgstr "GIS"
