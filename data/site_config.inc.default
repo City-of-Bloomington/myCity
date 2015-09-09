@@ -23,6 +23,8 @@ define('CIVIC_LEGISLATION', 'http://apps.bloomington.in.gov/onboard');
 #define('THEME', 'cob');
 #define('ASSETS_HOME', '/path/to/common/assets');
 #define('ASSETS_URI', '//path/to/common/assets');
+#define('DRUPAL_STYLESHEET_URI', '//path/to/drupal_stylesheet');
+/* ^^ We don't have time to extricate this app from the Drupal stylesheet yet, but need to prevent the CORS problems we see in demos ^^ */
 
 /**
  * Used when there's an error on the site.  The Framework will
