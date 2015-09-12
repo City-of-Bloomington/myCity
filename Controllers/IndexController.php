@@ -9,6 +9,7 @@ namespace Application\Controllers;
 use Application\Models\Address;
 use Application\Models\MasterAddressGateway;
 
+use Blossom\Classes\Template;
 use Blossom\Classes\Block;
 use Blossom\Classes\Controller;
 use Blossom\Classes\Url;
@@ -18,37 +19,48 @@ class IndexController extends Controller
 	public function index()
 	{
         $searchForm = new Block('address/searchForm.inc');
+		$resultsMap = new Block('address/resultsMap.inc');
 
-        // Handle search results
-        if (!empty($_GET['address'])) {
-            $json = MasterAddressGateway::search($_GET['address']);
-            if (count($json) === 1) {
-                $address = new Address($json[0]);
-            }
-            else {
-                $this->template->blocks[] = new Block('address/searchResults.inc', ['results'=>$json]);
-            }
-        }
-        // Handle single address info
-        elseif (!empty($_GET['address_id'])) {
-            $address = new Address($_GET['address_id']);
-        }
+		if (empty($_GET['address']) && empty($_GET['address_id'])) {
+			$this->template->setFilename('index');
+			$this->template->blocks[] = $searchForm;
+			$this->template->blocks[] = new Block('greeting.inc');
+		} else {
+			$this->template->setFilename('full-width');
 
-        // If we've got a single address, display the information
-        if (isset($address)) {
-            if (!$address['active'] || $address['active'] != 'yes') {
-                $oldAddress = $address;
-                $address    = $oldAddress->getCurrentAddress();
-            }
-            if (isset($oldAddress)) {
-                $this->template->blocks[] = new Block('address/oldAddressNotice.inc', ['address'=>$oldAddress]);
-            }
-            
-            $this->template->blocks['pageOverview'][] = new Block('address/tableOfContentsLinks.inc');
-            $this->template->blocks[]                 = new Block('address/info.inc', ['address'=>$address]);
+			// Handle search results
+	        if (!empty($_GET['address'])) {
+	            $json = MasterAddressGateway::search($_GET['address']);
+	            if (count($json) === 1) {
+	                $address = new Address($json[0]);
+	            }
+	            else {
+	                $this->template->blocks[] = new Block('address/searchResults.inc', ['results'=>$json]);
+	            }
+	        }
+	        // Handle single address info
+	        elseif (!empty($_GET['address_id'])) {
+	            $address = new Address($_GET['address_id']);
+	        }
 
-            $searchForm->address = $address;
-        }
-        $this->template->blocks['pageHeader'][] = $searchForm;
+	        // If we've got a single address, display the information
+	        if (isset($address)) {
+	            if (!$address['active'] || $address['active'] != 'yes') {
+	                $oldAddress = $address;
+	                $address    = $oldAddress->getCurrentAddress();
+	            }
+	            if (isset($oldAddress)) {
+	                $this->template->blocks[] = new Block('address/oldAddressNotice.inc', ['address'=>$oldAddress]);
+	            }
+
+	            $this->template->blocks['pageOverview'][] = new Block('address/tableOfContentsLinks.inc');
+	            $this->template->blocks[]                 = new Block('address/info.inc', ['address'=>$address]);
+
+	            $searchForm->address = $address;
+				$resultsMap->address = $address;
+	        }
+			$this->template->blocks['pageHeader'][] = $resultsMap;
+		}
+
 	}
 }

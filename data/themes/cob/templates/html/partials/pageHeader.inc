@@ -40,4 +40,3 @@ $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
         ?>
     </div>
 </header>
-<?php include APPLICATION_HOME.'/templates/html/partials/pageHeader.inc'; ?>

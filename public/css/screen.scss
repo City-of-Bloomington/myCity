@@ -1,27 +1,17 @@
 @import 'modules/_vars-mixins';
 
-h3 {
-    font-size: (24rem/16);
-    margin: 1em 0 .5em;
-}
+@import 'modules/_html_elements';
+
+@import 'modules/_home';
 
 
 .cob-pageHeader {
+    position: relative;
+}
+.myCity-pageHeader {
     background-image: none;
     color: #fff;
     position: relative;
-    &:after {
-        background: url('img/MyBloomington.svg') no-repeat 50% 0;
-        content: ' ';
-        display: inline-block;
-        height: (45rem/16);
-        margin: 0 0 0 (-185rem/16);
-        pointer-events: none;
-        position: absolute;
-            top: (112rem/16);
-            left: 50%;
-        width: (370rem/16);
-    }
     &-mapCanvas {
         height: (246rem/16);
     }
@@ -65,8 +55,22 @@ a {
         position: absolute;
             top: (162rem/16);
             left: 50%;
+            z-index: 2;
         text-align: center;
         width: (450rem/16);
+        &:before {
+            background: url('img/MyBloomington.svg') no-repeat 50% 0;
+            content: ' ';
+            display: inline-block;
+            height: (45rem/16);
+            margin: 0 0 0 (-185rem/16);
+            pointer-events: none;
+            position: absolute;
+                top: -4.5rem;
+                left: 50%;
+                z-index: 4;
+            width: (370rem/16);
+        }
 
         > label {
             @include visuallyHidden();
@@ -421,11 +425,11 @@ a {
             margin: 0 auto;
             width: 66.66%;
             &Container {
-                @include grid-6col();
+                @include grid-4col();
             }
         }
         &-details {
-            @include grid-6col();
+            @include grid-8col();
         }
         &-title {
             color: $cob-gray-darkest;
@@ -496,12 +500,17 @@ a {
         &-map {
             background: $cob-gray;
             min-height: 20rem;
+            > img {
+                width: 100%;
+            }
             &Container {
                 @include grid-6col();
+                margin-top: 0;
             }
         }
         &-details {
             @include grid-6col();
+            margin-top: 0;
         }
     }
 }

@@ -5,12 +5,16 @@
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
 ?>
-<div>
-    <p><?= $this->_('pageOverview_address', 'messages'); ?></p>
+<div class="cob-pageOverview">
+    <div class="cob-pageOverview-container">
+        <div>
+            <p><?= $this->_('pageOverview_address', 'messages'); ?></p>
+        </div>
+        <aside>
+            <dl></dl>
+            <dd><?= $this->_('aboutThisAddress'); ?></dd>
+            <dd><?= $this->_('governmentLinks'); ?></dd>
+            <dd><?= $this->_('votingInfo'); ?></dd>
+        </aside>
+    </div>
 </div>
-<aside>
-    <dl></dl>
-    <dd><?= $this->_('aboutThisAddress'); ?></dd>
-    <dd><?= $this->_('governmentLinks'); ?></dd>
-    <dd><?= $this->_('votingInfo'); ?></dd>
-</aside>

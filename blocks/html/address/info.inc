@@ -173,6 +173,7 @@ $address  = $this->address;
             $atLarge  = CityCouncilGateway::members(CityCouncilGateway::AT_LARGE);
 
             $districtName = View::escape($districtName);
+            $districtNumber = View::escape(filter_var($districtName, FILTER_SANITIZE_NUMBER_INT));
         }
     ?>
     <?php if(count($atLarge)): ?>
@@ -212,7 +213,7 @@ $address  = $this->address;
             <h2>Your City Council District</h2>
             <div class="myCity-councilDistrict-mapContainer">
                 <div class="myCity-councilDistrict-map">
-                    <p>[Placeholder for map of your City Council District]</p>
+                    <img src="css/img/CD<?= $districtNumber ?>MapImage.png" alt="Map of City Council District <?= $districtNumber ?>" />
                 </div>
             </div>
             <div class="myCity-councilDistrict-details">
@@ -240,7 +241,7 @@ $address  = $this->address;
     <?php endif ?>
 
     <div class="clerk">
-        <h3><?= $this->_('clerk'); ?></h3>
+        <h2><?= $this->_('clerk'); ?></h2>
         <?php
             $clerkInfo = DirectoryGateway::info('clerk');
             $clerkInfo['firstname'] = 'Regina';

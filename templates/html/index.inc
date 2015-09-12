@@ -1,23 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <?php
-	$this->layout = 'full-width';
+	$this->layout = 'index';
 	$this->_include('partials/header.inc');
 ?>
 <body>
 	<?php
 		$this->_include('partials/pageHeader.inc');
-		include APPLICATION_HOME.'/templates/html/partials/pageHeader.inc';
 	?>
-	<main class="cob-main">
-		<div class="cob-main-container" id="content-panel">
+    <main class="myCity-home">
+		<div class="myCity-home-mapCanvas" id="map-canvas" data-latitude="<?= DEFAULT_LATITUDE - .055 ?>" data-longitude="<?= DEFAULT_LONGITUDE ?>"></div>
 			<?php
 				include BLOSSOM.'/errorMessages.php';
 
 				echo $this->includeBlocks();
 			?>
-		</div>
-	</main>
+    </main>
 	<?php
 		$this-> _include('partials/footer.inc');
 	?>
