@@ -53,7 +53,7 @@ class IndexController extends Controller
 	                $this->template->blocks[] = new Block('address/oldAddressNotice.inc', ['address'=>$oldAddress]);
 	            }
 
-	            $this->template->blocks['pageOverview'][] = new Block('address/tableOfContentsLinks.inc');
+	            $this->template->blocks['pageOverview'][] = new Block('address/tableOfContentsLinks.inc', ['address'=>$address]);
 	            $this->template->blocks[]                 = new Block('address/info.inc', ['address'=>$address]);
 
 	            $searchForm->address = $address;

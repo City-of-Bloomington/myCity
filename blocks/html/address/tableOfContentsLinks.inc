@@ -2,19 +2,37 @@
 /**
  * @copyright 2015 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
+ * @param Address $this->address
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
+
+$address = $this->address;
 ?>
-<div class="cob-pageOverview">
-    <div class="cob-pageOverview-container">
-        <div>
+<div class="myCity-pageOverview">
+    <div class="myCity-pageOverview-container">
+        <div class="myCity-pageOverview-mainInfo">
             <p><?= $this->_('pageOverview_address', 'messages'); ?></p>
+            <address class="myCity-pageOverview-address"><?= $address['streetAddress'] ?>
+
+<?= $address['city']?>, <?= $address['state'] ?> <?= $address['zip'] ?></address>
+            <?php if($address['latitude'] && $address['longitude']): ?>
+                <dl class="myCity-pageOverview-latLon">
+                    <dt>Latitude</dt>
+                    <dd><?= $address['latitude'] ?></dd>
+                </dl>
+                <dl class="myCity-pageOverview-latLon">
+                    <dt>Longitude</dt>
+                    <dd><?= $address['longitude'] ?></dd>
+                </dl>
+            <?php endif ?>
         </div>
         <aside>
-            <dl></dl>
-            <dd><?= $this->_('aboutThisAddress'); ?></dd>
-            <dd><?= $this->_('governmentLinks'); ?></dd>
-            <dd><?= $this->_('votingInfo'); ?></dd>
+            <dl class="myCity-pageOverview-toc">
+                <dt>Learn about</dt>
+                <dd><a href="#about-address"><?= $this->_('aboutThisAddress'); ?></a></dd>
+                <dd><a href="#find-you-government-online"><?= $this->_('governmentLinks'); ?></a></dd>
+                <dd><a href="#elected-officials"><?= $this->_('votingInfo'); ?></a></dd>
+            </dl>
         </aside>
     </div>
 </div>

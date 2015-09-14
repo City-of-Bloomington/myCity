@@ -15,7 +15,7 @@ $name = !empty(    $this->entry['displayname'])
 ?>
 
 <div class="myCity-atLarge-individual">
-    <img srcset="css/img/<?= $imgName ?>-1x.jpg 1x, css/img/<?= $imgName ?>/-2x.jpg 2x" sizes="299px" src="css/img/<?= $imgName ?>-1x.jpg" alt="<?= $name ?>" />
+    <img srcset="css/img/<?= $imgName ?>-1x.jpg 1x, css/img/<?= $imgName ?>-2x.jpg 2x" sizes="299px" src="css/img/<?= $imgName ?>-1x.jpg" alt="<?= $name ?>" />
     <h3><?= $name ?></h3>
     <table class="table-contact">
         <?php

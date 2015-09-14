@@ -3,7 +3,7 @@
 @import 'modules/_html_elements';
 
 @import 'modules/_home';
-
+@import 'modules/_pageOverview';
 
 .cob-pageHeader {
     position: relative;
@@ -46,7 +46,7 @@ section > h2:first-child, section > div > h2 {
 // ACT I
 
 a {
-    color: $cornflower-light;
+    color: $cob-cornflower-light;
 }
 
 .myCity {
@@ -146,12 +146,6 @@ a {
                 text-align: center;
                 width: 49%;
             }
-            &.modLatLon {
-                box-sizing: border-box;
-                padding: 0 1rem;
-                text-align: center;
-                width: 49%;
-            }
             &.modLocation {
                 display: block;
                 margin-bottom: 1rem;
@@ -199,6 +193,10 @@ a {
                 margin: 1rem auto;
                 width: (83rem/16);
             }
+        }
+        &-cityLimits {
+            box-sizing: border-box;
+            text-align: center;
         }
         &-additionalInfo {
             margin: 1rem 0 0 0;
@@ -297,12 +295,6 @@ a {
                     text-align: left;
                     width: (167rem/16);
                 }
-                &.modLatLon {
-                    display: block;
-                    margin: 0 (50rem/16) 1rem (20rem/16);
-                    padding: 0;
-                    text-align: left;
-                }
             }
         }
         &-trash {
@@ -317,22 +309,24 @@ a {
             &-container {
                 @include clearfix();
                 &:before {
-                    display: block;
-                    float: left;
-                    margin-bottom: -1rem;
+                    display: inline-block;
+                    vertical-align: middle;
                 }
             }
-            &-latLon {
-                display: block;
-                float: left;
-                margin: 1rem 0;
+            &-cityLimits {
+                display: inline-block;
+                padding: 0 (20rem/16);
+                text-align: left;
+                width: 40%;
+                vertical-align: middle;
             }
             &-additionalInfo {
-                float: left;
+                display: inline-block;
                 margin: 0;
                 padding: 1rem 0 0;
                 text-align: left;
                 width: 40%;
+                vertical-align: middle;
             }
         }
         &-parking {
@@ -368,10 +362,6 @@ a {
         &-addressInfo {
             &-keyValuePair {
                 width: (334rem/16);
-
-                &.modLatLon {
-                    width: (354rem/16);
-                }
             }
         }
         &-trash {
@@ -393,6 +383,9 @@ a {
             }
             &-additionalInfo {
                 width: 23rem;
+            }
+            &-cityLimits {
+                width: (412rem/16);
             }
         }
     }

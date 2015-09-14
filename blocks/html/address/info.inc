@@ -19,33 +19,19 @@ $address  = $this->address;
     <h2><?= $this->_('aboutThisAddress') ?></h2>
 
     <div class="myCity-addressInfo-container">
-        <?php if(isset($address['trashDay'])): ?>
-            <div class="myCity-trash-container">
-                <dl class="myCity-addressInfo-keyValuePair modTrashDay">
-                    <dt><?= $this->_('trashDay') ?></dt>
-                    <dd><?= ucfirst(strtolower($address['trashDay'])) ?></dd>
-                </dl>
-                <dl class="myCity-addressInfo-keyValuePair modRecycleWeek">
-                    <dt><?= $this->_('nextRecyclePickup') ?></dt>
-                    <dd>Week <?= $address['recycleWeek'] ?></dd>
-                </dl>
-                <p class="myCity-trash-details">
-                <?php
-                    echo sprintf($this->_('sanitationDetails', 'messages'), '<a href="/trash">', '</a>');
-                ?>
-                </p>
-            </div>
-        <?php endif; ?>
         <?php if(isset($address['latitude']) && isset($address['longitude'])): ?>
+            <?php
+                if($address['jurisdiction'] == 'Bloomington') {
+                    $inOrOut = 'Inside';
+                } else {
+                    $inOrOut = 'Outside';
+                }
+            ?>
             <div class="myCity-location-container">
-                <div class="myCity-location-latLon">
-                    <dl class="myCity-addressInfo-keyValuePair modLatLon">
-                        <dt>Latitude</dt>
-                        <dd><?= $address['latitude'] ?></dd>
-                    </dl>
-                    <dl class="myCity-addressInfo-keyValuePair modLatLon">
-                        <dt>Longitude</dt>
-                        <dd><?= $address['longitude'] ?></dd>
+                <div class="myCity-location-cityLimits">
+                    <dl class="myCity-addressInfo-keyValuePair">
+                        <dt>This address is</dt>
+                        <dd><?= $inOrOut ?> City Limits</dd>
                     </dl>
                 </div>
                 <div class="myCity-location-additionalInfo">
@@ -68,8 +54,24 @@ $address  = $this->address;
                             }
                         }
                     ?>
-
                 </div>
+            </div>
+        <?php endif; ?>
+        <?php if(isset($address['trashDay'])): ?>
+            <div class="myCity-trash-container">
+                <dl class="myCity-addressInfo-keyValuePair modTrashDay">
+                    <dt><?= $this->_('trashDay') ?></dt>
+                    <dd><?= ucfirst(strtolower($address['trashDay'])) ?></dd>
+                </dl>
+                <dl class="myCity-addressInfo-keyValuePair modRecycleWeek">
+                    <dt><?= $this->_('nextRecyclePickup') ?></dt>
+                    <dd>Week <?= $address['recycleWeek'] ?></dd>
+                </dl>
+                <p class="myCity-trash-details">
+                <?php
+                    echo sprintf($this->_('sanitationDetails', 'messages'), '<a href="/trash">', '</a>');
+                ?>
+                </p>
             </div>
         <?php endif; ?>
         <?php if (!empty($purposes['parkingZone'])): ?>
@@ -217,7 +219,7 @@ $address  = $this->address;
                 </div>
             </div>
             <div class="myCity-councilDistrict-details">
-                <img srcset="css/img/<?= $districtImgName ?>-1x.jpg 1x, css/img/<?= $districtImgName ?>/-2x.jpg 2x" sizes="299px" src="css/img/<?= $districtImgName ?>-1x.jpg" alt="<?= $districtEntry['displayname'] ?>" />
+                <img srcset="css/img/<?= $districtImgName ?>-1x.jpg 1x, css/img/<?= $districtImgName ?>-2x.jpg 2x" sizes="299px" src="css/img/<?= $districtImgName ?>-1x.jpg" alt="<?= $districtEntry['displayname'] ?>" />
                 <h3><?= $districtRepName ?></h3>
                 <table class="table-contact">
                     <?php
