@@ -9,5 +9,11 @@ use Blossom\Classes\View;
 
 ?>
 <div class="myCity-home-greeting">
-    <h2>Enter your address above to learn more about:</h2>
+    <p>My Bloomington provides local information related to a given street address. Enter your address to learn more about:</p>
+
+    <ul>
+        <li>City services available</li>
+        <li>Elected officials</li>
+        <li>Related GIS attributes and data sets</li>
+    </ul>
 </div>

@@ -15,12 +15,12 @@
     }
     &-greeting {
         $width: 40rem;
-        background: #fff;
+        background: rgba(255, 255, 255, .7);
         box-sizing: border-box;
-        border: 1px solid $cob-gray;
+        border: 1px solid $cob-nightshade;
         border-radius: 1rem;
         margin: 0 auto 0 (-$width/2);
-        padding: 1rem;
+        padding: 1rem 2rem;
         position: absolute;
             top: 15rem;
             left: 50%;
