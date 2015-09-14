@@ -15,7 +15,7 @@ use Blossom\Classes\View;
 
 $address  = $this->address;
 ?>
-<section>
+<section id="about-this-address">
     <h2><?= $this->_('aboutThisAddress') ?></h2>
 
     <div class="myCity-addressInfo-container">
@@ -93,7 +93,7 @@ $address  = $this->address;
 
 </section>
 
-<section>
+<section id="find-your-government-online">
     <h2><?= $this->_('governmentLinks'); ?></h2>
 
     <div class="myCity-govOnline">
@@ -129,7 +129,7 @@ $address  = $this->address;
     </div>
 </section>
 
-<section>
+<section id="elected-officials">
     <h2><?= $this->_('votingInfo'); ?></h2>
 
     <?php $mayorInfo = DirectoryGateway::info('mayor'); ?>

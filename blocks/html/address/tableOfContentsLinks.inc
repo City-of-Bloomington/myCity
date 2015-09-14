@@ -29,8 +29,8 @@ $address = $this->address;
         <aside>
             <dl class="myCity-pageOverview-toc">
                 <dt>Learn about</dt>
-                <dd><a href="#about-address"><?= $this->_('aboutThisAddress'); ?></a></dd>
-                <dd><a href="#find-you-government-online"><?= $this->_('governmentLinks'); ?></a></dd>
+                <dd><a href="#about-this-address"><?= $this->_('aboutThisAddress'); ?></a></dd>
+                <dd><a href="#find-your-government-online"><?= $this->_('governmentLinks'); ?></a></dd>
                 <dd><a href="#elected-officials"><?= $this->_('votingInfo'); ?></a></dd>
             </dl>
         </aside>
