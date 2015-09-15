@@ -31,7 +31,9 @@ $address = $this->address;
                 <dt>Learn about</dt>
                 <dd><a href="#about-this-address"><?= $this->_('aboutThisAddress'); ?></a></dd>
                 <dd><a href="#find-your-government-online"><?= $this->_('governmentLinks'); ?></a></dd>
-                <dd><a href="#elected-officials"><?= $this->_('votingInfo'); ?></a></dd>
+                <?php if($address['jurisdiction'] == 'Bloomington'): ?>
+                    <dd><a href="#elected-officials"><?= $this->_('votingInfo'); ?></a></dd>
+                <?php endif ?>
             </dl>
         </aside>
     </div>
