@@ -10,6 +10,7 @@
         @include grid-8col();
         + aside {
             @include grid-4col();
+            margin: 0;
         }
     }
     &-address {
@@ -86,6 +87,23 @@
     @media screen and (min-width: $screen-large) {
         &-address {
 
+        }
+        &-mainInfo {
+            + aside {
+                padding: 2rem 0 2rem $grid-gutter*2;
+                position: relative;
+
+                &:before {
+                    background: #fff;
+                    content: ' ';
+                    display: block;
+                    position: absolute;
+                        top: 2em;
+                        bottom: 2em;
+                        left: 32px;
+                    width: 1px;
+                }
+            }
         }
     }
 }
