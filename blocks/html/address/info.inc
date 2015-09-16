@@ -100,10 +100,13 @@ $address  = $this->address;
         <?php
             global $GOVERNMENTAL_LINKS;
             foreach (['state', 'county', 'jurisdiction'] as $region) {
-                if($address[$region] !== 'IN') {
+                if($address[$region] != 'IN') {
                     $regionName = $address[$region];
                 } else {
                     $regionName = 'Indiana';
+                }
+                if($address['jurisdiction'] == 'Bloomington' && $region == 'jurisdiction') {
+                    $region = 'city';
                 }
                 echo "
                 <dl>

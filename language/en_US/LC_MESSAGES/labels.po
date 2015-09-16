@@ -168,7 +168,7 @@ msgid "status"
 msgstr "Status"
 
 msgid "jurisdiction"
-msgstr "City"
+msgstr "Jurisdiction"
 
 msgid "plat"
 msgstr "Plat"
