@@ -185,8 +185,8 @@ msgstr "Quarter Section"
 msgid "trashDay"
 msgstr "Trash Pickup Day"
 
-msgid "recycleWeek"
-msgstr "Recycle Week"
+msgid "nextRecyclePickup"
+msgstr "Next Recycle Pickup"
 
 msgid "township"
 msgstr "Township"
