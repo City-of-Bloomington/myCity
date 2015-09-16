@@ -227,6 +227,7 @@ $address  = $this->address;
                 <div class="myCity-councilDistrict-details">
                     <img srcset="css/img/<?= $districtImgName ?>-1x.jpg 1x, css/img/<?= $districtImgName ?>-2x.jpg 2x" sizes="299px" src="css/img/<?= $districtImgName ?>-1x.jpg" alt="<?= $districtEntry['displayname'] ?>" />
                     <h3><?= $districtRepName ?></h3>
+                    <div class="myCity-councilDistrict-repTitle">District <?= $districtNumber ?> Representative</div>
                     <table class="table-contact">
                         <?php
                             foreach ($districtFields as $field) {
