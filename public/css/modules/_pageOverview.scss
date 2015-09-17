@@ -10,7 +10,6 @@
         @include grid-8col();
         + aside {
             @include grid-4col();
-            margin: 0;
         }
     }
     &-address {

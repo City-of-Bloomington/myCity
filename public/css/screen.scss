@@ -19,11 +19,15 @@
 
 section > h2:first-child, section > div > h2 {
     @include grid-12col();
-    font-size: (20rem/16);
+    font-size: (14rem/16);
     font-weight: normal;
-    line-height: (26em/20);
-    margin: 4rem 0 2rem 0;
+    line-height: 1.3em;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
     text-transform: uppercase;
+    @media screen and (min-width: $screen-medium) {
+        font-size: (20rem/16);
+    }
 }
 
 .cob-main-container > section:not(:first-child) {
@@ -232,18 +236,19 @@ a {
         }
     }
     &-govOnline {
+        @include grid-12col();
+
         > dl {
-            margin-bottom: 0;
+            margin-bottom: 2rem;
 
             > dt {
                 font-family: $font-headings;
-                font-size: (14rem/16);
+                font-size: (12rem/16);
                 text-transform: uppercase;
             }
             > dd:first-of-type {
                 font-family: $font-headings;
-                font-size: (36rem/16);
-                font-weight: 300;
+                font-size: (20rem/16);
                 line-height: 1em;
                 margin: 0 0 (16rem/16) (-2em/36);
             }
@@ -349,11 +354,14 @@ a {
             > dl {
                 box-sizing: border-box;
                 float: left;
-                padding: 0 $grid-gutter;
                 width: 33.33%;
 
-                > dd {
-
+                > dt {
+                    font-size: (14rem/16);
+                }
+                > dd:first-of-type {
+                    font-size: (36rem/16);
+                    font-weight: 300;
                 }
             }
         }
