@@ -98,7 +98,7 @@ $address  = $this->address;
 
     <div class="myCity-govOnline">
         <?php
-            global $GOVERNMENTAL_LINKS;
+            global $GOVERNMENTAL_CONTACT_INFO;
             foreach (['state', 'county', 'jurisdiction'] as $region) {
                 if($address[$region] != 'IN') {
                     $regionName = $address[$region];
@@ -109,23 +109,33 @@ $address  = $this->address;
                     $region = 'city';
                 }
                 echo "
-                <dl>
-                    <dt>{$this->_($region)}</dt>
-                    <dd>$regionName</dd>
+                    <dl>
+                        <dt>{$this->_($region)}</dt>
+                        <dd>$regionName</dd>
                 ";
-                    if (array_key_exists($address[$region], $GOVERNMENTAL_LINKS)) {
-                        echo '<dd><dl>';
-                        foreach ($GOVERNMENTAL_LINKS[$address[$region]] as $type=>$link) {
-                            $label = ucfirst($this->_($type));
-                            echo "
+                if (array_key_exists($address[$region], $GOVERNMENTAL_CONTACT_INFO)) {
+                    echo '<dd><dl>';
+                    foreach ($GOVERNMENTAL_CONTACT_INFO[$address[$region]]['online'] as $type=>$link) {
+                        $label = ucfirst($this->_($type));
+                        echo "
                             <dt>$label:</dt>
-                                <dd><a href=\"$link[url]\">$link[text]</a></dd>
-                            ";
-                        }
-                        echo '</dl></dd>';
+                            <dd><a href=\"$link[url]\">$link[text]</a></dd>
+                        ";
+
                     }
+                    echo '</dl></dd>';
+                    echo '<dd><dl>';
+                    foreach ($GOVERNMENTAL_CONTACT_INFO[$address[$region]]['offline'] as $type=>$info) {
+                        $label = ucfirst($this->_($type));
+                        echo "
+                            <dt>$label:</dt>
+                            <dd>$info</dd>
+                        ";
+                    }
+                    echo '</dl></dd>';
+                }
                 echo "
-                </dl>
+                    </dl>
                 ";
             }
         ?>
