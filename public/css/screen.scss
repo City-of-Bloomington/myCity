@@ -512,4 +512,16 @@ a {
             margin: 0 0 .75rem 0;
         }
     }
+    &-clerk {
+        @include clearfix();
+    }
+}
+
+// EPILOGUE
+.myCity {
+    &-disclaimer {
+        &-text {
+            @include grid-10col();
+        }
+    }
 }

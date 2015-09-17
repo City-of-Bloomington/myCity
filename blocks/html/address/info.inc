@@ -262,7 +262,7 @@ $address  = $this->address;
             </div>
         <?php endif ?>
 
-        <div class="clerk">
+        <div class="myCity-clerk">
             <h2><?= $this->_('clerk'); ?></h2>
             <?php
                 $clerkInfo = DirectoryGateway::info('clerk');
@@ -276,3 +276,12 @@ $address  = $this->address;
         </div>
     </section>
 <?php endif ?>
+
+<section>
+    <h2>Disclaimer</h2>
+    <div class="myCity-disclaimer-text">
+        <p>The information reported comes from the City of Bloomington Geographic Information Systems (GIS) and related databases.</p>
+        <p>City staff strives to keep complete and accurate information and regrets any errors or omissions. To report missing City of Bloomington addresses or other profile errors, please contact the City of Bloomington GIS Staff at 349-3454 or email us at <a href="mailto: gis@bloomington.in.gov">gis@bloomington.in.gov</a>.</p>
+    </div>
+
+</section>
