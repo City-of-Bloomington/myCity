@@ -53,6 +53,9 @@ $address  = $this->address;
                                 echo "</dl>";
                             }
                         }
+                        if($address['jurisdiction']=='Monroe County') {
+                            echo'<p>For more information about this address, see the <a href="http://www.co.monroe.in.us/tsd/gis.aspx">Monroe County GIS website</a>.</p>';
+                        }
                     ?>
                 </div>
             </div>
