@@ -57,6 +57,12 @@ $address  = $this->address;
                             echo'<p>For more information about this address, see the <a href="http://www.co.monroe.in.us/tsd/gis.aspx">Monroe County GIS website</a>.</p>';
                         }
                     ?>
+                    <?php if(!empty($address['township'])): ?>
+                        <dl class="myCity-addressInfo-keyValuePair modLocation">
+                            <dt><?= $this->_('township') ?></dt>
+                            <dd><?= $address['township'] ?></dd>
+                        </dl>
+                    <?php endif ?>
                 </div>
             </div>
         <?php endif; ?>
