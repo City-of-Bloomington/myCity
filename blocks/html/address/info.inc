@@ -281,7 +281,7 @@ $address  = $this->address;
     <h2>Disclaimer</h2>
     <div class="myCity-disclaimer-text">
         <p>The information reported comes from the City of Bloomington Geographic Information Systems (GIS) and related databases.</p>
-        <p>City staff strives to keep complete and accurate information and regrets any errors or omissions. To report missing City of Bloomington addresses or other profile errors, please contact the City of Bloomington GIS Staff at 349-3454 or email us at <a href="mailto: gis@bloomington.in.gov">gis@bloomington.in.gov</a>.</p>
+        <p>City staff strives to keep complete and accurate information and regrets any errors or omissions. To report missing City of Bloomington addresses or other profile errors, please contact the City of Bloomington GIS Staff at 812-349-3454 or email us at <a href="mailto: gis@bloomington.in.gov">gis@bloomington.in.gov</a>.</p>
     </div>
 
 </section>
