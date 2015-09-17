@@ -89,6 +89,8 @@
         }
         &-mainInfo {
             + aside {
+                margin-top: 0;
+                margin-bottom: 0;
                 padding: 2rem 0 2rem $grid-gutter*2;
                 position: relative;
 
