@@ -40,3 +40,7 @@ $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
         ?>
     </div>
 </header>
+<header class="cob-pageHeader">
+    <?= $this->includeBlocks('pageHeader'); ?>
+    <?= $this->includeBlocks('pageOverview'); ?>
+</header>
