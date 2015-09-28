@@ -7,7 +7,6 @@
 <body>
 	<?php
 		$this->_include('partials/pageHeader.inc');
-		include APPLICATION_HOME.'/templates/html/partials/pageHeader.inc';
 	?>
 	<main class="cob-main">
 		<div class="cob-main-container" id="content-panel">

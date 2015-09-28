@@ -47,3 +47,69 @@ define('DEFAULT_COUNTY', 'Monroe');
 
 define('DATE_FORMAT', 'n/j/Y H:i:s');
 define('LOCALE', 'en_US');
+
+$GOVERNMENTAL_CONTACT_INFO = [
+    'IN' => [
+        'online' => [
+            'website' => [
+                'url'  => 'http://www.in.gov',
+                'text' => 'www.in.gov'
+            ],
+            'twitter' => [
+                'url'  => 'https://twitter.com/IN_gov',
+                'text' => '@IN_gov'
+            ]
+        ],
+        'offline' => [
+            'phone' => '1-800-457-8283'
+        ]
+    ],
+    'Monroe' => [
+        'online' => [
+            'website' => [
+                'url'  => 'http://www.co.monroe.in.us',
+                'text' => 'www.co.monroe.in.us'
+            ]
+        ],
+        'offline' => [
+            'phone' => '812-349-2550'
+        ]
+    ],
+    'Monroe County' => [
+        'online' => [
+            'website' => [
+                'url'  => 'http://www.co.monroe.in.us',
+                'text' => 'www.co.monroe.in.us'
+            ]
+        ],
+        'offline' => [
+            'phone' => '812-349-2550'
+        ]
+    ],
+    'Bloomington' => [
+        'online' => [
+            'website' => [
+                'url' => 'http://bloomington.in.gov',
+                'text' => 'bloomington.in.gov'
+            ],
+            'twitter' => [
+                'url'  => 'https://twitter.com/citybloomington',
+                'text' => '@citybloomington'
+            ]
+        ],
+        'offline' => [
+            'phone' => '812-349-3400'
+        ]
+    ],
+    'Ellettsville' => [
+        'online' => [
+            'website' => [
+                'url'  => 'http://ellettsville.in.us',
+                'text' => 'ellettsville.in.us'
+            ]
+        ],
+        'offline' => [
+            'phone' => '812-876-3860'
+        ]
+    ]
+];
