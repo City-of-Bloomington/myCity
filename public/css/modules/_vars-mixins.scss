@@ -55,7 +55,7 @@ $screen-large: (990rem/16);
 $screen-medium: (600rem/16);
 $screen-small: (350rem/16);
 
-
+$layoutMaxWidth: (1160rem/16);
 
 
 // Grid
@@ -72,7 +72,7 @@ $grid-gutter: 2rem;
     @media screen and (min-width: $screen-medium) {
         @include clearfix();
         box-sizing: border-box;
-        max-width: (965rem/16);
+        max-width: $layoutMaxWidth;
         margin: 0 auto;
     }
 }
