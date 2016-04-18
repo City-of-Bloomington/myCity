@@ -182,8 +182,7 @@ $address  = $this->address;
                     </table>
                     <div class="myCity-mayor-biography">
                         <h3>About the Mayor</h3>
-                        <p>Mark Kruzan served as an Adjunct Professor at the IU School of Public and Environmental Affairs starting in 1990, where he taught &ldquo;Indiana Politics &amp; Policy&rdquo;. In 1986, he was elected as State Representative for Bloomington. In 1994, he was appointed House Minority Whip. Two years later, he was elected Majority Leader of the Indiana House of Representatives by his colleagues&mdash;a post he held until he decided not to run for re-election in 2002.</p>
-                        <p>He was elected Mayor of Bloomington in November 2003. As Mayor, he leads a city with incredible opportunities ahead of it&mdash;and he works hard to address its challenges.</p>
+                        <p>John has worked extensively as a public servant in Democratic government, leading two state agencies, advising a Governor and Lieutenant Governor, and serving as an elected official.  As the Secretary of the Indiana Family and Social Services Administration, he oversaw the implementation of Medicaid and welfare programs, services for the elderly, disabled, mentally ill, and children at risk, and state-wide community development and housing programs – all executed by a staff of 10,000 Hoosiers with an annual budget of $6 billion. Earlier he served as Commissioner of the Indiana Department of Environmental Management, the agency tasked with the statewide protection of Indiana’s air, water and land. John served as an elected member of the Board of Trustees for the Monroe County Community School Corporation. Throughout his time in Bloomington, John has served on many state and local commissions and boards, including chairing the Bloomington Commission on Sustainability and the Shalom Community Center board, as well as national boards such as the National Community Land Trust Network.</p>
                     </div>
                 </div>
             </div>
@@ -272,9 +271,9 @@ $address  = $this->address;
             <h2><?= $this->_('clerk'); ?></h2>
             <?php
                 $clerkInfo = DirectoryGateway::info('clerk');
-                $clerkInfo['firstname'] = 'Regina';
-                $clerkInfo['lastname'] = 'Moore';
-                $clerkInfo['displayname'] = 'Regina Moore';
+                $clerkInfo['firstname'] = 'Nicole';
+                $clerkInfo['lastname'] = 'Bolden';
+                $clerkInfo['displayname'] = 'Nicole Bolden';
                 $atLargeContact->entry = $clerkInfo;
                 echo $atLargeContact->render('html', $this->template);
             ?>
