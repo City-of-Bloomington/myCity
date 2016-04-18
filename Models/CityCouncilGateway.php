@@ -1,8 +1,7 @@
 <?php
 /**
- * @copyright 2015 City of Bloomington, Indiana
+ * @copyright 2015-2016 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
- * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
 namespace Application\Models;
 
@@ -11,12 +10,12 @@ use Blossom\Classes\Url;
 class CityCouncilGateway
 {
     const COUNCIL_ID = 1;
-    const AT_LARGE   = 'At Large';
+    const AT_LARGE   = 'At-Large';
 
     private static $json;
 
     /**
-     * Council district names need are named differently in
+     * Council district names are named differently in
      * MasterAddress and CivicLegislation.  This maps between
      * the two names
      */
@@ -34,13 +33,15 @@ class CityCouncilGateway
     public static function members($master_address_district)
     {
         if (!self::$json) {
-            $url = CIVIC_LEGISLATION.'/committees/view?format=json;committee_id='.self::COUNCIL_ID;
+            $url = CIVIC_LEGISLATION.'/committees/members?format=json;committee_id='.self::COUNCIL_ID;
             self::$json = WebService::loadJsonResponse($url);
         }
+        $members = [];
         foreach (self::$json['seats'] as $seat) {
-            if ($seat['name'] == self::$councilDistricts[$master_address_district]) {
-                return $seat['currentMembers'];
+            if ($seat['name'] === self::$councilDistricts[$master_address_district]) {
+                $members[] = $seat['currentMember'];
             }
         }
+        return $members;
     }
 }

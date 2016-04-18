@@ -10,7 +10,6 @@ use Application\Models\CityCouncilGateway;
 use Application\Models\DirectoryGateway;
 
 use Blossom\Classes\Block;
-use Blossom\Classes\View;
 
 $address  = $this->address;
 ?>
@@ -44,7 +43,7 @@ $address  = $this->address;
                             if (!empty($purposes[$p])) {
                                 echo "<dl class=\"myCity-addressInfo-keyValuePair modLocation\"><dt>{$this->_($p)}</dt>";
                                 foreach ($purposes[$p] as $value) {
-                                    $value = View::escape($value);
+                                    $value = self::escape($value);
                                     echo "<dd>$value</dd>";
                                 }
                                 echo "</dl>";
@@ -84,7 +83,7 @@ $address  = $this->address;
             <div class="myCity-parking-container">
                 <?php
                     foreach ($purposes['parkingZone'] as $zone) {
-                        $zone = ucwords(strtolower(View::escape($zone)));
+                        $zone = ucwords(strtolower(self::escape($zone)));
                         echo "
                         <dl class=\"myCity-parking-details\">
                             <dt>$zone</dt>
@@ -105,7 +104,7 @@ $address  = $this->address;
         <?php
             global $GOVERNMENTAL_CONTACT_INFO;
             foreach (['state', 'county', 'jurisdiction'] as $region) {
-                $regionName = $address[$region] === 'IN')
+                $regionName = $address[$region] === 'IN'
                     ? 'Indiana'
                     : $address[$region];
 
@@ -188,8 +187,8 @@ $address  = $this->address;
                 $district = CityCouncilGateway::members($districtName);
                 $atLarge  = CityCouncilGateway::members(CityCouncilGateway::AT_LARGE);
 
-                $districtName = View::escape($districtName);
-                $districtNumber = View::escape(filter_var($districtName, FILTER_SANITIZE_NUMBER_INT));
+                $districtName = self::escape($districtName);
+                $districtNumber = self::escape(filter_var($districtName, FILTER_SANITIZE_NUMBER_INT));
             }
         ?>
         <?php if (count($atLarge)): ?>
@@ -218,7 +217,7 @@ $address  = $this->address;
 
                     $districtEntry   = DirectoryGateway::info($matches[1]);
                     $districtFields  = array_merge(['email', 'address'], DirectoryGateway::$phoneNumberFields);
-                    $districtRepName = View::escape($districtEntry['firstname']).' '.View::escape($districtEntry['lastname']);
+                    $districtRepName = self::escape($districtEntry['firstname']).' '.self::escape($districtEntry['lastname']);
                     $districtImgName = strtolower($districtEntry['lastname']);
                 }
             ?>
@@ -236,7 +235,7 @@ $address  = $this->address;
                     <?php
                         foreach ($districtFields as $field) {
                             if (!empty($districtEntry[$field])) {
-                                $value = View::escape($districtEntry[$field]);
+                                $value = self::escape($districtEntry[$field]);
                                 echo "
                                 <tr><th>{$this->_($field)}</th>
                                     <td>$value</td>
