@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 	$this->layout = 'index';
-	$this->_include('partials/header.inc');
+	$this->_include('partials/head.inc');
 ?>
 <body>
 	<?php
