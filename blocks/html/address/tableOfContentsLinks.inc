@@ -8,26 +8,26 @@
 
 $address = $this->address;
 ?>
-<div class="myCity-pageOverview">
-    <div class="myCity-pageOverview-container">
-        <div class="myCity-pageOverview-mainInfo">
+<div class="pageOverview">
+    <div class="pageOverview-container">
+        <div class="pageOverview-mainInfo">
             <p><?= $this->_('pageOverview_address', 'messages'); ?></p>
-            <address class="myCity-pageOverview-address"><?= $address['streetAddress'] ?>
+            <address class="pageOverview-address"><?= $address['streetAddress'] ?>
 
 <?= $address['city']?>, <?= $address['state'] ?> <?= $address['zip'] ?></address>
             <?php if($address['latitude'] && $address['longitude']): ?>
-                <dl class="myCity-pageOverview-latLon">
+                <dl class="pageOverview-latLon">
                     <dt>Latitude</dt>
                     <dd><?= $address['latitude'] ?></dd>
                 </dl>
-                <dl class="myCity-pageOverview-latLon">
+                <dl class="pageOverview-latLon">
                     <dt>Longitude</dt>
                     <dd><?= $address['longitude'] ?></dd>
                 </dl>
             <?php endif ?>
         </div>
         <aside>
-            <dl class="myCity-pageOverview-toc">
+            <dl class="pageOverview-toc">
                 <dt>Learn about</dt>
                 <dd><a href="#about-this-address"><?= $this->_('aboutThisAddress'); ?></a></dd>
                 <dd><a href="#find-your-government-online"><?= $this->_('governmentLinks'); ?></a></dd>

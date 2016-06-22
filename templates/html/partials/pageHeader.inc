@@ -6,7 +6,7 @@
  */
 ?>
 
-<header class="cob-pageHeader">
+<header class="pageHeader">
     <?= $this->includeBlocks('pageHeader'); ?>
     <?= $this->includeBlocks('pageOverview'); ?>
 </header>

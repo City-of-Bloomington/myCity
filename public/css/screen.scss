@@ -111,17 +111,15 @@ a {
 
 
     &-addressInfo {
-        &-container {
-            @include grid-12col();
-            &:before {
-                background-color: $cob-blue;
-                content: ' ';
-                display: block;
-                height: (4rem/16);
-            }
-            > div:last-of-type {
-                border-bottom: none;
-            }
+        @include grid-12col();
+        &:before {
+            background-color: $cob-blue;
+            content: ' ';
+            display: block;
+            height: (4rem/16);
+        }
+        > div:last-of-type {
+            border-bottom: none;
         }
         &-keyValuePair { /* <- Meant for DL */
             display: inline-block;

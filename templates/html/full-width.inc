@@ -4,12 +4,12 @@
 	$this->layout = 'full-width';
 	$this->_include('partials/head.inc');
 ?>
-<body>
+<body class="fn1 widthConstrained">
 	<?php
 		$this->_include('partials/pageHeader.inc');
 	?>
-	<main class="cob-main">
-		<div class="cob-main-container" id="content-panel">
+	<main class="main">
+		<div class="main-container" id="content-panel">
 			<?php
 				include BLOSSOM.'/errorMessages.php';
 

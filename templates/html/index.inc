@@ -4,7 +4,7 @@
 	$this->layout = 'index';
 	$this->_include('partials/head.inc');
 ?>
-<body>
+<body class="fn1 widthConstrained">
 	<?php
 		$this->_include('partials/pageHeader.inc');
 	?>
