@@ -11,6 +11,7 @@ screen.css.map
 *.mo
 node_modules
 gulpfile.js
+.gulp-build
 .sass-cache
 .build
 .ftppass
