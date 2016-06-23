@@ -200,7 +200,7 @@ $address  = $this->address;
             ?>
             <?php if (count($atLarge)): ?>
                 <div class="myCity-atLarge">
-                    <h2><?= $this->_('atLarge'); ?></h2>
+                    <h2 class="myCity-electedOfficials-subheading"><?= $this->_('atLarge'); ?></h2>
                     <?php
                         foreach ($atLarge as $member) {
                             if (!empty($member['email'])
@@ -228,7 +228,7 @@ $address  = $this->address;
                         $districtImgName = strtolower($districtEntry['lastname']);
                     }
                 ?>
-                <div         class="myCity-councilDistrict"><h2>Your City Council District</h2>
+                <div         class="myCity-councilDistrict"><h2 class="myCity-electedOfficials-subheading">Your City Council District</h2>
                     <div     class="myCity-councilDistrict-mapContainer">
                         <div class="myCity-councilDistrict-map">
                             <img src="css/img/CD<?= $districtNumber ?>MapImage.png" alt="Map of City Council District <?= $districtNumber ?>" />
@@ -257,7 +257,7 @@ $address  = $this->address;
             <?php endif ?>
 
             <div class="myCity-clerk">
-                <h2><?= $this->_('clerk'); ?></h2>
+                <h2 class="myCity-electedOfficials-subheading"><?= $this->_('clerk'); ?></h2>
                 <?php
                     $clerkInfo = DirectoryGateway::info('boldenn');
                     $atLargeContact->entry = $clerkInfo;

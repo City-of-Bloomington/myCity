@@ -478,6 +478,11 @@ a {
             }
         }
     }
+    &-electedOfficials {
+        &-subheading {
+            @include grid-12col;
+        }
+    }
 
     &-atLarge {
         @include clearfix();
