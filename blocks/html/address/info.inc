@@ -259,6 +259,7 @@ $address  = $this->address;
             <div class="myCity-clerk">
                 <h2><?= $this->_('clerk'); ?></h2>
                 <?php
+                    $clerkInfo = DirectoryGateway::info('boldenn');
                     $atLargeContact->entry = $clerkInfo;
                     echo $atLargeContact->render('html', $this->template);
                 ?>
