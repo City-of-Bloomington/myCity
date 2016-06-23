@@ -436,8 +436,9 @@ a {
             line-height: .8em;
             text-transform: uppercase;
         }
-        &-name {
+        .myCity-mayor-name {
             font-size: (36rem/16);
+            font-weight: 300;
             line-height: 1em;
             margin: 0 0 1rem (-2rem/16);
         }
@@ -471,7 +472,7 @@ a {
             &-title {
                 font-size: (18rem/16);
             }
-            &-name {
+            .myCity-mayor-name {
                 font-size: (50rem/16);
                 margin: 0 0 2rem (-3rem/16);
             }
