@@ -97,7 +97,7 @@ msgid "cell"
 msgstr "Cell"
 
 msgid "pager"
-msgstr "Pager"
+msgstr "Office"
 
 msgid "other"
 msgstr "Other"
