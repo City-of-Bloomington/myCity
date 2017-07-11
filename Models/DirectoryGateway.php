@@ -9,7 +9,7 @@ namespace Application\Models;
 class DirectoryGateway
 {
     public static $phoneNumberFields = [
-        'office', 'fax', 'cell', 'other', 'pager'
+        'office', 'fax', 'cell', 'other', 'phone'
     ];
 
     public static function info($username)
