@@ -259,7 +259,11 @@ $address  = $this->address;
             <div class="myCity-clerk">
                 <h2 class="myCity-electedOfficials-subheading"><?= $this->_('clerk'); ?></h2>
                 <?php
-                    $clerkInfo = DirectoryGateway::info('boldenn');
+                   $clerkInfo = DirectoryGateway::info('clerk');
+                    $clerkInfo['firstname'] = 'Nicole';
+                    $clerkInfo['lastname'] = 'Bolden';
+                    $clerkInfo['displayname'] = 'Nicole Bolden';
+                    $clerkInfo = DirectoryGateway::info('clerk');
                     $atLargeContact->entry = $clerkInfo;
                     echo $atLargeContact->render('html', $this->template);
                 ?>
