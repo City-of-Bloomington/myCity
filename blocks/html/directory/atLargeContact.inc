@@ -23,6 +23,7 @@ $name = !empty(    $this->entry['displayname'])
         foreach ($contactInfoFields as $field) {
             if (!empty($this->entry[$field])) {
                 $value = View::escape($this->entry[$field]);
+                $field = $field == 'pager' ? 'Phone' : $field;
                 echo "
                 <tr>
                     <th>{$this->_($field)}</th>
