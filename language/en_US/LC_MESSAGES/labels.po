@@ -183,10 +183,10 @@ msgid "quarter"
 msgstr "Quarter Section"
 
 msgid "trashDay"
-msgstr "Trash Pickup Day"
+msgstr "Trash & Recycling Pickup Day"
 
 msgid "nextRecyclePickup"
-msgstr "Next Recycle Pickup"
+msgstr "Next Yard Waste Pickup"
 
 msgid "township"
 msgstr "Township"
