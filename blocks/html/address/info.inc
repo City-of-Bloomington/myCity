@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2015-2016 City of Bloomington, Indiana
+ * @copyright 2015-2018 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @param Address $this->address
  * @param int $_GET['address_id']
@@ -11,7 +11,7 @@ use Application\Models\DirectoryGateway;
 
 use Blossom\Classes\Block;
 
-$address  = $this->address;
+$address = $this->address;
 ?>
 <section class="uiBlock" id="about-this-address">
     <header class="uiBlock-header">
@@ -64,23 +64,30 @@ $address  = $this->address;
                     </div>
                 </div>
             <?php endif; ?>
-            <?php if (isset($address['trashDay'])): ?>
-                <div    class="myCity-trash-container">
-                    <dl class="myCity-addressInfo-keyValuePair modTrashDay">
-                        <dt><?= $this->_('trashDay') ?></dt>
-                        <dd><?= ucfirst(strtolower($address['trashDay'])) ?></dd>
-                    </dl>
-                    <dl class="myCity-addressInfo-keyValuePair modRecycleWeek">
-                        <dt><?= $this->_('nextRecyclePickup') ?></dt>
-                        <dd>Week <?= $address['recycleWeek'] ?></dd>
-                    </dl>
-                    <p class="myCity-trash-details">
-                    <?php
-                        echo sprintf($this->_('sanitationDetails', 'messages'), '<a href="/trash">', '</a>');
-                    ?>
-                    </p>
-                </div>
-            <?php endif; ?>
+            <?php
+                if (isset($address['trashDay'])) {
+                    global $SANITATION_SCHEDULE;
+
+                    $trashDay    = ucfirst(strtolower($address['trashDay']));
+                    $recycleWeek = $address['recycleWeek'];
+                    $url         = $SANITATION_SCHEDULE[$recycleWeek][$trashDay];
+                    $details     = sprintf($this->_('sanitationDetails', 'messages'), '<a href="/trash">', '</a>');
+
+                    echo "
+                    <div    class=\"myCity-trash-container\">
+                        <dl class=\"myCity-addressInfo-keyValuePair modTrashDay\">
+                            <dt>{$this->_('trashDay')}</dt>
+                            <dd>$trashDay</dd>
+                        </dl>
+                        <dl class=\"myCity-addressInfo-keyValuePair modRecycleWeek\">
+                            <dt>{$this->_('nextRecyclePickup')}</dt>
+                            <dd><a href=\"$url\">Week $recycleWeek</a></dd>
+                        </dl>
+                        <p class=\"myCity-trash-details\">$details</p>
+                    </div>
+                    ";
+                }
+            ?>
             <?php if (!empty($purposes['parkingZone'])): ?>
                 <div class="myCity-parking-container">
                     <?php
