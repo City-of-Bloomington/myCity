@@ -128,3 +128,17 @@ $SANITATION_SCHEDULE = [
         'Thursday'  => 'https://bloomington.in.gov/sanitation/trash/thursday-b'
     ]
 ];
+
+$CITY_COUNCIL = [
+    'District I'   => '',
+    'District II'  => '',
+    'District III' => '',
+    'District IV'  => '',
+    'District V'   => '',
+    'District VI'  => '',
+    'At-Large'     => [
+        '',
+        '',
+        ''
+    ]
+];

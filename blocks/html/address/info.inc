@@ -198,42 +198,32 @@ $address = $this->address;
                 $atLargeMembers = '';
                 if (!empty(         $purposes['councilDistrict'])) {
                     $districtName = $purposes['councilDistrict'][0];
-                    $district = CityCouncilGateway::members($districtName);
-                    $atLarge  = CityCouncilGateway::members(CityCouncilGateway::AT_LARGE);
+                    $districtRep = CityCouncilGateway::members($districtName);
+                    $atLargeReps = CityCouncilGateway::members(CityCouncilGateway::AT_LARGE);
 
-                    $districtName = self::escape($districtName);
+                    $districtName   = self::escape($districtName);
                     $districtNumber = self::escape(filter_var($districtName, FILTER_SANITIZE_NUMBER_INT));
                 }
             ?>
-            <?php if (count($atLarge)): ?>
+            <?php if ($atLargeReps): ?>
                 <div class="myCity-atLarge">
                     <h2 class="myCity-electedOfficials-subheading"><?= $this->_('atLarge'); ?></h2>
                     <?php
-                        foreach ($atLarge as $member) {
-                            if (!empty($member['email'])
-                                && false !== strpos($member['email'], DIRECTORY_DOMAIN)
-                                && preg_match('|([a-z]+)@'.DIRECTORY_DOMAIN.'|',$member['email'], $matches)) {
-
-                                $atLargeContact->entry = DirectoryGateway::info($matches[1]);
-                                echo $atLargeContact->render('html', $this->template);
-                            }
+                        foreach ($atLargeReps as $username) {
+                            $atLargeContact->entry = DirectoryGateway::info($username);
+                            echo $atLargeContact->render('html', $this->template);
                         }
                     ?>
                 </div>
             <?php endif ?>
 
-            <?php if (count($district)): ?>
+            <?php if ($districtRep): ?>
                 <?php
                     // Define some variables for the City Council District Representative
-                    if (!empty($district[0]['email'])
-                        && false !== strpos($district[0]['email'], DIRECTORY_DOMAIN)
-                        && preg_match('|([a-z]+)@'.DIRECTORY_DOMAIN.'|',$district[0]['email'], $matches)) {
-
-                        $districtEntry   = DirectoryGateway::info($matches[1]);
-                        $districtFields  = array_merge(['email', 'address'], DirectoryGateway::$phoneNumberFields);
-                        $districtRepName = self::escape($districtEntry['firstname']).' '.self::escape($districtEntry['lastname']);
-                        $districtImgName = strtolower($districtEntry['lastname']);
-                    }
+                    $districtEntry   = DirectoryGateway::info($districtRep);
+                    $districtFields  = array_merge(['email', 'address'], DirectoryGateway::$phoneNumberFields);
+                    $districtRepName = self::escape($districtEntry['firstname']).' '.self::escape($districtEntry['lastname']);
+                    $districtImgName = strtolower($districtEntry['lastname']);
                 ?>
                 <div         class="myCity-councilDistrict"><h2 class="myCity-electedOfficials-subheading">Your City Council District</h2>
                     <div     class="myCity-councilDistrict-mapContainer">
