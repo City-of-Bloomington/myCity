@@ -163,7 +163,7 @@ $address = $this->address;
             <h2 class="uiBlock-title"><?= $this->_('votingInfo'); ?></h2>
         </header>
         <div class="uiBlock-content">
-            <?php $mayorInfo = DirectoryGateway::info('hamiltoj'); ?>
+            <?php $mayorInfo = DirectoryGateway::info('mayor'); ?>
             <?php if (count($mayorInfo)): ?>
                 <div         class="myCity-mayor">
                     <div     class="myCity-mayor-photoContainer">
@@ -180,7 +180,7 @@ $address = $this->address;
                                 <td>Office Of The Mayor<br />401 N Morton St<br />Bloomington, IN 47404</td>
                             </tr>
                             <tr><th>Telephone</th>
-                                <td><?= $mayorInfo['office'] ?></td>
+                                <td><?= $mayorInfo['pager'] ?></td>
                             </tr>
                         </table>
                         <div class="myCity-mayor-biography">
