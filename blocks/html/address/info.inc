@@ -223,7 +223,9 @@ $address = $this->address;
                     $districtEntry   = DirectoryGateway::info($districtRep);
                     $districtFields  = array_merge(['email', 'address'], DirectoryGateway::$phoneNumberFields);
                     $districtRepName = self::escape($districtEntry['firstname']).' '.self::escape($districtEntry['lastname']);
-                    $districtImgName = strtolower($districtEntry['lastname']);
+                    $districtImg     = !empty($districtEntry['photo'])
+                                     ? "<img src=\"$districtEntry[photo]\" alt=\"$districtRepName\" />"
+                                     : '';
                 ?>
                 <div         class="myCity-councilDistrict"><h2 class="myCity-electedOfficials-subheading">Your City Council District</h2>
                     <div     class="myCity-councilDistrict-mapContainer">
@@ -232,7 +234,7 @@ $address = $this->address;
                         </div>
                     </div>
                     <div     class="myCity-councilDistrict-details">
-                        <img srcset="css/img/<?= $districtImgName ?>-1x.jpg 1x, css/img/<?= $districtImgName ?>-2x.jpg 2x" sizes="299px" src="css/img/<?= $districtImgName ?>-1x.jpg" alt="<?= $districtEntry['displayname'] ?>" />
+                        <?= $districtImg; ?>
                         <h3><?= $districtRepName ?></h3>
                         <div class="myCity-councilDistrict-repTitle">District <?= $districtNumber ?> Representative</div>
                         <table class="table-contact">
