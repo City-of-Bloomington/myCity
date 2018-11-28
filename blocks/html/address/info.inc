@@ -217,8 +217,8 @@ $address = $this->address;
                 <?php
                     // Define some variables for the City Council District Representative
                     $districtRepName = parent::escape($districtRep['name']);
-                    $districtImg     = !empty($$districtRep['photo'])
-                                     ? "<img src=\"$$districtRep[photo]\" alt=\"$districtRepName\" />"
+                    $districtImg     = !empty($districtRep['photo'])
+                                     ? "<img src=\"$districtRep[photo]\" alt=\"$districtRepName\" />"
                                      : '';
                 ?>
                 <div         class="myCity-councilDistrict"><h2 class="myCity-electedOfficials-subheading">Your City Council District</h2>
