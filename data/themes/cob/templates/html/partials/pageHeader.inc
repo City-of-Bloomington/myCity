@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2015-2017 City of Bloomington, Indiana
+ * @copyright 2015-2018 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  */
 use Blossom\Classes\View;
@@ -12,8 +12,11 @@ $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
     <div class="siteHeader-container">
         <?php
             $this->addToAsset('scripts', BASE_URI.'/js/menuLauncher.js');
-            include(ASSETS_HOME.'/html/cob-siteHeader-logo.html');
         ?>
+        <a href="//bloomington.in.gov/" class="cob-siteHeader-logo" title="Home" rel="home" id="logo">
+            <img src="//bloomington.in.gov/static/assets/img/bloomington-logo.svg"
+                alt="City of Bloomington, Indiana" />
+        </a>
     </div>
 </header>
 <header class="cob-pageHeader">

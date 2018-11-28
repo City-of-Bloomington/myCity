@@ -21,7 +21,6 @@ define('CIVIC_LEGISLATION', 'http://localhost/onboard');
  * The current theme's screen.css will be included in the HTML head.
  */
 #define('THEME', 'cob');
-#define('ASSETS_HOME', '/path/to/common/assets');
 #define('ASSETS_URI', '//path/to/common/assets');
 #define('DRUPAL_STYLESHEET_URI', '//path/to/drupal_stylesheet');
 /* ^^ We don't have time to extricate this app from the Drupal stylesheet yet, but need to prevent the CORS problems we see in demos ^^ */
