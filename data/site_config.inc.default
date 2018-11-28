@@ -11,6 +11,8 @@ define('BASE_URI','/application');
 define('MASTER_ADDRESS',    'http://localhost/master_address');
 define('CIVIC_LEGISLATION', 'http://localhost/onboard');
 
+define('GOOGLE_API_KEY', '');
+
 /**
  * Specify the theme directory
  *
