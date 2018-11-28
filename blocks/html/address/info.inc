@@ -11,6 +11,8 @@ use Application\Models\DirectoryGateway;
 
 use Blossom\Classes\Block;
 
+global $CONTACT_INFO;
+
 $address = $this->address;
 ?>
 <section class="uiBlock" id="about-this-address">
@@ -157,51 +159,45 @@ $address = $this->address;
     </div>
 </section>
 
-<?php if($address['jurisdiction'] === 'Bloomington'): ?>
+<?php if ($address['jurisdiction'] == 'Bloomington'): ?>
     <section class="uiBlock" id="elected-officials">
         <header class="uiBlock-header">
             <h2 class="uiBlock-title"><?= $this->_('votingInfo'); ?></h2>
         </header>
         <div class="uiBlock-content">
-            <?php $mayorInfo = DirectoryGateway::info('mayor'); ?>
-            <?php if (count($mayorInfo)): ?>
-                <div         class="myCity-mayor">
-                    <div     class="myCity-mayor-photoContainer">
-                        <img class="myCity-mayor-photo" srcset="css/img/mayor-1x.jpg 1x, css/img/mayor-2x.jpg 2x" sizes="437px" src="css/img/mayor-1x.jpg" />
-                    </div>
-                    <div     class="myCity-mayor-details">
-                        <div class="myCity-mayor-title"><?= $this->_('mayor'); ?></div>
-                        <h2  class="myCity-mayor-name"><?= $mayorInfo['firstname'] ?> <?= $mayorInfo['lastname'] ?></h2>
-                        <table class="table-contact">
-                            <tr><th>Email</th>
-                                <td><?= $mayorInfo['email'] ?></td>
-                            </tr>
-                            <tr><th>Mailing Address</th>
-                                <td>Office Of The Mayor<br />401 N Morton St<br />Bloomington, IN 47404</td>
-                            </tr>
-                            <tr><th>Telephone</th>
-                                <td><?= $mayorInfo['pager'] ?></td>
-                            </tr>
-                        </table>
-                        <div class="myCity-mayor-biography">
-                            <h3>About the Mayor</h3>
-                            <p>John has worked extensively as a public servant in Democratic government, leading two state agencies, advising a Governor and Lieutenant Governor, and serving as an elected official.  As the Secretary of the Indiana Family and Social Services Administration, he oversaw the implementation of Medicaid and welfare programs, services for the elderly, disabled, mentally ill, and children at risk, and state-wide community development and housing programs – all executed by a staff of 10,000 Hoosiers with an annual budget of $6 billion. Earlier he served as Commissioner of the Indiana Department of Environmental Management, the agency tasked with the statewide protection of Indiana’s air, water and land. John served as an elected member of the Board of Trustees for the Monroe County Community School Corporation. Throughout his time in Bloomington, John has served on many state and local commissions and boards, including chairing the Bloomington Commission on Sustainability and the Shalom Community Center board, as well as national boards such as the National Community Land Trust Network.</p>
-                        </div>
+            <?php $mayorInfo = $CONTACT_INFO['mayor']; ?>
+            <div         class="myCity-mayor">
+                <div     class="myCity-mayor-photoContainer">
+                    <img class="myCity-mayor-photo" src="<?= $mayorInfo['photo']; ?>" />
+                </div>
+                <div     class="myCity-mayor-details">
+                    <div class="myCity-mayor-title"><?= $this->_('mayor'); ?></div>
+                    <h2  class="myCity-mayor-name"><?= $mayorInfo['name'] ?></h2>
+                    <table class="table-contact">
+                        <tr><th>Email</th>
+                            <td><?= $mayorInfo['email'] ?></td>
+                        </tr>
+                        <tr><th>Mailing Address</th>
+                            <td><?= $mayorInfo['address']; ?></td>
+                        </tr>
+                        <tr><th>Telephone</th>
+                            <td><?= $mayorInfo['phone'] ?></td>
+                        </tr>
+                    </table>
+                    <div class="myCity-mayor-biography">
+                        <h3>About the Mayor</h3>
+                        <p>John has worked extensively as a public servant in Democratic government, leading two state agencies, advising a Governor and Lieutenant Governor, and serving as an elected official.  As the Secretary of the Indiana Family and Social Services Administration, he oversaw the implementation of Medicaid and welfare programs, services for the elderly, disabled, mentally ill, and children at risk, and state-wide community development and housing programs – all executed by a staff of 10,000 Hoosiers with an annual budget of $6 billion. Earlier he served as Commissioner of the Indiana Department of Environmental Management, the agency tasked with the statewide protection of Indiana’s air, water and land. John served as an elected member of the Board of Trustees for the Monroe County Community School Corporation. Throughout his time in Bloomington, John has served on many state and local commissions and boards, including chairing the Bloomington Commission on Sustainability and the Shalom Community Center board, as well as national boards such as the National Community Land Trust Network.</p>
                     </div>
                 </div>
-            <?php else: ?>
-                <h1>Error retrieving Mayor info</h1>
-            <?php endif ?>
+            </div>
             <?php
                 $atLargeContact = new Block('directory/atLargeContact.inc');
                 $districtMember = '';
                 $atLargeMembers = '';
-                if (!empty(         $purposes['councilDistrict'])) {
-                    $districtName = $purposes['councilDistrict'][0];
-                    $districtRep = CityCouncilGateway::members($districtName);
-                    $atLargeReps = CityCouncilGateway::members(CityCouncilGateway::AT_LARGE);
-
-                    $districtName   = self::escape($districtName);
+                if (!empty(           $purposes['councilDistrict'])) {
+                    $districtName   = $purposes['councilDistrict'][0];
+                    $districtRep    = $CONTACT_INFO['council'][$districtName];
+                    $atLargeReps    = $CONTACT_INFO['council']['At-Large'   ];
                     $districtNumber = self::escape(filter_var($districtName, FILTER_SANITIZE_NUMBER_INT));
                 }
             ?>
@@ -209,8 +205,8 @@ $address = $this->address;
                 <div class="myCity-atLarge">
                     <h2 class="myCity-electedOfficials-subheading"><?= $this->_('atLarge'); ?></h2>
                     <?php
-                        foreach ($atLargeReps as $username) {
-                            $atLargeContact->entry = DirectoryGateway::info($username);
+                        foreach ($atLargeReps as $rep) {
+                            $atLargeContact->entry = $rep;
                             echo $atLargeContact->render('html', $this->template);
                         }
                     ?>
@@ -220,11 +216,9 @@ $address = $this->address;
             <?php if ($districtRep): ?>
                 <?php
                     // Define some variables for the City Council District Representative
-                    $districtEntry   = DirectoryGateway::info($districtRep);
-                    $districtFields  = array_merge(['email', 'address'], DirectoryGateway::$phoneNumberFields);
-                    $districtRepName = self::escape($districtEntry['firstname']).' '.self::escape($districtEntry['lastname']);
-                    $districtImg     = !empty($districtEntry['photo'])
-                                     ? "<img src=\"$districtEntry[photo]\" alt=\"$districtRepName\" />"
+                    $districtRepName = parent::escape($districtRep['name']);
+                    $districtImg     = !empty($$districtRep['photo'])
+                                     ? "<img src=\"$$districtRep[photo]\" alt=\"$districtRepName\" />"
                                      : '';
                 ?>
                 <div         class="myCity-councilDistrict"><h2 class="myCity-electedOfficials-subheading">Your City Council District</h2>
@@ -239,14 +233,11 @@ $address = $this->address;
                         <div class="myCity-councilDistrict-repTitle">District <?= $districtNumber ?> Representative</div>
                         <table class="table-contact">
                         <?php
-                            foreach ($districtFields as $field) {
-                                if (!empty($districtEntry[$field])) {
-                                    $value = self::escape($districtEntry[$field]);
-                                    echo "
-                                    <tr><th>{$this->_($field)}</th>
-                                        <td>$value</td>
-                                    </tr>
-                                    ";
+                            foreach (['email', 'address', 'phone', 'fax'] as $field) {
+                                if (!empty($districtRep[$field])) {
+                                    $key   = ucfirst($field);
+                                    $value = self::escape($districtRep[$field]);
+                                    echo "<tr><th>$key</th><td>$value</td></tr>";
                                 }
                             }
                         ?>
@@ -258,7 +249,7 @@ $address = $this->address;
             <div class="myCity-clerk">
                 <h2 class="myCity-electedOfficials-subheading"><?= $this->_('clerk'); ?></h2>
                 <?php
-                    $atLargeContact->entry = DirectoryGateway::info('*clerk');
+                    $atLargeContact->entry = $CONTACT_INFO['clerk'];
                     echo $atLargeContact->render('html', $this->template);
                 ?>
             </div>

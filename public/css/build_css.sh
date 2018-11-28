@@ -1,3 +1,3 @@
 #!/bin/bash
-pysassc -t compact -m screen.scss screen.css
+sassc -mt compact screen.scss screen.css
 

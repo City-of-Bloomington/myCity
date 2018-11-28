@@ -129,16 +129,84 @@ $SANITATION_SCHEDULE = [
     ]
 ];
 
-$CITY_COUNCIL = [
-    'District I'   => '',
-    'District II'  => '',
-    'District III' => '',
-    'District IV'  => '',
-    'District V'   => '',
-    'District VI'  => '',
-    'At-Large'     => [
-        '',
-        '',
-        ''
+$CONTACT_INFO = [
+    'mayor' => [ 'name'    => '',
+                 'photo'   => '',
+                 'email'   => '',
+                 'address' => '',
+                 'phone'   => '',
+                 'fax'     => ''],
+
+    'clerk' => [ 'name'    => '',
+                 'photo'   => '',
+                 'email'   => '',
+                 'address' => '',
+                 'phone'   => '',
+                 'fax'     => ''],
+    'council' => [
+        'District I'   => [ 'name'    => '',
+                            'photo'   => '',
+                            'email'   => '',
+                            'address' => '',
+                            'phone'   => '',
+                            'fax'     => ''],
+
+        'District II'  => [ 'name'    => '',
+                            'photo'   => '',
+                            'email'   => '',
+                            'address' => '',
+                            'phone'   => '',
+                            'fax'     => ''],
+
+        'District III' => [ 'name'    => '',
+                            'photo'   => '',
+                            'email'   => '',
+                            'address' => '',
+                            'phone'   => '',
+                            'fax'     => ''],
+
+        'District IV'  => [ 'name'    => '',
+                            'photo'   => '',
+                            'email'   => '',
+                            'address' => '',
+                            'phone'   => '',
+                            'fax'     => ''],
+
+        'District V'   => [ 'name'    => '',
+                            'photo'   => '',
+                            'email'   => '',
+                            'address' => '',
+                            'phone'   => '',
+                            'fax'     => ''],
+
+        'District VI'  => [ 'name'    => '',
+                            'photo'   => '',
+                            'email'   => '',
+                            'address' => '',
+                            'phone'   => '',
+                            'fax'     => ''],
+
+        'At-Large'     => [
+            [ 'name'    => '',
+              'photo'   => '',
+              'email'   => '',
+              'address' => '',
+              'phone'   => '',
+              'fax'     => ''],
+
+            [ 'name'    => '',
+              'photo'   => '',
+              'email'   => '',
+              'address' => '',
+              'phone'   => '',
+              'fax'     => ''],
+
+            [ 'name'    => '',
+              'photo'   => '',
+              'email'   => '',
+              'address' => '',
+              'phone'   => '',
+              'fax'     => '']
+        ]
     ]
 ];

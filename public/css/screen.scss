@@ -406,6 +406,7 @@ a {
     th, td {
         border-top: 1px solid $cob-gray;
         padding: .5em 0;
+        white-space: pre-line;
     }
     th {
         color: $cob-blue-darkest;
