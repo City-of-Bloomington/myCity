@@ -1,11 +1,11 @@
 <?php
 /**
- * @copyright 2015 City of Bloomington, Indiana
- * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
- * @author Cliff Ingham <inghamn@bloomington.in.gov>
+ * @copyright 2015-2018 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  * @param Address $this->address
  */
 use Blossom\Classes\View;
+
 if (isset($this->address)) {
     $lat        = $this->address['latitude'];
     $lon        = $this->address['longitude'];
@@ -24,4 +24,4 @@ else {
     data-longitude="<?= $lon ?>"
     <?= $data_title; ?> id="map-canvas"></div>
 
-<?php $this->_include('html/address/searchForm.inc'); ?>
+<?php $this->_include('address/searchForm.inc'); ?>

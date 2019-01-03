@@ -3,8 +3,7 @@
  * Where on the filesystem this application is installed
  */
 define('APPLICATION_HOME', __DIR__);
-define('BLOSSOM', APPLICATION_HOME.'/libraries/Blossom');
-define('ZEND',    APPLICATION_HOME.'/libraries/zf2/library/Zend');
+define('BLOSSOM', APPLICATION_HOME.'/vendor/City-of-Bloomington/blossom-lib');
 
 /**
  * Multi-Site support
@@ -33,7 +32,7 @@ include SITE_HOME.'/site_config.inc';
  * EMAIL_ADMIN - email the Administrator
  * EMAIL_USER - email the logged in user
  * SKIDDER - post errors to a Skidder server (see config below)
-*/
+ */
 define('ERROR_REPORTING','PHP_DEFAULT');
 //define('ERROR_REPORTING','CUSTOM');
 //$ERROR_REPORTING = array('PRETTY_PRINT','SKIDDER');
@@ -53,28 +52,13 @@ define('ERROR_REPORTING','PHP_DEFAULT');
 /**
  * Enable autoloading for the PHP libraries
  */
-require_once ZEND.'/Loader/AutoloaderFactory.php';
-$config = [
-	'Zend\Loader\StandardAutoloader' => [
-		'namespaces' => [
-			'Application' => APPLICATION_HOME,
-			'Blossom'     => BLOSSOM,
-			'Zend'        => ZEND
-		]
-	]
-];
-Zend\Loader\AutoloaderFactory::factory($config);
+$loader = require APPLICATION_HOME.'/vendor/autoload.php';
 
 if (ERROR_REPORTING != 'PHP_DEFAULT') {
     set_error_handler         ('Blossom\Classes\Error::customErrorHandler');
     set_exception_handler     ('Blossom\Classes\Error::customExceptionHandler');
     register_shutdown_function('Blossom\Classes\Error::shutdownHandler');
 }
-
-/**
- * Load the Zend_Acl
- */
-include APPLICATION_HOME.'/access_control.inc';
 
 /**
  * Grab a timestamp for calculating process time

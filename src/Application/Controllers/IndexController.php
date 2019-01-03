@@ -25,7 +25,8 @@ class IndexController extends Controller
 			$this->template->setFilename('index');
 			$this->template->blocks[] = $searchForm;
 			$this->template->blocks[] = new Block('greeting.inc');
-		} else {
+		}
+		else {
 			$this->template->setFilename('full-width');
 
 			// Handle search results
