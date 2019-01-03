@@ -5,7 +5,7 @@
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  * @param array $this->results JSON array of result objects
  */
-if (!count($this->results)) {
+if (!$this->results) {
     echo "<h2>{$this->_('no_results_found', 'messages')}</h2>";
 }
 else {
