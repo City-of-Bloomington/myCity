@@ -1,9 +1,8 @@
 <?php
 /**
- * @copyright 2015-2018 City of Bloomington, Indiana
- * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
+ * @copyright 2015-2019 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  * @param Address $this->address
- * @param int $_GET['address_id']
  */
 use Application\Models\MasterAddressGateway;
 use Application\Models\CityCouncilGateway;
@@ -15,15 +14,15 @@ global $CONTACT_INFO;
 
 $address = $this->address;
 ?>
-<section class="uiBlock" id="about-this-address">
+<section    class="uiBlock" id="about-this-address">
     <header class="uiBlock-header">
         <h2 class="uiBlock-title"><?= $this->_('aboutThisAddress') ?></h2>
     </header>
-    <div class="uiBlock-content">
+    <div    class="uiBlock-content">
         <div class="myCity-addressInfo">
-            <?php if(isset($address['latitude']) && isset($address['longitude'])): ?>
+            <?php if(isset($address['address']['latitude']) && isset($address['address']['longitude'])): ?>
                 <?php
-                    $inOrOut = $address['jurisdiction'] === 'Bloomington'
+                    $inOrOut = $address['address']['jurisdiction_name'] === 'Bloomington'
                         ? 'Inside'
                         : 'Outside';
                 ?>
@@ -35,34 +34,40 @@ $address = $this->address;
                         </dl>
                     </div>
                     <div class="myCity-location-additionalInfo">
-                        <?php
-                            $purposes = $address->getPurposeValuesByType();
+                    <?php
+                        $purposes = $address->getPurposeValuesByType();
 
-                            $purposesToDisplayHere = [
-                                'neighborhoodAssociation',
-                                'historicDistrict',
-                                'economicDevelopmentArea'
-                            ];
-                            foreach ($purposesToDisplayHere as $p) {
-                                if (!empty($purposes[$p])) {
-                                    echo "<dl class=\"myCity-addressInfo-keyValuePair modLocation\"><dt>{$this->_($p)}</dt>";
-                                    foreach ($purposes[$p] as $value) {
-                                        $value = self::escape($value);
-                                        echo "<dd>$value</dd>";
-                                    }
-                                    echo "</dl>";
+                        $purposesToDisplayHere = [
+                            'neighborhoodAssociation',
+                            'historicDistrict',
+                            'economicDevelopmentArea'
+                        ];
+                        foreach ($purposesToDisplayHere as $p) {
+                            if (!empty($purposes[$p])) {
+                                echo "<dl class=\"myCity-addressInfo-keyValuePair modLocation\"><dt>{$this->_($p)}</dt>";
+                                foreach ($purposes[$p] as $value) {
+                                    $value = self::escape($value);
+                                    echo "<dd>$value</dd>";
                                 }
+                                echo "</dl>";
                             }
-                            if ($address['jurisdiction'] === 'Monroe County') {
-                                echo'<p>For more information about this address, see the <a href="http://www.co.monroe.in.us/tsd/gis.aspx">Monroe County GIS website</a>.</p>';
-                            }
-                        ?>
-                        <?php if (!empty($address['township'])): ?>
-                            <dl class="myCity-addressInfo-keyValuePair modLocation">
-                                <dt><?= $this->_('township') ?></dt>
-                                <dd><?= $address['township'] ?></dd>
-                            </dl>
-                        <?php endif ?>
+                        }
+                        if ($address['address']['jurisdiction_name'] === 'Monroe County') {
+                            echo "
+                            <p>For more information about this address, see the
+                                <a href=\"http://www.co.monroe.in.us/tsd/gis.aspx\">
+                                Monroe County GIS website
+                                </a>.
+                            </p>
+                            ";
+                        }
+                    ?>
+                    <?php if (!empty($address['address']['township_name'])): ?>
+                        <dl class="myCity-addressInfo-keyValuePair modLocation">
+                            <dt><?= $this->_('township') ?></dt>
+                            <dd><?= $address['address']['township_name'] ?></dd>
+                        </dl>
+                    <?php endif ?>
                     </div>
                 </div>
             <?php endif; ?>
@@ -109,29 +114,29 @@ $address = $this->address;
     </div>
 </section>
 
-<section class="uiBlock" id="find-your-government-online">
+<section    class="uiBlock" id="find-your-government-online">
     <header class="uiBlock-header">
         <h2 class="uiBlock-title"><?= $this->_('governmentLinks'); ?></h2>
     </header>
-    <div class="uiBlock-content">
+    <div    class="uiBlock-content">
         <div class="myCity-govOnline">
             <?php
                 global $GOVERNMENTAL_CONTACT_INFO;
-                foreach (['state', 'county', 'jurisdiction'] as $region) {
-                    $regionName = $address[$region] === 'IN'
+                foreach (['state', 'county', 'jurisdiction_name'] as $region) {
+                    $regionName = $address['address'][$region] === 'IN'
                         ? 'Indiana'
-                        : $address[$region];
+                        : $address['address'][$region];
 
-                    if ($address['jurisdiction'] === 'Bloomington' && $region === 'jurisdiction') {
+                    if ($address['address']['jurisdiction_name'] === 'Bloomington' && $region === 'jurisdiction_name') {
                         $region = 'city';
                     }
                     echo "
                     <dl><dt>{$this->_($region)}</dt>
                         <dd>$regionName</dd>
                     ";
-                    if (array_key_exists($address[$region], $GOVERNMENTAL_CONTACT_INFO)) {
+                    if (array_key_exists($address['address'][$region], $GOVERNMENTAL_CONTACT_INFO)) {
                         echo '<dd><dl>';
-                        foreach ($GOVERNMENTAL_CONTACT_INFO[$address[$region]]['online'] as $type=>$link) {
+                        foreach ($GOVERNMENTAL_CONTACT_INFO[$address['address'][$region]]['online'] as $type=>$link) {
                             $label = ucfirst($this->_($type));
                             echo "
                             <dt>$label:</dt>
@@ -141,7 +146,7 @@ $address = $this->address;
                         }
                         echo '</dl></dd>';
                         echo '<dd><dl>';
-                        foreach ($GOVERNMENTAL_CONTACT_INFO[$address[$region]]['offline'] as $type=>$info) {
+                        foreach ($GOVERNMENTAL_CONTACT_INFO[$address['address'][$region]]['offline'] as $type=>$info) {
                             $label = ucfirst($this->_($type));
                             echo "
                             <dt>$label:</dt>
@@ -159,12 +164,12 @@ $address = $this->address;
     </div>
 </section>
 
-<?php if ($address['jurisdiction'] == 'Bloomington'): ?>
-    <section class="uiBlock" id="elected-officials">
+<?php if ($address['address']['jurisdiction_name'] == 'Bloomington'): ?>
+    <section    class="uiBlock" id="elected-officials">
         <header class="uiBlock-header">
             <h2 class="uiBlock-title"><?= $this->_('votingInfo'); ?></h2>
         </header>
-        <div class="uiBlock-content">
+        <div    class="uiBlock-content">
             <?php $mayorInfo = $CONTACT_INFO['mayor']; ?>
             <div         class="myCity-mayor">
                 <div     class="myCity-mayor-photoContainer">
@@ -202,7 +207,7 @@ $address = $this->address;
                 }
             ?>
             <?php if ($atLargeReps): ?>
-                <div class="myCity-atLarge">
+                <div    class="myCity-atLarge">
                     <h2 class="myCity-electedOfficials-subheading"><?= $this->_('atLarge'); ?></h2>
                     <?php
                         foreach ($atLargeReps as $rep) {
@@ -257,11 +262,11 @@ $address = $this->address;
     </section>
 <?php endif ?>
 
-<section class="uiBlock">
+<section    class="uiBlock">
     <header class="uiBlock-header">
         <h2 class="uiBlock-title">Disclaimer</h2>
     </header>
-    <div class="uiBlock-content">
+    <div    class="uiBlock-content">
         <div class="myCity-disclaimer-text">
             <p>The information reported comes from the City of Bloomington Geographic Information Systems (GIS) and related databases.</p>
             <p>City staff strives to keep complete and accurate information and regrets any errors or omissions. To report missing City of Bloomington addresses or other profile errors, please contact the City of Bloomington GIS Staff at 812-349-3454 or email us at <a href="mailto: gis@bloomington.in.gov">gis@bloomington.in.gov</a>.</p>

@@ -1,8 +1,7 @@
 <?php
 /**
- * @copyright 2015 City of Bloomington, Indiana
- * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
- * @author Cliff Ingham <inghamn@bloomington.in.gov>
+ * @copyright 2015-2019 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 namespace Application\Models;
 
@@ -22,9 +21,9 @@ class MasterAddressGateway
     {
         if (  !empty($json['purposes'])) {
             foreach ($json['purposes'] as $p) {
-                if (array_key_exists($p['type'], self::$purposeMap)) {
-                    $f = self::$purposeMap[$p['type']];
-                    $json[$f][] = $p['description'];
+                if (array_key_exists($p['purpose_type'], self::$purposeMap)) {
+                    $f = self::$purposeMap[$p['purpose_type']];
+                    $json[$f][] = $p['name'];
                 }
             }
         }
@@ -32,18 +31,15 @@ class MasterAddressGateway
 
     public static function search($query)
     {
-        $url = MASTER_ADDRESS.'?format=json;queryType=address;query='.urlencode($_GET['address']);
+        $url = MASTER_ADDRESS.'?format=json;address='.urlencode($_GET['address']);
         return WebService::loadJsonResponse($url);
     }
 
-    public static function info($address_id)
+    public static function info(int $address_id)
     {
-        $address_id = (int)$address_id;
-        if ($address_id) {
-            $url = MASTER_ADDRESS.'/addresses/viewAddress.php?format=json;address_id='.urlencode($address_id);
-            $json = WebService::loadJsonResponse($url);
-            self::createPurposeVariables($json);
-            return $json;
-        }
+        $url  = MASTER_ADDRESS."/addresses/$address_id?format=json";
+        $json = WebService::loadJsonResponse($url);
+        self::createPurposeVariables($json);
+        return $json;
     }
 }

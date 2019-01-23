@@ -1,8 +1,7 @@
 <?php
 /**
- * @copyright 2015 City of Bloomington, Indiana
- * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
- * @author Cliff Ingham <inghamn@bloomington.in.gov>
+ * @copyright 2015-2019 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 namespace Application\Models;
 
@@ -10,21 +9,27 @@ class Address implements \ArrayAccess
 {
     public $data = [];
 
-    /**
-     * @param int|array $address_id
-     */
-    public function __construct($address)
+    public function __construct(array $data)
     {
-        $this->data = is_array($address)
-            ? $address
-            : MasterAddressGateway::info($address);
-
-        $this->data['county'] = DEFAULT_COUNTY;
+        $this->data = $data;
+        $this->data['address']['county'] = DEFAULT_COUNTY;
     }
 
     public function __get($field)
     {
         if (!empty($this->data[$field])) { return $this->data[$field]; }
+    }
+
+    public function isCurrentAddress(): bool
+    {
+        foreach ($this->data['locations'] as $l) {
+            if ($l['active']) {
+                if ($l['address_id'] == $this->data['address']['id']) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -39,16 +44,13 @@ class Address implements \ArrayAccess
      *
      * @return Address
      */
-    public function getCurrentAddress()
+    public function getCurrentAddress(): Address
     {
         foreach ($this->data['locations'] as $location) {
             if ($location['active']) {
-                if ($location['address_id'] == $this->data['id']) {
-                    return $this;
-                }
-                else {
-                    return new Address($location['address_id']);
-                }
+                return ($location['address_id'] == $this->data['address']['id'])
+                    ? $this
+                    : new Address(MasterAddressGateway::info((int)$location['address_id']));
             }
         }
     }
@@ -67,9 +69,9 @@ class Address implements \ArrayAccess
         $out = [];
         if (  !empty($this->data['purposes'])) {
             foreach ($this->data['purposes'] as $purpose) {
-                if (array_key_exists($purpose['type'], MasterAddressGateway::$purposeMap)) {
-                    $variableName = MasterAddressGateway::$purposeMap[$purpose['type']];
-                    $out[$variableName][] = $purpose['description'];
+                if (array_key_exists($purpose['purpose_type'], MasterAddressGateway::$purposeMap)) {
+                    $variableName = MasterAddressGateway::$purposeMap[$purpose['purpose_type']];
+                    $out[$variableName][] = $purpose['name'];
                 }
             }
         }

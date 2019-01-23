@@ -1,15 +1,13 @@
 <?php
 /**
- * @copyright 2015 City of Bloomington, Indiana
- * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
+ * @copyright 2015-2019 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  * @param Address $this->address
- * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
-
-$address = $this->address;
+$address = $this->address['address'];
 ?>
-<div class="pageOverview">
-    <div class="pageOverview-container">
+<div         class="pageOverview">
+    <div     class="pageOverview-container">
         <div class="pageOverview-mainInfo">
             <p><?= $this->_('pageOverview_address', 'messages'); ?></p>
             <address class="pageOverview-address"><?= $address['streetAddress'] ?>
@@ -31,7 +29,7 @@ $address = $this->address;
                 <dt>Learn about</dt>
                 <dd><a href="#about-this-address"><?= $this->_('aboutThisAddress'); ?></a></dd>
                 <dd><a href="#find-your-government-online"><?= $this->_('governmentLinks'); ?></a></dd>
-                <?php if($address['jurisdiction'] == 'Bloomington'): ?>
+                <?php if ($address['jurisdiction_name'] == 'Bloomington'): ?>
                     <dd><a href="#elected-officials"><?= $this->_('votingInfo'); ?></a></dd>
                 <?php endif ?>
             </dl>
