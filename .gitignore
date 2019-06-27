@@ -1,6 +1,7 @@
 site_config.inc
 data/sessions/*
 build
+dist
 vendor
 screen.css
 screen.css.map
