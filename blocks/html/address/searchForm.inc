@@ -5,6 +5,7 @@
  * @param Address $this->address
  */
 use Blossom\Classes\View;
+$address = '';
 if (isset($this->address)) {
     $address = $this->address['address']['streetAddress'];
 }

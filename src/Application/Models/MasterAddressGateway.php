@@ -31,7 +31,7 @@ class MasterAddressGateway
 
     public static function search($query)
     {
-        $url = MASTER_ADDRESS.'?format=json;address='.urlencode($_GET['address']);
+        $url = MASTER_ADDRESS.'/addresses?format=json;address='.urlencode($_GET['address']);
         return WebService::loadJsonResponse($url);
     }
 
