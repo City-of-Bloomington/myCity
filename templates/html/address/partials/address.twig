@@ -1,0 +1,21 @@
+{#
+ * @copyright 2022 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
+ * @param array address
+ * @param array purposes
+#}
+<section>
+    <header>
+        <h2>{{ address.streetAddress }}</h2>
+        <p>Information about this address</p>
+    </header>
+    <table>
+        <tr><th>Township</th><td>{{ address.township_name }}</td></tr>
+        {% for type,p in purposes %}
+        <tr><th>{{ type }}</th>
+            <td>{% for name in p %}<div>{{ name }}</div>{% endfor %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+

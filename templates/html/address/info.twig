@@ -1,0 +1,17 @@
+{#
+ * @copyright 2022 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
+ * @param array address
+ * @param array location
+ * @param array purposes
+ * @param array contact_info
+#}
+{% extends "html/layouts/default.twig" %}
+
+{% block content %}
+{{ include('html/address/partials/address.twig'    ) }}
+{{ include('html/address/partials/sanitation.twig' ) }}
+{{ include('html/address/partials/elected.twig'    ) }}
+{{ include('html/address/partials/coordinates.twig') }}
+{{ include('html/address/partials/government.twig' ) }}
+{% endblock %}

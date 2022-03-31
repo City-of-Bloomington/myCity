@@ -1,0 +1,27 @@
+{#
+ * @copyright 2022 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
+ * @param array address
+#}
+<section>
+    <header>
+        <h2>Coordinate Details</h2>
+    </header>
+    <div>
+        <p>The City of Bloomington <a href="/gis">GIS Department</a> staff
+           maintains spatial data and provides mapping and spatial analysis
+           services to support operations of City Departments, Boards and Commissions.
+        </p>
+        <p>Native coordinate reference system is:<br />
+           <strong>NAD 83 State Plane Indiana West Zone (1302) US Survey Feet EPSG:2966</strong>
+        </p>
+        <table>
+            <tr><th>State Plane X / Y</th>
+                <td>{{ address.state_plane_x }}, {{ address.state_plane_y }}</td>
+            </tr>
+            <tr><th>Latitude / Longitude</th>
+                <td>{{ address.latitude }}, {{ address.longitude }}</td>
+            </tr>
+        </table>
+    </div>
+</section>

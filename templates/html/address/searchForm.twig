@@ -1,0 +1,36 @@
+{#
+ * @copyright 2022 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
+ * @param string query
+ * @param array  results
+#}
+{% extends "html/layouts/default.twig" %}
+
+{% block content %}
+<h1>Welcome,</h1>
+<p>myBloomington provides information related to a given street address.</p>
+<p>Enter an address to learn more:</p>
+<form method="get">
+    <fieldset>
+        <label  for="query">Address Search</label>
+        <input name="query" id="query" placeholder="401 N Morton ST" value="{{ query }}" />
+        <button type="submit">Search</button>
+    </fieldset>
+</form>
+
+{% if query and not results %}
+<p>No resuts found</p>
+{% endif %}
+
+{% if results %}
+<h2>Addresses</h2>
+    {% for a in results %}
+    <div class="{{ a.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
+        <a href="{{ uri('address.info', {'id': a.id}) }}">
+        {{ a.streetAddress }}
+        </a>
+    </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
