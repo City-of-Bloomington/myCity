@@ -1,4 +1,4 @@
-site_config.inc
+site_config.php
 data/sessions/*
 build
 dist

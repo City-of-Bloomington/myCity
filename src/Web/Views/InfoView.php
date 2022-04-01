@@ -10,16 +10,22 @@ use Web\View;
 
 class InfoView extends View
 {
-    public function __construct(array $response)
+    public function __construct(array $address,
+                                array $schools,
+                                array $parks,
+                                array $playgrounds)
     {
         parent::__construct();
 
         global $CONTACT_INFO;
         $this->vars = [
-            'address'      => $response['address' ],
-            'location'     => $response['location'],
-            'purposes'     => $response['purposes'],
-            'contact_info' => $CONTACT_INFO
+            'address'      => $address['address' ],
+            'location'     => $address['location'],
+            'purposes'     => $address['purposes'],
+            'contact_info' => $CONTACT_INFO,
+            'schools'      => $schools,
+            'parks'        => $parks,
+            'playgrounds'  => $playgrounds
         ];
     }
 

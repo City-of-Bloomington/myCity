@@ -14,12 +14,10 @@ default: clean compile test package
 
 clean:
 	rm -Rf build/${APPNAME}*
-	cd public/css                 && rm -f *.css*
-	cd data/Themes/COB/public/css && rm -f *.css*
+	cd public/css && rm -f *.css*
 
 compile: $(LANGUAGES)
-	cd public/css                 && sassc -t compact -m screen.scss screen-${VERSION}.css
-	cd data/Themes/COB/public/css && sassc -t compact -m screen.scss screen-${VERSION}.css
+	cd public/css && sassc -t compact -m screen.scss screen-${VERSION}.css
 	for f in ${JAVASCRIPT}; do cp $$f $${f%.js}-${VERSION}.js; done
 
 test:

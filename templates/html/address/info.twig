@@ -5,6 +5,9 @@
  * @param array location
  * @param array purposes
  * @param array contact_info
+ * @param array schools
+ * @param array parks
+ * @param array playgrounds
 #}
 {% extends "html/layouts/default.twig" %}
 
@@ -12,6 +15,7 @@
 {{ include('html/address/partials/address.twig'    ) }}
 {{ include('html/address/partials/sanitation.twig' ) }}
 {{ include('html/address/partials/elected.twig'    ) }}
+{{ include('html/address/partials/nearby.twig'     ) }}
 {{ include('html/address/partials/coordinates.twig') }}
 {{ include('html/address/partials/government.twig' ) }}
 {% endblock %}

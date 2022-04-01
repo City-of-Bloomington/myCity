@@ -6,7 +6,8 @@
 declare (strict_types=1);
 namespace Web\Controllers;
 
-use Web\Services\MasterAddressGateway;
+use Web\Services\MasterAddressGateway as MA;
+use Web\Services\GeoServerGateway     as GEO;
 use Web\Controller;
 use Web\View;
 use Web\Views\InfoView;
@@ -15,10 +16,13 @@ class InfoController extends Controller
 {
     public function __invoke(array $params): View
     {
-        $res = MasterAddressGateway::info((int)$params['id']);
+        $res = MA::info((int)$params['id']);
 
         if ($res) {
-            return new InfoView($res);
+            $schools     = GEO::schools    ($res['address']['latitude'], $res['address']['longitude']);
+            $parks       = GEO::parks      ($res['address']['latitude'], $res['address']['longitude']);
+            $playgrounds = GEO::playgrounds($res['address']['latitude'], $res['address']['longitude']);
+            return new InfoView($res, $schools, $parks, $playgrounds);
         }
         return new \Web\Views\NotFoundView();
     }
