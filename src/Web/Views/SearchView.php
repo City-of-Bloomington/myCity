@@ -22,6 +22,6 @@ class SearchView extends View
     }
     public function render(): string
     {
-        return $this->twig->render("{$this->outputFormat}/address/searchForm.twig", $this->vars);
+        return $this->twig->render("{$this->outputFormat}/address/searchView.twig", $this->vars);
     }
 }

@@ -14,9 +14,10 @@
         <p>This address is outside the jurisdiction of the City and is not
         represented by Bloomington elected officials.</p>
     {% else %}
-        <section id="mayor">
+        <article>
             {% set person = contact_info.mayor %}
             <header>
+                {% if person.image %}<img src="{{ person.image }}" />{% endif %}
                 <h3>{{ person.name  }}</h3>
                 <h4>{{ person.title }}</h4>
             </header>
@@ -26,18 +27,30 @@
                and the City Clerk, to determine and implement the priorities of our
                community’s residents.</p>
             {{ include('html/address/partials/contact.twig') }}
-        </section>
-        <section id="council">
+        </article>
+        <article>
             {% set person = attribute(contact_info.council, purposes['CITY COUNCIL DISTRICT'][0]) %}
             <header>
+                {% if person.image %}<img src="{{ person.image }}" />{% endif %}
                 <h3>{{ person.name  }}</h3>
                 <h4>{{ person.title }}</h3>
             </header>
             {{ include('html/address/partials/contact.twig') }}
-        </section>
-        <section id="clerk">
+        </article>
+        {% for person in contact_info.council.at_large %}
+        <article>
+            <header>
+                {% if person.image %}<img src="{{ person.image }}" />{% endif %}
+                <h3>{{ person.name  }}</h3>
+                <h4>{{ person.title }}</h3>
+            </header>
+            {{ include('html/address/partials/contact.twig') }}
+        </article>
+        {% endfor %}
+        <article>
             {% set person = contact_info.clerk %}
             <header>
+                {% if person.image %}<img src="{{ person.image }}" />{% endif %}
                 <h3>{{ person.name  }}</h3>
                 <h4>{{ person.title }}</h4>
             </header>
@@ -56,7 +69,7 @@
                <a href="https://www.co.monroe.in.us/department/division.php?structureid=89">Voter Registration</a>
             </p>
             {{ include('html/address/partials/contact.twig') }}
-        </section>
+        </article>
     {% endif %}
     </div>
 </section>

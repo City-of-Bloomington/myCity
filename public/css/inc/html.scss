@@ -1,0 +1,14 @@
+body {
+    color: $color-text-foreground;
+    font-family: sans-serif;
+    font-size: $font-size-normal;
+    margin: 0;
+}
+strong { font-weight: bold; }
+
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+
+code { font-family: monospace; white-space: pre; }
+.address { white-space: pre; }
+
+fieldset { border: none; }

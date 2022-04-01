@@ -7,6 +7,7 @@
 {% extends "html/layouts/default.twig" %}
 
 {% block content %}
+<section id="searchView">
 <h1>Welcome,</h1>
 <p>myBloomington provides information related to a given street address.</p>
 <p>Enter an address to learn more:</p>
@@ -26,5 +27,6 @@
     </div>
     {% endfor %}
 {% endif %}
+</section>
 
 {% endblock %}

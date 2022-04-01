@@ -1,4 +1,50 @@
-strong { font-weight: bold; }
+@import 'inc/vars';
+@import 'inc/html';
 
-code { font-family: monospace; white-space: pre; }
-.address { white-space: pre; }
+body > header {
+    padding: $size-gutter;
+    border-top: $size-gutter solid $color-link;
+
+
+    h1 {
+        display: inline-block;
+        background: url('images/cob-logo-horizontal.svg') no-repeat;
+        width: 233px; height: 55px;
+        text-indent: -999px;
+    }
+
+    h2 {
+        display: inline-block;
+        line-height: 55px; vertical-align: middle;
+        font-size: $font-size-normal;
+    }
+}
+
+section, article { margin: $size-gutter; }
+article {
+    border-bottom: 2px solid $color-border;
+    margin-bottom: 30px;
+
+    h3 {
+        font-size: $font-size-big;
+        border-bottom: 2px solid $color-border;
+    }
+    h4 { font-size: $font-size-big; font-weight: normal; }
+
+    th, td {
+        border-top: 1px solid $color-border;
+        padding: $size-gutter;
+    }
+}
+
+#searchView {
+    margin: 0; padding: $size-gutter;
+    background-color: $color-link;
+    color: $color-text-background;
+    a { color: $color-text-background; }
+}
+
+#searchForm {
+    background-color: $color-link;
+    color: $color-text-background;
+}
