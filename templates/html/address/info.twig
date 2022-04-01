@@ -12,6 +12,7 @@
 {% extends "html/layouts/default.twig" %}
 
 {% block content %}
+{{ include('html/address/partials/searchForm.twig', {'query': address.streetAddress}) }}
 {{ include('html/address/partials/address.twig'    ) }}
 {{ include('html/address/partials/sanitation.twig' ) }}
 {{ include('html/address/partials/elected.twig'    ) }}

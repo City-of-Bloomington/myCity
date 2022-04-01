@@ -21,7 +21,7 @@ class InfoView extends View
         $this->vars = [
             'address'      => $address['address' ],
             'location'     => $address['location'],
-            'purposes'     => $address['purposes'],
+            'purposes'     => $address['purposes'] ?? [],
             'contact_info' => $CONTACT_INFO,
             'schools'      => $schools,
             'parks'        => $parks,

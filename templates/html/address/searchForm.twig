@@ -10,13 +10,7 @@
 <h1>Welcome,</h1>
 <p>myBloomington provides information related to a given street address.</p>
 <p>Enter an address to learn more:</p>
-<form method="get">
-    <fieldset>
-        <label  for="query">Address Search</label>
-        <input name="query" id="query" placeholder="401 N Morton ST" value="{{ query }}" />
-        <button type="submit">Search</button>
-    </fieldset>
-</form>
+{{ include('html/address/partials/searchForm.twig') }}
 
 {% if query and not results %}
 <p>No resuts found</p>
