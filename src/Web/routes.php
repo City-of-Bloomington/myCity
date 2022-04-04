@@ -10,4 +10,5 @@ $ROUTES = $rf->newInstance();
 $ROUTES->setTokens(['id' => '\d+']);
 
 $ROUTES->add('home.index',   '/'    )->setValues(['controller' => 'Web\Controllers\SearchController']);
+$ROUTES->add('home.help',    '/help')->setValues(['controller' => 'Web\Controllers\HelpController']);
 $ROUTES->add('address.info', '/{id}')->setValues(['controller' => 'Web\Controllers\InfoController']);

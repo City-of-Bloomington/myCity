@@ -18,23 +18,24 @@ body > header {
         line-height: 55px; vertical-align: middle;
         font-size: $font-size-normal;
     }
+    nav { float: right; }
+}
+
+h3 {
+    font-size: $font-size-big;
+    border-bottom: 2px solid $color-border;
+}
+h4 { font-size: $font-size-big; font-weight: normal; }
+
+th, td {
+    border-top: 1px solid $color-border;
+    padding: $size-gutter;
 }
 
 section, article { margin: $size-gutter; }
 article {
     border-bottom: 2px solid $color-border;
     margin-bottom: 30px;
-
-    h3 {
-        font-size: $font-size-big;
-        border-bottom: 2px solid $color-border;
-    }
-    h4 { font-size: $font-size-big; font-weight: normal; }
-
-    th, td {
-        border-top: 1px solid $color-border;
-        padding: $size-gutter;
-    }
 }
 
 #searchView {
