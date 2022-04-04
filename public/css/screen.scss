@@ -68,3 +68,25 @@ span.city, span.county {
 }
 span.city   { color: $color-text-background; background-color: $color-valid; }
 span.county { color: $color-text-background; background-color: $color-error; }
+
+
+section header div {
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: $size-icon; min-height: $size-icon;
+}
+#address     header div { background-image: url('images/map-marked-alt.svg'); padding-left: $size-icon + ($size-gutter*3); }
+#sanitation  header div { background-image: url('images/trash.svg');          padding-left: $size-icon + ($size-gutter*3); }
+#coordinates header div { background-image: url('images/location-arrow.svg'); padding-left: $size-icon + ($size-gutter*3); }
+
+.icon {
+    display: inline-block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 20px; height: 20px;
+    overflow: hidden; text-indent: -999px;
+}
+.facebook  { background-image: url('images/facebook.svg' ); }
+.twitter   { background-image: url('images/twitter.svg'  ); }
+.instagram { background-image: url('images/instagram.svg'); }
+.youtube   { background-image: url('images/youtube.svg'  ); }
