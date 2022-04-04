@@ -18,6 +18,10 @@ class SearchController extends Controller
         if (!empty($_GET['query'])) {
             $res = MasterAddressGateway::search($_GET['query']);
             if ($res) {
+                if (count($res) == 1) {
+                    header('Location: '.View::generateUrl('address.info', ['id'=>$res[0]['id'] ]));
+                    exit();
+                }
                 return new SearchView($_GET['query'], $res);
             }
         }
