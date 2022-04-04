@@ -7,9 +7,14 @@ $color-text-foreground: $gray;
 $color-text-background: #fff;
 $color-link:            $blue;
 $color-border:          #ccc;
+$color-valid:           $green;
+$color-error:           $red;
 
-$font-size-big:    20px;
-$font-size-normal: 14px;
-$font-size-small:  12px;
+$font-size-huge:    40px;
+$font-size-biggest: 27px;
+$font-size-bigger:  24px;
+$font-size-big:     20px;
+$font-size-normal:  14px;
+$font-size-small:   12px;
 
-$size-gutter: 4px;
+$size-gutter: 8px;

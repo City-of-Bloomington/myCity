@@ -10,6 +10,7 @@ body > header {
         display: inline-block;
         background: url('images/cob-logo-horizontal.svg') no-repeat;
         width: 233px; height: 55px;
+        line-height: 55px; vertical-align: middle;
         text-indent: -999px;
     }
 
@@ -17,10 +18,13 @@ body > header {
         display: inline-block;
         line-height: 55px; vertical-align: middle;
         font-size: $font-size-normal;
+        border-left:   2px solid $color-border;
+        margin-left: $size-gutter; padding-left: $size-gutter;
     }
     nav { float: right; }
 }
 
+h1 { font-size: $font-size-huge; }
 h3 {
     font-size: $font-size-big;
     border-bottom: 2px solid $color-border;
@@ -49,3 +53,12 @@ article {
     background-color: $color-link;
     color: $color-text-background;
 }
+
+span.city, span.county {
+    float: right;
+    padding: 0 $size-gutter;
+    border-radius: 1em;
+    font-weight: bold;
+}
+span.city   { color: $color-text-background; background-color: $color-valid; }
+span.county { color: $color-text-background; background-color: $color-error; }

@@ -6,7 +6,12 @@
 #}
 <section>
     <header>
-        <h2>{{ address.streetAddress }}</h2>
+        <h2>{{ address.streetAddress }}
+            <span class="{{ address.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
+                {{ address.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
+                Bloomington City Limits
+            </span>
+        </h2>
         <p>Information about this address</p>
     </header>
     <table>

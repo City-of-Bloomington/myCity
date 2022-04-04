@@ -20,9 +20,13 @@
 {% if results %}
 <h2>Addresses</h2>
     {% for a in results %}
-    <div class="{{ a.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
+    <div>
         <a href="{{ uri('address.info', {'id': a.id}) }}">
         {{ a.streetAddress }}
+        <span class="{{ a.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
+            {{ a.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
+            Bloomington City Limits
+        </span>
         </a>
     </div>
     {% endfor %}

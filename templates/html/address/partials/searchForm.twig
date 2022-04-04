@@ -4,7 +4,7 @@
  * @param string query
  * @param array  results
 #}
-<form method="get" id="searchForm">
+<form method="get" action="{{ BASE_URI }}" id="searchForm">
     <fieldset>
         <label  for="query">Address Search</label>
         <input name="query" id="query" placeholder="401 N Morton ST" value="{{ query }}" autocomplete="address-line1" />
