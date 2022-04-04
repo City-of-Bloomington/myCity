@@ -3,7 +3,7 @@
 
 body > header {
     padding: $size-gutter;
-    border-top: $size-gutter solid $color-link;
+    border-top: $size-gutter/2 solid $color-link;
 
 
     h1 {
@@ -18,17 +18,16 @@ body > header {
         display: inline-block;
         line-height: 55px; vertical-align: middle;
         font-size: $font-size-normal;
-        border-left:   2px solid $color-border;
+        border-left: $size-gutter/4 solid $color-border;
         margin-left: $size-gutter; padding-left: $size-gutter;
+        a { text-decoration: none; color: $color-text-foreground; }
     }
     nav { float: right; }
 }
 
 h1 { font-size: $font-size-huge; }
-h3 {
-    font-size: $font-size-big;
-    border-bottom: 2px solid $color-border;
-}
+h2 { font-size: $font-size-biggest; }
+h3 { font-size: $font-size-big; border-bottom: $size-gutter/4 solid $color-border; }
 h4 { font-size: $font-size-big; font-weight: normal; }
 
 th, td {
@@ -36,10 +35,15 @@ th, td {
     padding: $size-gutter;
 }
 
+nav ul { list-style: none; }
+
 section, article { margin: $size-gutter; }
 article {
-    border-bottom: 2px solid $color-border;
-    margin-bottom: 30px;
+    border-bottom: $size-gutter/4 solid $color-border;
+    margin-bottom: $size-gutter*4;
+}
+#info > section {
+    margin-bottom: $size-gutter*4;
 }
 
 #searchView {
@@ -47,11 +51,13 @@ article {
     background-color: $color-link;
     color: $color-text-background;
     a { color: $color-text-background; }
+    h3 { border: none; }
 }
 
 #searchForm {
     background-color: $color-link;
     color: $color-text-background;
+    input, button { font-size: $font-size-big; }
 }
 
 span.city, span.county {

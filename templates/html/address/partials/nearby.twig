@@ -7,10 +7,12 @@
  * @param array playgrounds
 #}
 {% set google_maps = 'https://maps.google.com/maps/dir/?api=1&origin=' ~ address.streetAddress %}
-<section>
+<section id="nearby">
     <header><h2>Nearby Amenities</h2></header>
     <div>
-        <section>
+        <p>Distances are approximate</p>
+        <p>Click a row for directions</p>
+        <section id="schools">
             <h3>Schools</h3>
             <table>
             {% for s in schools|slice(0, 12) %}
@@ -23,7 +25,7 @@
             {% endfor %}
             </table>
         </section>
-        <section>
+        <section id="playgrounds">
             <h3>Playgrounds</h3>
             <table>
             {% for s in playgrounds|slice(0, 12) %}
@@ -36,7 +38,7 @@
             {% endfor %}
             </table>
         </section>
-        <section>
+        <section id="parks">
             <h3>Parks</h3>
             <table>
             {% for s in parks|slice(0, 12) %}

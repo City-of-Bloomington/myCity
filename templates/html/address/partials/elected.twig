@@ -5,7 +5,7 @@
  * @param array purposes
  * @param array contact_info
 #}
-<section>
+<section id="elected">
     <header>
         <h2>Elected City Officials</h2>
     </header>
@@ -14,7 +14,7 @@
         <p>This address is outside the jurisdiction of the City and is not
         represented by Bloomington elected officials.</p>
     {% else %}
-        <article>
+        <article id="mayor">
             {% set person = contact_info.mayor %}
             <header>
                 {% if person.image %}<img src="{{ person.image }}" />{% endif %}
@@ -28,7 +28,7 @@
                community’s residents.</p>
             {{ include('html/address/partials/contact.twig') }}
         </article>
-        <article>
+        <article id="district">
             {% set person = attribute(contact_info.council, purposes['CITY COUNCIL DISTRICT'][0]) %}
             <header>
                 {% if person.image %}<img src="{{ person.image }}" />{% endif %}
@@ -37,6 +37,7 @@
             </header>
             {{ include('html/address/partials/contact.twig') }}
         </article>
+        <div id="at-large">
         {% for person in contact_info.council.at_large %}
         <article>
             <header>
@@ -47,7 +48,8 @@
             {{ include('html/address/partials/contact.twig') }}
         </article>
         {% endfor %}
-        <article>
+        </div>
+        <article id="clerk">
             {% set person = contact_info.clerk %}
             <header>
                 {% if person.image %}<img src="{{ person.image }}" />{% endif %}

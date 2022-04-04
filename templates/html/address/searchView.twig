@@ -8,29 +8,31 @@
 
 {% block content %}
 <section id="searchView">
-<h1>Welcome,</h1>
-<p>myBloomington provides information related to a given street address.</p>
-<p>Enter an address to learn more:</p>
-{{ include('html/address/partials/searchForm.twig') }}
-
-{% if query and not results %}
-<p>No resuts found</p>
-{% endif %}
-
-{% if results %}
-<h2>Addresses</h2>
-    {% for a in results %}
+    <header>
+        <h1>Welcome</h1>
+        <h3>myBloomington provides information related to a given street address.</h3>
+        <p>Enter an address to learn more:</p>
+    </header>
     <div>
-        <a href="{{ uri('address.info', {'id': a.id}) }}">
-        {{ a.streetAddress }}
-        <span class="{{ a.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
-            {{ a.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
-            Bloomington City Limits
-        </span>
-        </a>
+        {{ include('html/address/partials/searchForm.twig') }}
+        {% if query and not results %}
+        <p>No resuts found</p>
+        {% endif %}
+
+        {% if results %}
+            {% for a in results %}
+            <div>
+                <a href="{{ uri('address.info', {'id': a.id}) }}">
+                {{ a.streetAddress }}
+                <span class="{{ a.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
+                    {{ a.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
+                    Bloomington City Limits
+                </span>
+                </a>
+            </div>
+            {% endfor %}
+        {% endif %}
     </div>
-    {% endfor %}
-{% endif %}
 </section>
 
 {% endblock %}
