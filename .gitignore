@@ -7,3 +7,4 @@ vendor
 *.mo
 .sass-cache
 *.cache
+make.conf
