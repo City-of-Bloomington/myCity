@@ -5,18 +5,6 @@
     - "City-of-Bloomington.php"
 
   tasks:
-    - name: "Extract release"
-      unarchive:
-        src: "{{ blossom_archive_path }}"
-        dest: "/usr/local/src"
-      register: "release"
-
-    - name: "Remove old release"
-      file:
-        path: "{{ blossom_install_path }}"
-        state: "absent"
-      when: "release.changed"
-
     - name: "Create directories"
       file:
         path: "{{ item }}"
@@ -25,45 +13,44 @@
         group: "staff"
         mode:  "u=rwX,g=rwXs,o=rX"
       with_items:
-        - "{{ blossom_install_path }}"
-        - "{{ blossom_backup_path  }}"
-        - "{{ blossom_site_home    }}"
-        - "/var/log/cron"
+        - "{{ mycity_install_path }}"
+        - "{{ mycity_backup_path  }}"
+        - "{{ mycity_site_home    }}"
 
-    - name: "Install release"
-      command: "rsync -rl /usr/local/src/blossom/ {{ blossom_install_path }}/"
-      when: "release.changed"
+    - name: "Extract release"
+      unarchive:
+        src: "{{ mycity_archive_path }}"
+        dest: "/srv/sites/mycity"
 
     - name: "Update site_home"
-      command: "rsync -rl /usr/local/src/blossom/data/ {{ blossom_site_home }}/"
-      when: "release.changed"
+      command: "rsync -rl /srv/sites/mycity/data/ {{ mycity_site_home }}/"
 
     - name: "Apache configuration"
       template:
         src:  "apache.conf"
-        dest: "/etc/apache2/sites-enabled/conf.d/blossom.conf"
+        dest: "/etc/apache2/sites-enabled/conf.d/mycity.conf"
       notify: "apache_restart"
 
     - name: "Install site_config"
       template:
-        src:  "site_config.j2"
-        dest: "{{ blossom_site_home }}/site_config.php"
+        src:  "{{ inventory_dir }}/group_vars/mycity/templates/site_config.php"
+        dest: "{{ mycity_site_home }}/site_config.php"
 
     - name: "Update directory ownership"
       command: "chown -R www-data:staff {{ item }}"
       args:
         warn: "no"
       with_items:
-        - "{{ blossom_install_path }}"
-        - "{{ blossom_backup_path  }}"
-        - "{{ blossom_site_home    }}"
+        - "{{ mycity_install_path }}"
+        - "{{ mycity_backup_path  }}"
+        - "{{ mycity_site_home    }}"
 
     - name: "Update directory permission"
       command: "chmod -R u=rwX,g=rwX,o=rX {{ item }}"
       args:
         warn: "no"
       with_items:
-        - "{{ blossom_install_path }}"
-        - "{{ blossom_backup_path  }}"
-        - "{{ blossom_site_home    }}"
+        - "{{ mycity_install_path }}"
+        - "{{ mycity_backup_path  }}"
+        - "{{ mycity_site_home    }}"
 ...
