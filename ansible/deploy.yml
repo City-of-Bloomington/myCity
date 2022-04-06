@@ -13,14 +13,14 @@
         group: "staff"
         mode:  "u=rwX,g=rwXs,o=rX"
       with_items:
-        - "{{ mycity_install_path }}"
         - "{{ mycity_backup_path  }}"
         - "{{ mycity_site_home    }}"
 
     - name: "Extract release"
-      unarchive:
+      ansible.builtin.unarchive:
         src: "{{ mycity_archive_path }}"
-        dest: "/srv/sites/mycity"
+        dest:    '/srv/sites'
+        creates: '/srv/sites/mycity'
 
     - name: "Update site_home"
       command: "rsync -rl /srv/sites/mycity/data/ {{ mycity_site_home }}/"

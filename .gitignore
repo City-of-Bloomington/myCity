@@ -1,3 +1,4 @@
+ansible/roles
 site_config.php
 data/sessions/*
 build

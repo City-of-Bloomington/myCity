@@ -8,8 +8,7 @@
     <header>
         <h2>{{ address.streetAddress }}</h2>
         <div>
-            <p>Information about this address
-                <span class="{{ address.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
+            <p> <span class="{{ address.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
                     {{ address.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
                     Bloomington City Limits
                 </span>
