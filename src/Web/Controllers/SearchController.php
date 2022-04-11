@@ -24,6 +24,7 @@ class SearchController extends Controller
                 }
                 return new SearchView($_GET['query'], $res);
             }
+            return new SearchView($_GET['query']);
         }
         return new SearchView();
     }

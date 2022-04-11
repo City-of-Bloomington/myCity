@@ -24,6 +24,7 @@ define('BASE_URL' , "$_SERVER[REQUEST_SCHEME]://".BASE_HOST.BASE_URI);
 
 define('MASTER_ADDRESS', 'https://localhost/master_address');
 define('GEOSERVER',      'https://localhost/geoserver');
+define('GOOGLE_API_KEY', '');
 
 /**
  * Specify the theme directory

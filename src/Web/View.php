@@ -41,6 +41,7 @@ abstract class View
         $this->twig->addGlobal('BASE_URL',         BASE_URL);
         $this->twig->addGlobal('BASE_URI',         BASE_URI);
         $this->twig->addGlobal('REQUEST_URI',      $_SERVER['REQUEST_URI']);
+        $this->twig->addGlobal('GOOGLE_API_KEY',   GOOGLE_API_KEY);
         if (isset($_SESSION['USER'])) {
             $this->twig->addGlobal('USER', $_SESSION['USER']);
         }
