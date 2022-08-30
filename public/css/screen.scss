@@ -53,10 +53,12 @@ article {
     background-color: $color-link;
     color: $color-text-background;
     a { color: $color-text-background; }
-    h1 { text-align: center;}
-    h3 { text-align: center; border: none;}
-    footer { text-align: center;}
-
+    h1 { text-align: center; }
+    h3 { text-align: center; border: none; }
+    footer { text-align: center; }
+    form { text-align: center; }
+    input { position:relative; text-align:center; width:50%; height: 60px; border-radius:5px; border: none; }
+    
 
 
 
