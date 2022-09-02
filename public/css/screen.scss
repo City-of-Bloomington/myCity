@@ -50,8 +50,12 @@ article {
 
 #searchView {
     margin: 0; 
-    // padding: $size-gutter; <--- Original Padding
-    padding: 15%;
+    padding: $size-gutter;
+    height: 700px;
+    
+
+
+
     background-color: $color-link;
     color: $color-text-background;
     text-align: center;
@@ -59,6 +63,7 @@ article {
     h1 { text-align: center; }
     h3 { text-align: center; border: none; }
     footer { text-align: center; }
+    
     
 
 
