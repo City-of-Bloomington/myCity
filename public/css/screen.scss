@@ -49,9 +49,12 @@ article {
 #map { width: 100%; height: 200px; }
 
 #searchView {
-    margin: 0; padding: $size-gutter;
+    margin: 0; 
+    // padding: $size-gutter; <--- Original Padding
+    padding: 15%;
     background-color: $color-link;
     color: $color-text-background;
+    text-align: center;
     a { color: $color-text-background; }
     h1 { text-align: center; }
     h3 { text-align: center; border: none; }
