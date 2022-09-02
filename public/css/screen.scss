@@ -25,6 +25,7 @@ body > header {
     nav { float: right; }
 }
 
+header > nav > a , a:hover, a:focus, a:active { color: #1e5aae; text-decoration: none;} // fix on hover show highlight 
 h1 { font-size: $font-size-huge; }
 h2 { font-size: $font-size-biggest; }
 h3 { font-size: $font-size-big; border-bottom: $size-gutter/4 solid $color-border; }
@@ -52,10 +53,6 @@ article {
     margin: 0; 
     padding: $size-gutter;
     height: 700px;
-    
-
-
-
     background-color: $color-link;
     color: $color-text-background;
     text-align: center;
@@ -65,6 +62,8 @@ article {
     footer { text-align: center; }
     form {text-align: center;}
     input {outline-width: 0;}
+    header > nav > a , a:hover, a:focus, a:active { color: #1e5aae; text-decoration: none;} // fix on hover show highlight
+
 
 
 
