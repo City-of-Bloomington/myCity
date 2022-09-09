@@ -63,8 +63,27 @@ article {
     footer { text-align: center; }
     form {text-align: center;}
     input {outline-width: 0;}
-
 }
+// Tabs: CSS hidden, show, position, etc. --> JS later to allow transitions. 
+#elected {
+    display: grid;
+    grid-template-columns: fit-content(10%) fit-content(10%) 1fr;
+    
+}
+
+#nearby { display: none;}
+
+#elected article {
+    background-color:#1e5aae;
+    color: white;
+                 
+}
+
+#coordinates {display: none;}
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 #searchForm {
     background-color: $color-link;
