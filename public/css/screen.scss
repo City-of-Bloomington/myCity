@@ -66,8 +66,36 @@ article {
 }
 // Tabs: CSS hidden, show, position, etc. --> JS later to allow transitions. 
 
+/**
+
+Experimental
+
+#details summary, ul{
+    text-align: center;
+    list-style-type: none;
+  
+    border: 1px solid black;
+    
+}
+
+#details summary, li{
+    border: 1px solid blue;
+    display: inline-block;
+    vertical-align: top;
+    height: 100px;
+    width: 100px;
+}
+
+*/
+
+
+#details summary, ul {
+    background-color: white;
+    display: inherit;
+}
+
 #info summary { 
-    display: inline; 
+    display: inline-block; 
     list-style: none; 
 }
 
@@ -77,7 +105,7 @@ article {
     list-style: none; 
     margin: 5PX; 
     padding: 1PX; 
-    display: inline-flex; 
+    display: inline-block; 
 }
 
 #address { display: none; }
