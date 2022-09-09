@@ -65,21 +65,55 @@ article {
     input {outline-width: 0;}
 }
 // Tabs: CSS hidden, show, position, etc. --> JS later to allow transitions. 
-#elected {
-    display: grid;
-    grid-template-columns: fit-content(10%) fit-content(10%) 1fr;
+
+#info summary { 
+    background-color: $color-text-background;
+    display: inline;
+    list-style: none;
+    
+    
+    
+}
+// Tab bar
+#info summary, details ul{
+    color: white;
+    font-size: 20px;
+    list-style: none;
+    margin: 10PX;
+    padding: 10PX;
+    display: inline-flex;
+    width: 100%;
+  
     
 }
 
-#nearby { display: none;}
-
-#elected article {
-    background-color:#1e5aae;
-    color: white;
-                 
+#address {
+    display: none;
 }
 
-#coordinates {display: none;}
+#sanitation {
+    display: none;
+}
+
+#elected { 
+    display: grid; 
+    grid-template-columns: fit-content(10%) fit-content(10%) 1fr; 
+}
+
+#elected article { 
+    color: $color-text-background; 
+}
+
+#nearby { display: none; 
+    
+}
+
+#coordinates { display: none; 
+
+}
+
+
+
 
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
