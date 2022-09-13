@@ -65,8 +65,11 @@ article {
     input {outline-width: 0;}
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// not finished in progress: comments will be deleted when done
 
-#info nav { overflow: hidden; background-color: $blue; margin: 0; }
+//Nav bar
+
+#info nav { overflow: hidden; background-color: $blue; margin: 0; text-align: center;}
 
 #info nav ul {margin: 0; padding: 0;}
 
@@ -74,20 +77,21 @@ article {
 
 #info nav > ul > li > a {
     color: $gray;
-    background-color: $blue; // edit tab colors later, rn set same as bg color
+    background-color: white; // edit tab colors later, rn set same as bg color
     display: block;
     line-height: 2em;
     padding: 0.5em 0.5em;
     text-decoration: none;
 }
 
-#info nav > ul li > ul li a { display: none; background-color: $blue;} // hide subtabs
+#info nav > ul li > ul li a { display: none;} // hide subtabs
 
 // Sub tabs
 
 #info nav li > ul li { display: block;}
 
 #info nav li:hover > ul li a {
+    background-color: #ffffff30; // 
     color: black;
     display: block;
     line-height: 2em;
@@ -101,8 +105,6 @@ article {
     position: absolute;
     display: block;
 }
-
-
 
 // vvvvvv Tabs: hidden for now  vvvvvvv
 
