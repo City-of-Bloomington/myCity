@@ -64,49 +64,45 @@ article {
     form {text-align: center;}
     input {outline-width: 0;}
 }
-// Tabs: CSS hidden, show, position, etc. --> JS later to allow transitions. 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-/**
+#info nav { overflow: hidden; background-color: $blue; margin: 0; }
 
-Experimental
+#info nav ul {margin: 0; padding: 0;}
 
-#details summary, ul{
-    text-align: center;
-    list-style-type: none;
-  
-    border: 1px solid black;
-    
+#info nav ul li { display: inline-block; list-style-type: none;}
+
+#info nav > ul > li > a {
+    color: $gray;
+    background-color: $blue; // edit tab colors later, rn set same as bg color
+    display: block;
+    line-height: 2em;
+    padding: 0.5em 0.5em;
+    text-decoration: none;
 }
 
-#details summary, li{
-    border: 1px solid blue;
-    display: inline-block;
-    vertical-align: top;
-    height: 100px;
-    width: 100px;
+// Sub tabs
+
+#info nav li > ul li { display: block;}
+
+#info nav li > ul li a {
+    color: black;
+    display: block;
+    line-height: 2em;
+    padding: 0.5em 2em;
+    text-decoration: none;
 }
 
-*/
+#info nav li:hover { background-color: white; }
 
-
-#details summary, ul {
-    background-color: white;
-    display: inherit;
+#info nav li:hover > ul {
+    position: absolute;
+    display: block;
 }
 
-#info summary { 
-    display: inline-block; 
-    list-style: none; 
-}
 
-#info summary, details ul li{ 
-    color: white; 
-    font-size: 20px; 
-    list-style: none; 
-    margin: 5PX; 
-    padding: 1PX; 
-    display: inline-block; 
-}
+
+// vvvvvv Tabs: hidden for now  vvvvvvv
 
 #address { display: none; }
 
