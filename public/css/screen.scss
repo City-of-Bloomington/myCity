@@ -81,11 +81,13 @@ article {
     text-decoration: none;
 }
 
+#info nav > ul li > ul li a { display: none; background-color: $blue;} // hide subtabs
+
 // Sub tabs
 
 #info nav li > ul li { display: block;}
 
-#info nav li > ul li a {
+#info nav li:hover > ul li a {
     color: black;
     display: block;
     line-height: 2em;
@@ -93,7 +95,7 @@ article {
     text-decoration: none;
 }
 
-#info nav li:hover { background-color: white; }
+#info nav li:hover { background-color: white; } // debuging **DELETE LATER <<<<<<<<<
 
 #info nav li:hover > ul {
     position: absolute;
