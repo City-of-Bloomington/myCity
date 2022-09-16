@@ -25,6 +25,11 @@ body > header {
     nav { float: right; }
 }
 
+// looks good without scroll bar
+::-webkit-scrollbar {
+    display: none;
+}
+
 header > nav > a , a:hover, a:focus, a:active { color: $blue; text-decoration: none;}
 div #info {background-color: $blue;}
 h1 { font-size: $font-size-huge; }
@@ -150,6 +155,25 @@ article {
 
 #nearby { position: relative; }
 
+// coordinates
+
+#coordinates {
+    color: $white;
+    background-image: url("public/css/images/Map_ScreenView.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    padding: 10%;
+}
+
+#coordinates h2 { font-size:40px; text-align: center; }
+
+#coordinates table { background-color: #d1d1eb; border-radius: 5px; color: black; text-align: center; margin-left: auto; margin-right: auto; }
+
+#coordinates div { padding-bottom: 5%; padding-top: 10%; padding: 10%; }
+
+#coordinates header a { color: black;  background-color: #e5e5e5;  text-decoration: none;  border-radius: 5px;  padding: 5px;  display: inline-block;  }
+
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -177,7 +201,8 @@ section header div {
 //#address     header div { background-image: url('images/map-marked-alt.svg'); padding-left: $size-icon + ($size-gutter*3); }
 //#sanitation  header div { background-image: url('images/trash.svg');          padding-left: $size-icon + ($size-gutter*3); }
 #sanitation header div {  background-image: url("images/trash.svg"); background-position: center;}
-#coordinates header div { background-image: url('images/location-arrow.svg'); padding-left: $size-icon + ($size-gutter*3); }
+//#coordinates header div { background-image: url('images/location-arrow.svg'); padding-left: $size-icon + ($size-gutter*3); }
+#coordinates header div {  background-image: url("images/location-arrow.svg");  background-position: top center; }
 
 .icon {
     display: inline-block;
