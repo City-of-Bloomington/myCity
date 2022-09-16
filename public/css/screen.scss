@@ -94,7 +94,28 @@ article {
 
 #info #searchForm button { border: none; height: 3em; border-radius: 10px;}
 
+//adress style
 
+#info #address { background-color: #1e5aae; color: white; }
+
+#info #address h2 { margin:0; padding: 1em; text-align: center; }
+
+#info #address table th{ width: 50%; text-align:center; }
+
+#info #address table { width:100%; text-align: center; margin: 0; padding-left: 10%; padding-right: 10%; }
+
+#info #address header p {text-align: center;}
+
+//#info #address span.city {  display: block; }
+
+//sanitation
+#sanitation header { color: $white; padding-left: 10%; padding-right: 10%;}
+
+#sanitation h2 {text-align: center;}
+
+#sanitation header a{color: black; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
+
+#sanitation header > div  { background-color: #c5c3c3; padding-top: 20px; padding-bottom: 20px; padding-left: 10px; padding-right: 10px; border-radius: 5px;}
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -110,7 +131,7 @@ span.city, span.county {
     border-radius: 1em;
     font-weight: bold;
 }
-span.city   { color: $color-text-background; background-color: $color-valid; }
+span.city   { position: relative; color: $color-text-background; background-color: $color-valid; }
 span.county { color: $color-text-background; background-color: $color-error; }
 
 
@@ -119,8 +140,9 @@ section header div {
     background-repeat: no-repeat;
     background-size: $size-icon; min-height: $size-icon;
 }
-#address     header div { background-image: url('images/map-marked-alt.svg'); padding-left: $size-icon + ($size-gutter*3); }
-#sanitation  header div { background-image: url('images/trash.svg');          padding-left: $size-icon + ($size-gutter*3); }
+//#address     header div { background-image: url('images/map-marked-alt.svg'); padding-left: $size-icon + ($size-gutter*3); }
+//#sanitation  header div { background-image: url('images/trash.svg');          padding-left: $size-icon + ($size-gutter*3); }
+#sanitation header div {  background-image: url("images/trash.svg"); background-position: center;}
 #coordinates header div { background-image: url('images/location-arrow.svg'); padding-left: $size-icon + ($size-gutter*3); }
 
 .icon {
