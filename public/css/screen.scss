@@ -63,64 +63,37 @@ article {
     footer { text-align: center; }
     form {text-align: center;}
     input {outline-width: 0;}
+    input { border: none; background: #e5e5e5; border-radius: 5px; height: 3em; width: 40%; text-align: center; }
+    button { border: none; height: 3em;}
+    #searchForm { text-align: center; }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// not finished in progress: comments will be deleted when done
+#info {background-color: $blue;}
 
-//Nav bar
+#info nav { overflow: hidden; background-color: $white; margin: 0; text-align: center;}
 
-#info nav { overflow: hidden; background-color: $blue; margin: 0; text-align: center;}
+#info nav ul { margin: 0; padding: 0;}
 
-#info nav ul {margin: 0; padding: 0;}
+#info nav ul li {display: inline-block; list-style-type: none;}
 
-#info nav ul li { display: inline-block; list-style-type: none;}
+#info nav > ul > li > a { color: #aaa; display: block; line-height: 2em; padding: 0.5em 0.5em; text-decoration: none;}
 
-#info nav > ul > li > a {
-    color: $gray;
-    background-color: white; // edit tab colors later, rn set same as bg color
-    display: block;
-    line-height: 2em;
-    padding: 0.5em 0.5em;
-    text-decoration: none;
-}
+#info nav li > ul li{ display: block;}
 
-#info nav > ul li > ul li a { display: none;} // hide subtabs
+#info nav > ul li > ul li a { display: none;  background-color: #ffffff69;}
 
-// Sub tabs
+#info nav  li:hover > ul li a { color: #111; display: block; line-height: 2em; padding: 0.5em 2em; text-decoration: none; }
 
-#info nav li > ul li { display: block;}
+#info nav li:hover { background-color: $white; }
 
-#info nav li:hover > ul li a {
-    background-color: #ffffff30; // 
-    color: black;
-    display: block;
-    line-height: 2em;
-    padding: 0.5em 2em;
-    text-decoration: none;
-}
+#info nav li:hover > ul{  position:absolute; display : block; }
 
-#info nav li:hover { background-color: white; } // debuging **DELETE LATER <<<<<<<<<
+#info #searchForm { background-color: $white; text-align: center; }
 
-#info nav li:hover > ul {
-    position: absolute;
-    display: block;
-}
+#info #searchForm input { border: none; background: #e5e5e5; border-radius: 5px; height: 3em; width: 40%; text-align: center; }
 
-// vvvvvv Tabs: hidden for now  vvvvvvv
+#info #searchForm button { border: none; height: 3em; border-radius: 10px;}
 
-#address { display: none; }
-
-#sanitation { display: none; }
-
-#elected { 
-    display: none;
-}
-
-#elected article { color: #fff; }
-
-#nearby { display: none; }
-
-#coordinates { display: none; }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
