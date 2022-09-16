@@ -116,6 +116,40 @@ article {
 #sanitation header a{color: black; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
 
 #sanitation header > div  { background-color: #c5c3c3; padding-top: 20px; padding-bottom: 20px; padding-left: 10px; padding-right: 10px; border-radius: 5px;}
+
+// elected > in progress
+#sanitation header {
+    padding-bottom: 10%;
+}
+
+#elected div {
+    background-color: #fdf6f6;
+}
+
+#mayor {
+    display: inline-block;
+}
+
+#district table {
+    display: inline-block;   
+}
+
+#at-large article {
+    display: inline-block;
+}
+// nearby style
+
+#nearby { color: $white;}
+
+#nearby { color: $white; display: inline-block; }
+
+#nearby a { color: black;  background-color: #e5e5e5;  text-decoration: none;  border-radius: 5px;  padding: 5px;  display: inline-block; }
+
+// nearby Tab 
+#info #nearby{ display: none; }
+
+#nearby { position: relative; }
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
