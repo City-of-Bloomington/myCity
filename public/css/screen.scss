@@ -122,39 +122,65 @@ article {
 
 #sanitation header > div  { background-color: #c5c3c3; padding-top: 20px; padding-bottom: 20px; padding-left: 10px; padding-right: 10px; border-radius: 5px;}
 
-// elected > in progress
 #sanitation header {
     padding-bottom: 10%;
 }
+// elected > in progress
 
-#elected div {
-    background-color: #fdf6f6;
+#elected h2 {
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
-#mayor {
-    display: inline-block;
+#elected {
+    background-color: white;
+    border-radius: 10px;
+    
+    
+}
+
+#at-large {
+    margin: 5% 5%;
+    
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+}
+
+#mayor, #clerk {
+    margin: 5% 5%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+#elected h3, img, h4{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 #district table {
-    display: inline-block;   
+    table-layout: fixed;
+    width: 100%;
+    word-break: break-all;
 }
 
-#at-large article {
-    display: inline-block;
+#district{
+    margin: 5% 15%;
 }
-// nearby style
 
-#nearby { color: $white;}
+// nearby 
 
-#nearby { color: $white; display: inline-block; }
-
-#nearby a { color: black;  background-color: #e5e5e5;  text-decoration: none;  border-radius: 5px;  padding: 5px;  display: inline-block; }
-
-// nearby Tab 
-#info #nearby{ display: none; }
-
-#nearby { position: relative; }
-
+#nearby { color: white; text-align: center;}
+  
+#nearby a { color: black; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; display: inline-block; }
+  
 // coordinates
 
 #coordinates {
