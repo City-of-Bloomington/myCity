@@ -127,54 +127,21 @@ article {
 }
 // elected > in progress
 
-#elected h2 {
-    text-align: center;
-    padding-top: 5%;
-    padding-bottom: 5%;
-}
+#elected h2 {text-align: center;padding-top: $margin-elected;padding-bottom: $margin-elected}
 
-#elected {
-    background-color: white;
-    border-radius: 10px;
-    
-    
-}
+#elected {background-color: white;border-radius: $border-radius;padding-bottom: $margin-elected}
 
-#at-large {
-    margin: 5% 5%;
-    
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    
-}
+#at-large {margin: $margin-elected $margin-elected;display: grid;gap: 1rem;grid-template-columns: repeat(2, 1fr);grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));}
 
-#mayor, #clerk {
-    margin: 5% 5%;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
+#mayor, #clerk {margin: $margin-elected $margin-elected;display: grid;gap: 1rem;grid-template-columns: repeat(2, 1fr);grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));}
 
-#elected h3, img, h4{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
+#elected h3, img, h4{display: block;margin-left: auto;margin-right: auto;text-align: center;}
 
-#district table {
-    table-layout: fixed;
-    width: 100%;
-    word-break: break-all;
-}
+#district table, #at-large table {table-layout: fixed;width: 100%;word-break: break-all;}
 
-#district{
-    margin: 5% 15%;
-}
+#elected article {margin: $margin-elected $margin-elected;background-color: $electedCard;padding: $margin-elected;border-radius: $border-radius;}
 
+#elected a{ color: black;  background-color: #e5e5e5;  text-decoration: none;  border-radius: 5px;  padding: 5px;  display: inline-block; }
 // nearby 
 
 #nearby { color: white; text-align: center;}
