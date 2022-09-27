@@ -58,12 +58,11 @@ article {
 #searchView {
     margin: 0; 
     padding: $size-gutter;
-    height: 700px;
     background-color: $color-link;
     color: $color-text-background;
     text-align: center;
     a { color: $color-text-background; }
-    h1 { text-align: center; }
+    h1 { padding-top: 5%; text-align: center; }
     h3 { text-align: center; border: none; }
     footer { text-align: center; }
     form {text-align: center;}
@@ -72,6 +71,15 @@ article {
     button { border: none; height: 3em;}
     #searchForm { text-align: center; }
 }
+// temp 
+#searchView form {padding-bottom: 5%; }
+
+#searchView { padding: 0; }
+
+.bloomMap { position: relative; }
+
+#searchView img { margin-right: 0; padding: 0; width: 300px; }
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #info {background-color: $blue;}
 
