@@ -15,11 +15,10 @@
 <div id="info">
 <div id="map"></div>
 {{ include('html/address/partials/searchForm.twig', {'query': address.streetAddress}) }}
-
-<!-- Edit Markup to always show - new nav -->
-<!-- deleted <summary> and <details> -->
-        <nav>
-        <ul>
+<section>
+<details>
+    <summary>Jump to section</summary>
+    <nav>
         <ul role="list"><!-- Safari accessbility -->
             <li><a href="#address">About</a></li>
             <li><a href="#sanitation">Sanitation</a></li>
@@ -41,10 +40,9 @@
             </li>
             <li><a href="#coordinates">Coordinates</a></li>
         </ul>
-        </ul>
-        </nav>
-<!-- Edit Markup to always show - nav end, delete comments if Aproved -->
-
+    </nav>
+</details>
+</section>
 {{ include('html/address/partials/address.twig'    ) }}
 {{ include('html/address/partials/sanitation.twig' ) }}
 {{ include('html/address/partials/elected.twig'    ) }}
