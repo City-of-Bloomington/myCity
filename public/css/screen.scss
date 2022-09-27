@@ -101,7 +101,7 @@ article {
 
 //adress style
 
-#info #address { background-color: #1e5aae; color: white; }
+#info #address {padding-top: 5%; background-color: #1e5aae; color: white; }
 
 #info #address h2 { margin:0; padding: 1em; text-align: center; }
 
@@ -111,12 +111,14 @@ article {
 
 #info #address header p {text-align: center;}
 
-//#info #address span.city {  display: block; }
+//  #info #address span.city {  display: block; }
 
-//sanitation
+//  sanitation
+#sanitation {padding: 5%;}
+
 #sanitation header { color: $white; padding-left: 10%; padding-right: 10%;}
 
-#sanitation h2 {text-align: center;}
+#sanitation h2 {text-align: center; padding-bottom: 10%;}
 
 #sanitation header a{color: black; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
 
@@ -125,7 +127,7 @@ article {
 #sanitation header {
     padding-bottom: 10%;
 }
-// elected > in progress
+//  elected > in progress
 
 #elected h2 {text-align: center;padding-top: $margin-elected;padding-bottom: $margin-elected}
 
@@ -185,7 +187,7 @@ span.city, span.county {
     border-radius: 1em;
     font-weight: bold;
 }
-span.city   { position: relative; color: $color-text-background; background-color: $color-valid; }
+span.city   { display: inline-block; position: relative; color: $color-text-background; background-color: $color-valid; }
 span.county { color: $color-text-background; background-color: $color-error; }
 
 
