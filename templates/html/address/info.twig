@@ -13,7 +13,7 @@
 
 {% block content %}
 <div id="info">
-<div id="map"></div>
+<!--<div id="map"></div> -->
 {{ include('html/address/partials/searchForm.twig', {'query': address.streetAddress}) }}
 <section>
 <details>
@@ -50,6 +50,9 @@
 {{ include('html/address/partials/coordinates.twig') }}
 {{ include('html/address/partials/government.twig' ) }}
 </div>
+
+<!--
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_API_KEY }}"></script>
 <script type="text/javascript" src="js/map-{{ VERSION }}.js"></script>
+-->
 {% endblock %}
