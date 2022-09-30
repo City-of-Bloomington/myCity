@@ -130,7 +130,7 @@ article {
 
 #sanitation h2 {text-align: center; padding-bottom: 10%;}
 
-#sanitation header a{color: black; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
+#sanitation header a{color: $color-link; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
 
 #sanitation header > div  { background-color: #c5c3c3; padding-top: 20px; padding-bottom: 20px; padding-left: 10px; padding-right: 10px; border-radius: 5px;}
 
@@ -153,12 +153,12 @@ article {
 
 #elected article {margin: $margin-elected $margin-elected;background-color: $electedCard;padding: $margin-elected;border-radius: $border-radius;}
 
-#elected a{ color: black;  background-color: #e5e5e5;  text-decoration: none;  border-radius: 5px;  padding: 5px;  display: inline-block; }
+#elected a{ color: $color-link;  background-color: #e5e5e5;  text-decoration: none;  border-radius: 5px;  padding: 5px;  display: inline-block; }
 // nearby 
 
 #nearby { color: white; text-align: center;}
   
-#nearby a { color: black; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; display: inline-block; }
+#nearby a { color: $color-link; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; display: inline-block; }
   
 // coordinates
 
@@ -172,11 +172,11 @@ article {
 
 #coordinates h2 { font-size:40px; text-align: center; }
 
-#coordinates table { background-color: #d1d1eb; border-radius: 5px; color: black; text-align: center; margin-left: auto; margin-right: auto; }
+#coordinates table { background-color: #d1d1eb; border-radius: 5px; color: $color-link; text-align: center; margin-left: auto; margin-right: auto; }
 
 #coordinates div { padding-bottom: 5%; padding-top: 10%; padding: 10%; }
 
-#coordinates header a { color: black;  background-color: #e5e5e5;  text-decoration: none;  border-radius: 5px;  padding: 5px;  display: inline-block;  }
+#coordinates header a { color: $color-link;  background-color: #e5e5e5;  text-decoration: none;  border-radius: 5px;  padding: 5px;  display: inline-block;  }
 
 // government online 
 
@@ -184,11 +184,17 @@ article {
 
 #government header {  text-align: center; padding-bottom: 5%; }
 
-#government div { margin-left: auto; margin-right: auto; }
+#government div { padding: 10px; margin-left: auto; margin-right: auto; }
 
-#government a {  color: black;   background-color: #e5e5e5;   text-decoration: none;   border-radius: 5px;   padding: 5px;   display: inline-block; }
+#government a {  color: $color-link;   background-color: #e5e5e5;   text-decoration: none;   border-radius: 5px;   padding: 5px;   display: inline-block; }
 
-// footer
+#government div{ table-layout: fixed; width: 80%; word-break: break-all; text-align: center; }
+
+#government table { margin-left: auto; margin-right: auto; table-layout: fixed; width: 70%; word-break: break-all;}
+
+// extras styling
+#info th { background-color: #3570f808; }
+
 
 
 
@@ -241,7 +247,7 @@ footer {
 }
 
 footer a { 
-    color: black; 
+    color: $color-link; 
     background-color: #e5e5e5; 
     text-decoration: none; 
     border-radius: 5px; 
@@ -253,8 +259,8 @@ footer a {
 
 // Temp place for tab css
 #schools, #playgrounds, #parks {
-    color: black;
-    
+    color: $gray;
+    // display: inline-grid;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
