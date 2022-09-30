@@ -6,13 +6,35 @@
  * @param array parks
  * @param array playgrounds
 #}
+
+<!--  fix! -->
+<head>
+    <script src="public/js/tab.js"></script>
+</head>
+
+{% block javascripts %}
+    <script src="public/js/tab.js"></script>
+{% endblock %}
+
+<!--  -->
+
 {% set google_maps = 'https://maps.google.com/maps/dir/?api=1&origin=' ~ address.streetAddress %}
+
 <section id="nearby">
     <header><h2>Nearby Amenities</h2></header>
     <div>
         <p>Distances are approximate</p>
         <p>Click a row for directions</p>
-        <section id="schools">
+
+<button onclick="togSchools()">Schools</button>
+<button onclick="togPlay()">Playgrounds</button>
+<button onclick="togParks()">Parks</button>
+
+
+
+<div id="togSchool" class="visibility">
+   
+<section id="schools">
             <h3>Schools</h3>
             <table>
             {% for s in schools|slice(0, 12) %}
@@ -24,8 +46,13 @@
                 </tr>
             {% endfor %}
             </table>
-        </section>
-        <section id="playgrounds">
+</section>
+
+</div>
+
+<div id="togPlay" class="visibility">
+    
+<section id="playgrounds">
             <h3>Playgrounds</h3>
             <table>
             {% for s in playgrounds|slice(0, 12) %}
@@ -37,8 +64,13 @@
                 </tr>
             {% endfor %}
             </table>
-        </section>
-        <section id="parks">
+</section>
+
+</div>
+
+<div id="togParks" class="visibility">
+    
+<section id="parks">
             <h3>Parks</h3>
             <table>
             {% for s in parks|slice(0, 12) %}
@@ -50,6 +82,5 @@
                 </tr>
             {% endfor %}
             </table>
-        </section>
-    </div>
 </section>
+</div>
