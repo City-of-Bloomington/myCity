@@ -253,20 +253,20 @@ footer a {
 
 // Temp place for tab css
 #schools, #playgrounds, #parks {
-    position: absolute;
+    color: black;
+    
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
 }
 
 
-.visibility { display: none; }
+//.visibility { display: none; }
 
-.show1 {
-	display: block;
-}
+//.show1 {display: block;}
 
-.show2 {
-	display: block;
-}
+//.show2 {display: block;}
 
-.show3 {
-	display: block;
-}
+//.show3 {display: block;}
