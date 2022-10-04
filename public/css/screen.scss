@@ -67,7 +67,7 @@ article {
     button { border: none; height: 3em;}
     #searchForm { text-align: center; }
 }
-// temp 
+
 #searchView form {padding-bottom: 5%; }
 
 #searchView { padding: 0; }
@@ -78,7 +78,6 @@ article {
 
 #info .bloomMap { display: none; }
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #info {background-color: $blue;}
 
 #info nav { overflow: hidden; background-color: $white; margin: 0; text-align: center;}
@@ -117,8 +116,6 @@ article {
 
 #info #address header p {text-align: center;}
 
-//  #info #address span.city {  display: block; }
-
 //  sanitation
 #sanitation { margin: 0;}
 
@@ -145,15 +142,9 @@ article {
 
 #elected article {margin: 5% 5%; background-color: $electedCard-Color; padding: 5%; border-radius: 10px; }
 
-//#elected a { color: #1e5aae; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
 #elected a { color: #1e5aae;}
 
-#at-large { 
-    margin: 5% 5%; 
-    display: grid; gap: 1rem; 
-    grid-template-columns: repeat(2, 1fr); 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-}
+#at-large { margin: 5% 5%; display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 
 // nearby 
 
@@ -194,8 +185,6 @@ article {
 
 #sanitation a:hover { background-color: $blue; color: $onHoverLink; }
 
-//#elected a:hover { background-color: $blue; color: $onHoverLink; }
-
 #coordinates a:hover { background-color: #cccded; color: $blue; } 
 
 #government a:hover { background-color: $blue; color: $onHoverLink; }
@@ -205,11 +194,6 @@ article {
 #government a.icon { background-color: white; }
 
 footer a:hover { background-color: $blue; color: $onHoverLink;}
-
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 
 #searchForm {
     background-color: $color-link;
@@ -226,16 +210,14 @@ span.city, span.county {
 span.city   { display: inline-block; position: relative; color: $color-text-background; background-color: $color-valid; }
 span.county { color: $color-text-background; background-color: $color-error; }
 
-
 section header div {
     background-position: top left;
     background-repeat: no-repeat;
     background-size: $size-icon; min-height: $size-icon;
 }
-//#address     header div { background-image: url('images/map-marked-alt.svg'); padding-left: $size-icon + ($size-gutter*3); }
-//#sanitation  header div { background-image: url('images/trash.svg');          padding-left: $size-icon + ($size-gutter*3); }
+
 #sanitation header div {  background-image: url("images/trash.svg"); background-position: bottom;}
-//#coordinates header div { background-image: url('images/location-arrow.svg'); padding-left: $size-icon + ($size-gutter*3); }
+
 #coordinates header div {  background-image: url("images/location-arrow.svg");  background-position: top center; }
 
 .icon {
@@ -250,13 +232,9 @@ section header div {
 .instagram { background-image: url('images/instagram.svg'); }
 .youtube   { background-image: url('images/youtube.svg'  ); }
 
-
 footer { padding: $size-gutter; text-align: center;}
 
 footer a { color: $color-link; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
-
-
-
 
 // #nearby --> tabs 
 
@@ -272,10 +250,4 @@ footer a { color: $color-link; background-color: #e5e5e5; text-decoration: none;
 
 .show3 {display: block;}
 
-#nearby button {
-    color: rgb(122, 151, 171);
-    background-color: rgb(243, 243, 243);
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-}
+#nearby button { color: rgb(122, 151, 171); background-color: rgb(243, 243, 243); border: none; padding: 10px; border-radius: 10px; }
