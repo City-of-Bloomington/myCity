@@ -120,19 +120,17 @@ article {
 //  #info #address span.city {  display: block; }
 
 //  sanitation
-#sanitation {padding: 5%;}
+#sanitation { margin: 0;}
 
-#sanitation header { color: $white; padding-left: 10%; padding-right: 10%;}
+#sanitation header { padding-left: 10%; padding-right: 10%; }
 
-#sanitation h2 {text-align: center; padding-bottom: 10%;}
+#sanitation h2 { text-align: center; }
 
-#sanitation header a{color: $color-link; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
+#sanitation header a { color: #1e5aae; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
 
-#sanitation header > div  { background-color: #c5c3c3; padding-top: 20px; padding-bottom: 20px; padding-left: 10px; padding-right: 10px; border-radius: 5px;}
+#sanitation div {  text-align: center; background-color: white;  padding-top: 20px; padding-bottom: 10%; padding-left: 10px; padding-right: 10px; border-radius: 5px; }
 
-#sanitation header {
-    padding-bottom: 10%;
-}
+#sanitation header { padding-bottom: 5%; padding-top: 5%; background-color: $white;}
 //  elected
 
 #elected h2 { text-align: center; padding-top: 5%; padding-bottom: 5%; }
@@ -147,7 +145,8 @@ article {
 
 #elected article {margin: 5% 5%; background-color: #f2f6ff; padding: 5%; border-radius: 10px; }
 
-#elected a { color: #1e5aae; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
+//#elected a { color: #1e5aae; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
+#elected a { color: #1e5aae;}
 
 #at-large { 
     margin: 5% 5%; 
@@ -160,19 +159,13 @@ article {
 
 #nearby { color: white; text-align: center;}
   
-#nearby a { color: $color-link; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; display: inline-block; }
+#nearby a { color: $color-link;}
 
 #nearby table {display: inline-grid;}
   
 // coordinates
 
-#coordinates {
-    color: $white;
-    background-image: url("public/css/images/Map_ScreenView.png");
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    padding: 10%;
-}
+#coordinates { color: $white; background-image: url("public/css/images/Map_ScreenView.png"); background-repeat: no-repeat; background-position: right bottom; padding: 10%;}
 
 #coordinates h2 { font-size:40px; text-align: center; }
 
@@ -201,13 +194,15 @@ article {
 
 #sanitation a:hover { background-color: $blue; color: $onHoverLink; }
 
-#elected a:hover { background-color: $blue; color: $onHoverLink; }
+//#elected a:hover { background-color: $blue; color: $onHoverLink; }
 
-#coordinates a:hover { background-color: #cccded; color: $onHoverLink; } 
+#coordinates a:hover { background-color: #cccded; color: $blue; } 
 
 #government a:hover { background-color: $blue; color: $onHoverLink; }
 
-#government a.icon:hover { background-color: $onHoverLink;}
+#government a.icon:hover { background-color: white; }
+
+#government a.icon { background-color: white; }
 
 footer a:hover { background-color: $blue; color: $onHoverLink;}
 
@@ -239,7 +234,7 @@ section header div {
 }
 //#address     header div { background-image: url('images/map-marked-alt.svg'); padding-left: $size-icon + ($size-gutter*3); }
 //#sanitation  header div { background-image: url('images/trash.svg');          padding-left: $size-icon + ($size-gutter*3); }
-#sanitation header div {  background-image: url("images/trash.svg"); background-position: center;}
+#sanitation header div {  background-image: url("images/trash.svg"); background-position: bottom;}
 //#coordinates header div { background-image: url('images/location-arrow.svg'); padding-left: $size-icon + ($size-gutter*3); }
 #coordinates header div {  background-image: url("images/location-arrow.svg");  background-position: top center; }
 
@@ -256,42 +251,18 @@ section header div {
 .youtube   { background-image: url('images/youtube.svg'  ); }
 
 
-footer { 
-    padding: $size-gutter; 
-    text-align: center;
-}
+footer { padding: $size-gutter; text-align: center;}
 
-footer a { 
-    color: $color-link; 
-    background-color: #e5e5e5; 
-    text-decoration: none; 
-    border-radius: 5px; 
-    padding: 5px; 
-    display: inline-block; 
-}
+footer a { color: $color-link; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
 
 
 
 
 // #nearby --> tabs 
 
-#nearby {
-    margin: 0; 
-    padding: 5%;
-    background-color: white; 
-    color: rgb(45, 45, 45); 
-    text-align: center; 
-}
+#nearby { margin: 0; padding: 5%;background-color: white; color: rgb(45, 45, 45); text-align: center; }
 
-#schools, #playgrounds, #parks {
-    color: $gray;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-}
-
+#schools, #playgrounds, #parks {color: $gray; margin-left: auto; margin-right: auto; padding: 20px; background-color: white; border-radius: 10px;}
 
 .visibility { display: none; }
 
