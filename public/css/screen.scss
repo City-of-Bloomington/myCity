@@ -161,6 +161,8 @@ article {
 #nearby { color: white; text-align: center;}
   
 #nearby a { color: $color-link; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; display: inline-block; }
+
+#nearby table {display: inline-grid;}
   
 // coordinates
 
@@ -197,6 +199,17 @@ article {
 // extras styling
 #info th { background-color: #3570f808; }
 
+#sanitation a:hover { background-color: $blue; color: $onHoverLink; }
+
+#elected a:hover { background-color: $blue; color: $onHoverLink; }
+
+#coordinates a:hover { background-color: #cccded; color: $onHoverLink; } 
+
+#government a:hover { background-color: $blue; color: $onHoverLink; }
+
+#government a.icon:hover { background-color: $onHoverLink;}
+
+footer a:hover { background-color: $blue; color: $onHoverLink;}
 
 
 
@@ -260,7 +273,7 @@ footer a {
 
 
 
-// for tabs 
+// #nearby --> tabs 
 
 #nearby {
     margin: 0; 
