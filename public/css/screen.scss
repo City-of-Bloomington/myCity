@@ -25,10 +25,6 @@ body > header {
     nav { float: right; }
 }
 
-// looks good without scroll bar
-::-webkit-scrollbar {
-    display: none;
-}
 
 header > nav > a , a:hover, a:focus, a:active { color: $blue; text-decoration: none;}
 div #info {background-color: $blue;}
@@ -257,10 +253,19 @@ footer a {
 
 
 
-// Temp place for tab css
+
+// for tabs 
+
+#nearby {
+    margin: 0; 
+    padding: 5%;
+    background-color: white; 
+    color: rgb(45, 45, 45); 
+    text-align: center; 
+}
+
 #schools, #playgrounds, #parks {
     color: $gray;
-    // display: inline-grid;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
@@ -269,10 +274,10 @@ footer a {
 }
 
 
-//.visibility { display: none; }
+.visibility { display: none; }
 
-//.show1 {display: block;}
+.show1 {display: block;}
 
-//.show2 {display: block;}
+.show2 {display: block;}
 
-//.show3 {display: block;}
+.show3 {display: block;}
