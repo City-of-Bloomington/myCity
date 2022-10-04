@@ -143,7 +143,7 @@ article {
 
 #district table, #at-large table, #mayor table, #clerk table{ table-layout: fixed; width: 100%; word-break: break-all; }
 
-#elected article {margin: 5% 5%; background-color: #f2f6ff; padding: 5%; border-radius: 10px; }
+#elected article {margin: 5% 5%; background-color: $electedCard-Color; padding: 5%; border-radius: 10px; }
 
 //#elected a { color: #1e5aae; background-color: #e5e5e5; text-decoration: none; border-radius: 5px; padding: 5px; display: inline-block; }
 #elected a { color: #1e5aae;}
