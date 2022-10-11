@@ -7,16 +7,6 @@
  * @param array playgrounds
 #}
 
-<!--  fix! -->
-<head>
-    <script src="public/js/tab.js"></script>
-</head>
-
-{% block javascripts %}
-    <script src="public/js/tab.js"></script>
-{% endblock %}
-
-<!--  -->
 
 {% set google_maps = 'https://maps.google.com/maps/dir/?api=1&origin=' ~ address.streetAddress %}
 
@@ -68,8 +58,7 @@
 
 </div>
 
-<div id="togParks" class="visibility">
-    
+<div id="togParks" class="visibility"> 
 <section id="parks">
             <h3>Parks</h3>
             <table>
@@ -84,3 +73,4 @@
             </table>
 </section>
 </div>
+<script type="text/javascript" src="js/tab-{{ VERSION }}.js"></script>

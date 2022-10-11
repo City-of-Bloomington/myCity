@@ -116,8 +116,11 @@ article {
 
 #info #address header p {text-align: center;}
 
-//  sanitation
-#sanitation { margin: 0;}
+// sanitation
+
+#info #sanitation table {padding-bottom: 5%; width: 100%; text-align: center; margin: 0; padding-left: 10%; padding-right: 10%; }
+
+#sanitation { margin: 0; background-color: white;}
 
 #sanitation header { padding-left: 10%; padding-right: 10%; }
 
@@ -156,7 +159,7 @@ article {
   
 // coordinates
 
-#coordinates { color: $white; background-image: url("public/css/images/Map_ScreenView.png"); background-repeat: no-repeat; background-position: right bottom; padding: 10%;}
+#coordinates { background-image: url("public/css/images/Map_ScreenView.png"); background-repeat: no-repeat; background-position: right bottom; padding: 10%;}
 
 #coordinates h2 { font-size:40px; text-align: center; }
 
