@@ -1,14 +1,13 @@
-function togSchools() {
-    var element = document.getElementById("togSchool");
-    element.classList.toggle("show1");
- }
-
- function togPlay() {
-    var element = document.getElementById("togPlay");
-    element.classList.toggle("show2");
- }
-
- function togParks() {
-    var element = document.getElementById("togParks");
-    element.classList.toggle("show3");
+function openTab(evt, tabName) {
+   var i, tabcontent, tablinks;
+   tabcontent = document.getElementsByClassName("tabcontent");
+   for (i = 0; i < tabcontent.length; i++) {
+     tabcontent[i].style.display = "none";
+   }
+   tablinks = document.getElementsByClassName("tablinks");
+   for (i = 0; i < tablinks.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" active", "");
+   }
+   document.getElementById(tabName).style.display = "block";
+   evt.currentTarget.className += " active";
  }

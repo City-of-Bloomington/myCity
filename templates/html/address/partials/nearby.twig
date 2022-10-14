@@ -15,51 +15,46 @@
     <div>
         <p>Distances are approximate</p>
         <p>Click a row for directions</p>
-
-<button onclick="togSchools()">Schools</button>
-<button onclick="togPlay()">Playgrounds</button>
-<button onclick="togParks()">Parks</button>
-
-
-
-<div id="togSchool" class="visibility">
-   
-<section id="schools">
-            <h3>Schools</h3>
-            <table>
-            {% for s in schools|slice(0, 12) %}
-                <tr><td>{{ s.distance|round(1) }} mi.</td>
-                    <td><a href="{{ google_maps ~ '&destination=' ~ s.address}}">
-                        {{ s.name }}
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'openSchool')">Schools</button>
+        <button class="tablinks" onclick="openTab(event, 'openPlaygrounds')">Playgrounds</button>
+        <button class="tablinks" onclick="openTab(event, 'openParks')">parks</button>
+    </div>
+  
+  <div id="openSchool" class="tabcontent">
+    <section id="schools">
+        <h3>Schools</h3>
+        <table>
+        {% for s in schools|slice(0, 12) %}
+            <tr><td>{{ s.distance|round(1) }} mi.</td>
+                <td><a href="{{ google_maps ~ '&destination=' ~ s.address}}">
+                    {{ s.name }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
             </table>
-</section>
-
-</div>
-
-<div id="togPlay" class="visibility">
-    
-<section id="playgrounds">
-            <h3>Playgrounds</h3>
-            <table>
-            {% for s in playgrounds|slice(0, 12) %}
-                <tr><td>{{ s.distance|round(1) }} mi.</td>
-                    <td><a href="{{ google_maps ~ '&destination=' ~ s.address}}">
-                        {{ s.name }}
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
+    </section>
+  </div>
+  
+  <div id="openPlaygrounds" class="tabcontent">
+    <section id="playgrounds">
+        <h3>Playgrounds</h3>
+        <table>
+        {% for s in playgrounds|slice(0, 12) %}
+            <tr><td>{{ s.distance|round(1) }} mi.</td>
+                <td><a href="{{ google_maps ~ '&destination=' ~ s.address}}">
+                    {{ s.name }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
             </table>
-</section>
-
-</div>
-
-<div id="togParks" class="visibility"> 
-<section id="parks">
+    </section>
+  </div>
+  
+    <div id="openParks" class="tabcontent">
+        <section id="parks">
             <h3>Parks</h3>
             <table>
             {% for s in parks|slice(0, 12) %}
@@ -70,7 +65,9 @@
                     </td>
                 </tr>
             {% endfor %}
-            </table>
-</section>
+                </table>
+        </section>
+    </div>
 </div>
+</section>
 <script type="text/javascript" src="js/tab-{{ VERSION }}.js"></script>
