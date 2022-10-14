@@ -247,6 +247,10 @@ footer a { color: $color-link; background-color: #e5e5e5; text-decoration: none;
 
 #nearby button { color: rgb(122, 151, 171); background-color: rgb(243, 243, 243); border: none; padding: 10px; border-radius: 10px; }
 
+// hides 2 tabs at start 
+#openPlaygrounds, #openParks {
+    display: none;
+}
 
 #nearby.tab {
     overflow: hidden;
