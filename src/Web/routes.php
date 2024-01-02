@@ -1,14 +1,15 @@
 <?php
 /**
- * @copyright 2020 City of Bloomington, Indiana
+ * @copyright 2020-2024 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 declare (strict_types=1);
 
-$rf = new \Aura\Router\RouterFactory(BASE_URI);
-$ROUTES = $rf->newInstance();
-$ROUTES->setTokens(['id' => '\d+']);
+$ROUTES = new Aura\Router\RouterContainer(BASE_URI);
+$map    = $ROUTES->getMap();
 
-$ROUTES->add('home.index',   '/'    )->setValues(['controller' => 'Web\Controllers\SearchController']);
-$ROUTES->add('home.help',    '/help')->setValues(['controller' => 'Web\Controllers\HelpController']);
-$ROUTES->add('address.info', '/{id}')->setValues(['controller' => 'Web\Controllers\InfoController']);
+$map->tokens(['id' => '\d+']);
+
+$map->get('home.index',    '/'    , Web\Controllers\SearchController::class);
+$map->get('home.help',     '/help', Web\Controllers\HelpController::class);
+$map->get('address.info',  '/{id}', Web\Controllers\InfoController::class);

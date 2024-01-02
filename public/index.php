@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2015-2022 City of Bloomington, Indiana
+ * @copyright 2015-2024 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 /**
@@ -13,42 +13,39 @@ $startTime = microtime(true);
 
 include '../src/Web/bootstrap.php';
 
-$p     = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$route = $ROUTES->match($p, $_SERVER);
+$matcher = $ROUTES->getMatcher();
+$route   = $matcher->match(GuzzleHttp\Psr7\ServerRequest::fromGlobals());
 if ($route) {
-    if (isset($route->params['controller'])) {
-        $controller = $route->params['controller'];
-        $c = new $controller($DI);
-        if (is_callable($c)) {
-            // Convenience:
-            // Most of our applications are just basic form processing.
-            // Thus, the controllers typically read directly from the PHP
-            // global SERVER variables.
-            //
-            // 'id' is the standard name for primary key in tables.
-            // Most routes, by default, allow for a fancy treatment of {id} in the URL.
-            // If it the id param comes from the route handling, we copy
-            // it to the PHP Server variables, so we don't have to have
-            // special parameter handling code for the common case of checking
-            // for an id parameter.
-            if (!empty($route->params['id'])) {
-                    $_GET['id'] = $route->params['id'];
-                $_REQUEST['id'] = $route->params['id'];
-            }
+    $controller = $route->handler;
+    $c = new $controller($DI);
+    if (is_callable($c)) {
+        // Convenience:
+        // Most of our applications are just basic form processing.
+        // Thus, the controllers typically read directly from the PHP
+        // global SERVER variables.
+        //
+        // 'id' is the standard name for primary key in tables.
+        // Most routes, by default, allow for a fancy treatment of {id} in the URL.
+        // If it the id param comes from the route handling, we copy
+        // it to the PHP Server variables, so we don't have to have
+        // special parameter handling code for the common case of checking
+        // for an id parameter.
+        if (!empty($route->attributes['id'])) {
+                $_GET['id'] = $route->attributes['id'];
+            $_REQUEST['id'] = $route->attributes['id'];
+        }
 
-            $view = $c($route->params);
-        }
-        else {
-            $f = $ROUTES->getFailedRoute();
-            $view = new \Web\Views\NotFoundView();
-        }
+        $view = $c($route->attributes);
+    }
+    else {
+        $f = $matcher->getFailedRoute();
+        $view = new \Web\Views\NotFoundView();
     }
 }
 else {
-    $f = $ROUTES->getFailedRoute();
+    $f = $matcher->getFailedRoute();
     $view = new \Web\Views\NotFoundView();
 }
-
 
 echo $view->render();
 
