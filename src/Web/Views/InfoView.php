@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright 2022 City of Bloomington, Indiana
+ * @copyright 2022-2024 City of Bloomington, Indiana
  * @license https://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 declare (strict_types=1);
@@ -10,10 +10,7 @@ use Web\View;
 
 class InfoView extends View
 {
-    public function __construct(array $address,
-                                array $schools,
-                                array $parks,
-                                array $playgrounds)
+    public function __construct(array $address)
     {
         parent::__construct();
 
@@ -22,10 +19,7 @@ class InfoView extends View
             'address'      => $address['address' ],
             'location'     => $address['location'],
             'purposes'     => $address['purposes'] ?? [],
-            'contact_info' => $CONTACT_INFO,
-            'schools'      => $schools,
-            'parks'        => $parks,
-            'playgrounds'  => $playgrounds
+            'contact_info' => $CONTACT_INFO
         ];
     }
 
