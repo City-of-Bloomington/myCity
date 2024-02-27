@@ -3,17 +3,15 @@
 {{ include('html/layouts/partials/head.twig') }}
 
 <body>
-    {{ include('html/layouts/partials/header.twig') }}
-	<main>
-        <div id="content-panel" class="panel">
+    {{ include('html/layouts/partials/nav.twig') }}
+	<main class="container p-2">
             {% if errorMessages is defined %}
             {{ include('html/layouts/partials/errorMessages.twig') }}
             {% endif %}
 
             {% block content %}
             {% endblock %}
-        </div>
 	</main>
-	{{ include('html/layouts/partials/footer.twig') }}
+     {{ include('html/layouts/partials/footer.twig') }}
 </body>
 </html>

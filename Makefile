@@ -18,7 +18,8 @@ default: clean compile test package
 
 clean:
 	rm -Rf build/${APPNAME}*
-	cd public/css && rm -f *.css*
+	for f in $(shell find public/css   -name '*-*.css'   ); do rm $$f; done
+	for f in $(shell find data/Themes  -name '*-*.css'   ); do rm $$f; done
 
 compile:
 	cd ${LANGUAGES} && msgfmt -cv *.po
