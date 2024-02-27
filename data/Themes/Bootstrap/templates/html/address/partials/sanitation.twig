@@ -1,0 +1,37 @@
+{#
+ * @copyright 2022 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
+ * @param array location
+#}
+<section id="sanitation">
+    <header>
+        <h2>Sanitation Pickup</h2>
+        <div>
+            <p>Please see <a href="/trash">Trash &amp; Recycling Pickup</a> for details.</p>
+            <p>Find out more by using
+               <a href="https://api.recollect.net/r/area/bloomingtonin">ReCollect</a>.
+            </p>
+            {% if location.trash_day %}
+            <p><strong>Note: Some conditions may cause delays to the schedule below.</strong></p>
+            {% else %}
+            <p><strong>Note: No sanitation pickup scheduled.</strong></p>
+            <p>If you were expecting one, contact:
+               <a href="mailto:sanitation@bloomington.in.gov">sanitation@bloomington.in.gov</a>
+            </p>
+            {% endif %}
+        </div>
+    </header>
+    {% if location.trash_day %}
+    <table>
+        <tr><th>Trash &amp; Recycling</th><td>{{ location.trash_day }}</td></tr>
+        {% if location.recycle_week %}
+        <tr><th>Yard Waste</th>
+            <td><a href="/sanitation/trash/{{ location.trash_day|lower }}-{{ location.recycle_week|lower }} ">Week {{ location.recycle_week }}</a>
+                <p><strong>Yard waste</strong> pickups are <strong>between April - December only.</strong></p>
+            </td>
+        </tr>
+        {% endif %}
+    </table>
+    {% endif %}
+</section>
+

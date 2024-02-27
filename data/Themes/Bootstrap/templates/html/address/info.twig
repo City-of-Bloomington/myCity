@@ -1,0 +1,51 @@
+{#
+ * @copyright 2022-2024 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
+ * @param array address
+ * @param array location
+ * @param array purposes
+ * @param array contact_info
+#}
+{% extends "html/layouts/default.twig" %}
+
+{% block content %}
+<div id="info">
+<div id="map"></div>
+{{ include('html/address/partials/searchForm.twig', {'query': address.streetAddress}) }}
+<section>
+<details>
+    <summary>Jump to section</summary>
+    <nav>
+        <ul role="list"><!-- Safari accessbility -->
+            <li><a href="#address">About</a></li>
+            <li><a href="#sanitation">Sanitation</a></li>
+            <li><a href="#government">Government Online</a></li>
+            <li><a href="#elected">Elected Officials</a>
+                {% if address.jurisdiction_name=='Bloomington' %}
+                <ul><li><a href="#mayor">Mayor</a></li>
+                    <li><a href="#district">District Representative</a></li>
+                    <li><a href="#at-large">Council At-Large</a></li>
+                    <li><a href="#clerk">Clerk</a></li>
+                </ul>
+                {% endif %}
+            </li>
+            <li><a href="#nearby">Neaby Amenities</a>
+                <ul><li><a href="#schools">Schools</a></li>
+                    <li><a href="#playgrounds">Playground</a></li>
+                    <li><a href="#parks">Parks</a></li>
+                </ul>
+            </li>
+            <li><a href="#coordinates">Coordinates</a></li>
+        </ul>
+    </nav>
+</details>
+</section>
+{{ include('html/address/partials/address.twig'    ) }}
+{{ include('html/address/partials/sanitation.twig' ) }}
+{{ include('html/address/partials/elected.twig'    ) }}
+{{ include('html/address/partials/coordinates.twig') }}
+{{ include('html/address/partials/government.twig' ) }}
+</div>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_API_KEY }}"></script>
+<script type="text/javascript" src="js/map-{{ VERSION }}.js"></script>
+{% endblock %}

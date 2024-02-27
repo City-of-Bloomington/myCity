@@ -1,0 +1,41 @@
+{#
+ * @copyright 2022 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
+ * @param string query
+ * @param array  results
+#}
+{% extends "html/layouts/default.twig" %}
+
+{% block content %}
+<section id="searchView">
+    <header>
+        <h1>Welcome</h1>
+        <h3>myBloomington provides information related to a given street address.</h3>
+        <p>Enter an address to learn more:</p>
+    </header>
+    <div>
+        {{ include('html/address/partials/searchForm.twig') }}
+        {% if query and not results %}
+        <p>No results found</p>
+        {% endif %}
+
+        {% if results %}
+            {% for a in results %}
+            <div>
+                <a href="{{ uri('address.info', {'id': a.id}) }}">
+                {{ a.streetAddress }}
+                <span class="{{ a.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
+                    {{ a.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
+                    Bloomington City Limits
+                </span>
+                </a>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</section>
+<script type="text/javascript">
+    document.getElementById('query').focus();
+</script>
+
+{% endblock %}

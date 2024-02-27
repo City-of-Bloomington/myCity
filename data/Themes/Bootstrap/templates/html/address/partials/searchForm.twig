@@ -1,0 +1,12 @@
+{#
+ * @copyright 2022 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
+ * @param string query
+ * @param array  results
+#}
+<form method="get" action="{{ BASE_URI }}" id="searchForm">
+    <fieldset>
+        <input name="query" id="query" placeholder="401 N Morton ST" value="{{ query }}" autocomplete="address-line1" />
+        <button type="submit">Search</button>
+    </fieldset>
+</form>
