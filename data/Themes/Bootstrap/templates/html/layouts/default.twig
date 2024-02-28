@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{ LANG }}" lang="{{ LANG }}">
 {{ include('html/layouts/partials/head.twig') }}
-<body>
+<body class="min-vh-100 vstack">
     {{ include('html/layouts/partials/nav.twig') }}
-	<main class="container p-2">
+	<main class="container p-2 flex-grow-1">
             {% if errorMessages is defined %}
             {{ include('html/layouts/partials/errorMessages.twig') }}
             {% endif %}
