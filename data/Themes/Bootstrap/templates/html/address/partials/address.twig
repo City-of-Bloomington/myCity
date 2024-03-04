@@ -1,20 +1,11 @@
 {#
- * @copyright 2022 City of Bloomington, Indiana
+ * @copyright 2024 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  * @param array address
  * @param array purposes
 #}
-<section id="address">
-    <header>
-        <h2>{{ address.streetAddress }}</h2>
-        <div>
-            <p> <span class="{{ address.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
-                    {{ address.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
-                    Bloomington City Limits
-                </span>
-            </p>
-        </div>
-    </header>
+<section id="address" class="container my-3">
+    <h2>Address Information</h2>
     <table>
         <tr><th>Township</th><td>{{ address.township_name }}</td></tr>
         {% for type,p in purposes %}
