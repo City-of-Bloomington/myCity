@@ -12,8 +12,8 @@
 <div id="info">
     <div id="map"></div>
         {{ include('html/address/partials/searchForm.twig', {'query': address.streetAddress}) }}
-        <div class="d-flex flex-wrap justify-content-between">
-            <h1>{{ address.streetAddress }}</h1>
+        <div class="d-flex flex-wrap">
+            <h1 class="me-5">{{ address.streetAddress }}</h1>
             <span class="{{ address.jurisdiction_name=='Bloomington' ? 'badge rounded-pill text-bg-success align-self-center' : 'county badge rounded-pill text-bg-warning' }}">{{ address.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }} Bloomington City Limits</span>
         </div>
         <section class="container">
