@@ -5,15 +5,19 @@
  * @param array purposes
 #}
 <section id="address" class="container my-3">
-    <h2>Address Information</h2>
-    <dl class="row">
-        <dt class="col-sm-3">Township</dt>
-        <dd class="col-sm-9">{{ address.township_name }}</dd>
-        {% for type,p in purposes %}
-        <dt class="col-sm-3">{{ type|title }}</dt>
-        <dd class="col-sm-9">{% for name in p %} {{ name|title }}</dd>{% endfor %}
-        {% endfor %}
-        <dt class="col-sm-3">Voter Registration</dt>
-        <dd class="col-sm-9"><a href="https://www.co.monroe.in.us/department/division.php?structureid=89">Monroe County Voter Precincts</a></dd>
-    </dl>
+    <div class="card card border-light mb-3">
+        <h2 class="card-header">Address Information</h2>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-md-4">Township</dt>
+                <dd class="col-md-8">{{ address.township_name }}</dd>
+                {% for type,p in purposes %}
+                <dt class="col-md-4">{{ type|title }}</dt>
+                <dd class="col-md-8">{% for name in p %} {{ name|title }}</dd>{% endfor %}
+                {% endfor %}
+                <dt class="col-md-4">Voter Registration</dt>
+                <dd class="col-md-8"><a href="https://www.co.monroe.in.us/department/division.php?structureid=89">Monroe County Voter Precincts</a></dd>
+            </dl>
+        </div>
+    </div>
 </section>

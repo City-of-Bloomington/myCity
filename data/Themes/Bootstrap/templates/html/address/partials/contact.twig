@@ -1,20 +1,19 @@
 {#
- * @copyright 2022 City of Bloomington, Indiana
+ * @copyright 2024 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  * @param array person
 #}
-<table>
-    <tr><th>Web</th><td><a href="{{ person.url }}">{{ person.url }}</a></td></tr>
-    <tr><th>Email</th><td><a href="mailto:{{ person.email }}">{{ person.email }}</a></td></tr>
-    <tr><th>Telephone</th>
-        <td>{% for k,v in person.phone %}
-            <a href="tel:{{ v }}">{{ v }} - {{ k }}</a>
-            {% endfor %}
-        </td>
-    </tr>
-    <tr><th>Address</th>
-        <td class="address">{{ person.address }}</td>
-    </tr>
-</table>
-
-
+<dl class="row">
+    <dt class="col-sm-3">Web</dt>
+    <dd class="col-sm-9"><a href="{{ person.url }}">{{ person.url }}</a></dd>
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9"><a href="mailto:{{ person.email }}">{{ person.email }}</a></dddiv>
+    <dt class="col-sm-3">Telephone</dt>
+    <dd class="col-sm-9">
+        {% for k,v in person.phone %}
+        <a href="tel:{{ v }}">{{ v }} - {{ k }}</a>
+        {% endfor %}
+    </dd>
+    <dt class="col-sm-3">Address</dt>
+    <dd class="col-sm-9">{{ person.address }}</dd>
+</dl>

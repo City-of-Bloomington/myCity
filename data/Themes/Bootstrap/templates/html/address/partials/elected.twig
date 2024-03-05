@@ -5,73 +5,91 @@
  * @param array purposes
  * @param array contact_info
 #}
-<section id="elected">
-    <header>
-        <h2>Elected City Officials</h2>
-    </header>
-    <div>
+<section id="elected" class="container my-3">
+    <h2>Elected City Officials</h2>
     {% if address.jurisdiction_name != 'Bloomington' %}
-        <p>This address is outside the jurisdiction of the City and is not
-        represented by Bloomington elected officials.</p>
+    <p>This address is outside the jurisdiction of the City and is not represented by Bloomington elected officials.</p>
     {% else %}
-        <article id="mayor">
-            {% set person = contact_info.mayor %}
-            <header>
-                {% if person.image %}<img src="{{ person.image }}" />{% endif %}
-                <h3>{{ person.name  }}</h3>
-                <h4>{{ person.title }}</h4>
-            </header>
-            <p>The Office of the Mayor provides leadership, management, communication
-               and strategic direction to the City of Bloomington government. This is
-               accomplished through public engagement, in cooperation with City Council
-               and the City Clerk, to determine and implement the priorities of our
-               community’s residents.</p>
-            {{ include('html/address/partials/contact.twig') }}
-        </article>
-        <article id="district">
-            {% set person = attribute(contact_info.council, purposes['CITY COUNCIL DISTRICT'][0]) %}
-            <header>
-                {% if person.image %}<img src="{{ person.image }}" />{% endif %}
-                <h3>{{ person.name  }}</h3>
-                <h4>{{ person.title }}</h3>
-            </header>
-            {{ include('html/address/partials/contact.twig') }}
-        </article>
-        <div id="at-large">
-        {% for person in contact_info.council.at_large %}
-        <article>
-            <header>
-                {% if person.image %}<img src="{{ person.image }}" />{% endif %}
-                <h3>{{ person.name  }}</h3>
-                <h4>{{ person.title }}</h3>
-            </header>
-            {{ include('html/address/partials/contact.twig') }}
-        </article>
-        {% endfor %}
+    <div id="mayor" class="card border-light mb-3">
+        {% set person = contact_info.mayor %}
+        <div class="row g-0">
+            <div class="col-md-3 align-self-center text-center">
+                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" />{% endif %}
+            </div>
+            <div class="col-md-9">
+                <h3 class="card-header">{{ person.name  }}</h3>
+                <div class="card-body">
+                    <h4 class="card-title">{{ person.title }}</h4>
+                    <p class="card-text">The Office of the Mayor provides leadership, management, communication
+                        and strategic direction to the City of Bloomington government. This is
+                        accomplished through public engagement, in cooperation with City Council
+                        and the City Clerk, to determine and implement the priorities of our
+                        community’s residents.
+                    </p>
+                    {{ include('html/address/partials/contact.twig') }}
+                </div>
+            </div> 
         </div>
-        <article id="clerk">
-            {% set person = contact_info.clerk %}
-            <header>
-                {% if person.image %}<img src="{{ person.image }}" />{% endif %}
-                <h3>{{ person.name  }}</h3>
-                <h4>{{ person.title }}</h4>
-            </header>
-            <p>The City of Bloomington's Clerk's Office strives to make city government
-               as accessible and responsive to the community as possible. The office
-               serves as an educational liaison between citizens and their government.
-               We respond to inquiries by telephone, in writing, or in person from a
-               variety of interested persons regarding matters pertaining to City Council
-               actions, or related City information retained in the City Clerk's office.
-               We work closely with the City Council to supply combined constituent
-               services.
-            </p>
-            <p>We work closely with the City Council to supply combined constituent services.
-               For election information contact the
-               <a href="https://www.co.monroe.in.us/department/?structureid=18">Monroe County Clerk's Office</a> or
-               <a href="https://www.co.monroe.in.us/department/division.php?structureid=89">Voter Registration</a>
-            </p>
-            {{ include('html/address/partials/contact.twig') }}
-        </article>
-    {% endif %}
     </div>
+    <div id="district" class="card border-light mb-3">
+        {% set person = attribute(contact_info.council, purposes['CITY COUNCIL DISTRICT'][0]) %}
+        <div class="row g-0">
+            <div class="col-md-3 align-self-center text-center">
+                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" />{% endif %}
+            </div>
+            <div class="col-md-9">
+                <h3 class="card-header">{{ person.name  }}</h3>
+                <div class="card-body">
+                    <h4 class="card-title">{{ person.title }}</h4>
+                    {{ include('html/address/partials/contact.twig') }}
+                </div>
+            </div> 
+        </div>
+    </div>
+    {% for person in contact_info.council.at_large %}
+    <div id="at-large" class="card border-light mb-3">
+        <div class="row g-0">
+            <div class="col-md-3 align-self-center text-center">
+                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" />{% endif %}
+            </div>
+            <div class="col-md-9">
+                <h3 class="card-header">{{ person.name  }}</h3>
+                <div class="card-body">
+                    <h4 class="card-title">{{ person.title }}</h4>
+                    {{ include('html/address/partials/contact.twig') }}
+                </div>
+            </div> 
+        </div>
+    </div>
+    {% endfor %}
+    <div id="clerk" class="card border-light mb-3">
+       {% set person = contact_info.clerk %}
+        <div class="row g-0">
+            <div class="col-md-3 align-self-center text-center">
+                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" />{% endif %}
+            </div>
+            <div class="col-md-9">
+                <h3 class="card-header">{{ person.name  }}</h3>
+                <div class="card-body">
+                    <h4 class="card-title">{{ person.title }}</h4>
+                    <p class="card-text">The City of Bloomington's Clerk's Office strives to make city government
+                        as accessible and responsive to the community as possible. The office
+                        serves as an educational liaison between citizens and their government.
+                        We respond to inquiries by telephone, in writing, or in person from a
+                        variety of interested persons regarding matters pertaining to City Council
+                        actions, or related City information retained in the City Clerk's office.
+                        We work closely with the City Council to supply combined constituent
+                        services.
+                    </p>
+                    <p class="card-text">We work closely with the City Council to supply combined constituent services.
+                        For election information contact the
+                        <a href="https://www.co.monroe.in.us/department/?structureid=18">Monroe County Clerk's Office</a> or
+                        <a href="https://www.co.monroe.in.us/department/division.php?structureid=89">Voter Registration</a>
+                    </p>
+                    {{ include('html/address/partials/contact.twig') }}
+                </div>
+            </div> 
+        </div>
+    </div>
+    {% endif %}
 </section>
