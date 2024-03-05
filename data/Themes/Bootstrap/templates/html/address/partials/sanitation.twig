@@ -1,37 +1,37 @@
 {#
- * @copyright 2022 City of Bloomington, Indiana
+ * @copyright 2024 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  * @param array location
 #}
-<section id="sanitation">
-    <header class="my-3">
-        <h2>Sanitation Pickup</h2>
+<section id="sanitation" class="container my-3">
+    <h2>Sanitation Pickup</h2>
+    <div class="d-flex">
+        <svg class="align-self-center me-5" style="height:50px;" data-v-d418a93a="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path data-v-d418a93a="" fill="currentColor" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path></svg>
         <div>
-            <p>Please see <a href="/trash">Trash &amp; Recycling Pickup</a> for details.</p>
-            <p>Find out more by using
-               <a href="https://api.recollect.net/r/area/bloomingtonin">ReCollect</a>.
-            </p>
+            <p><em>Please see <a href="/trash">Trash &amp; Recycling Pickup</a> for details.</em></p>
+            <p><em>Find out more by using
+                    <a href="https://api.recollect.net/r/area/bloomingtonin">ReCollect</a>.
+            </em></p>
             {% if location.trash_day %}
-            <p><strong>Note: Some conditions may cause delays to the schedule below.</strong></p>
+            <p><em><strong>Note:</strong> Some conditions <strong>may cause delays to the schedule below.</strong></em></p>
             {% else %}
-            <p><strong>Note: No sanitation pickup scheduled.</strong></p>
+            <p><em><strong>Note:</strong> No sanitation pickup scheduled.</em></p>
             <p>If you were expecting one, contact:
-               <a href="mailto:sanitation@bloomington.in.gov">sanitation@bloomington.in.gov</a>
+                <a href="mailto:sanitation@bloomington.in.gov">sanitation@bloomington.in.gov</a>
             </p>
             {% endif %}
         </div>
-    </header>
+    </div>
     {% if location.trash_day %}
-    <table>
-        <tr><th>Trash &amp; Recycling</th><td>{{ location.trash_day }}</td></tr>
+    <dl class="row">
+        <dt class="col-sm-3">Trash &amp; Recycling</dt>
+        <dd class="col-sm-9">{{ location.trash_day }}</dd>
         {% if location.recycle_week %}
-        <tr><th>Yard Waste</th>
-            <td><a href="/sanitation/trash/{{ location.trash_day|lower }}-{{ location.recycle_week|lower }} ">Week {{ location.recycle_week }}</a>
-                <p><strong>Yard waste</strong> pickups are <strong>between April - December only.</strong></p>
-            </td>
-        </tr>
+        <dt class="col-sm-3">Yard Waste</dt>
+            <dd class="col-sm-9"><a href="/sanitation/trash/{{ location.trash_day|lower }}-{{ location.recycle_week|lower }} ">Week {{ location.recycle_week }}</a>
+                <p>Yard waste pickups are between April - December only.</p>
+            </dd>
         {% endif %}
-    </table>
+    </dl>
     {% endif %}
 </section>
-
