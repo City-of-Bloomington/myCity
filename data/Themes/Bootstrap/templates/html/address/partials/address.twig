@@ -8,17 +8,28 @@
     <div class="card card border-light mb-3">
         <h2 class="card-header">Address Information</h2>
         <div class="card-body">
-            <dl class="row">
-                <dt class="col-md-4">Township</dt>
-                <dd class="col-md-8">{{ address.township_name }}</dd>
+            <dl>
+                <div class="row">
+                    <dt class="col-md-4">Township</dt>
+                    <dd class="col-md-8">{{ address.township_name }}</dd>
+                </div>
                 {% for type,p in purposes %}
-                <dt class="col-md-4">{{ type|title }}</dt>
-                    {% for name in p %}
-                    <dd class="col-md-8"> {{ name|title }}</dd>
-                    {% endfor %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <dt>{{ type|title }}</dt>
+                    </div>
+                    <div class="col-md-8">
+                        {% for name in p %}
+                        <dd>{{ name|title }}
+                        {% endfor %}
+                        </dd>
+                    </div>
+                </div>
                 {% endfor %}
-                <dt class="col-md-4">Voter Registration</dt>
-                <dd class="col-md-8"><a href="https://www.co.monroe.in.us/department/division.php?structureid=89">Monroe County Voter Precincts</a></dd>
+                <div class="row">
+                    <dt class="col-md-4">Voter Registration</dt>
+                    <dd class="col-md-8"><a href="https://www.co.monroe.in.us/department/division.php?structureid=89">Monroe County Voter Precincts</a></dd>
+                </div>
             </dl>
         </div>
     </div>
