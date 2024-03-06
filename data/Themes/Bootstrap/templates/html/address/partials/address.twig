@@ -13,7 +13,9 @@
                 <dd class="col-md-8">{{ address.township_name }}</dd>
                 {% for type,p in purposes %}
                 <dt class="col-md-4">{{ type|title }}</dt>
-                <dd class="col-md-8">{% for name in p %} {{ name|title }}</dd>{% endfor %}
+                    {% for name in p %}
+                    <dd class="col-md-8"> {{ name|title }}</dd>
+                    {% endfor %}
                 {% endfor %}
                 <dt class="col-md-4">Voter Registration</dt>
                 <dd class="col-md-8"><a href="https://www.co.monroe.in.us/department/division.php?structureid=89">Monroe County Voter Precincts</a></dd>
