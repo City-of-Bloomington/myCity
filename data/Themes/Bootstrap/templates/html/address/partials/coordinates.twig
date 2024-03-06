@@ -3,27 +3,23 @@
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  * @param array address
 #}
-<section id="coordinates"
-         data-latitude ="{{ address.latitude  }}"
-         data-longitude="{{ address.longitude }}">
-    <header>
-        <h2>Coordinate Details</h2>
-        <div>
-            <p>The City of Bloomington <a href="https://bloomington.in.gov/gis">GIS Department</a> staff
+<section id="coordinates" class="container my-3" data-latitude ="{{ address.latitude  }}" data-longitude="{{ address.longitude }}">
+    <div class="card card border-light mb-3">
+        <h2 class="card-header">Coordinate Details</h2>
+        <div class="card-body">
+            <p class="card-text">The City of Bloomington <a href="https://bloomington.in.gov/gis">GIS Department</a> staff
             maintains spatial data and provides mapping and spatial analysis
             services to support operations of City Departments, Boards and Commissions.
             </p>
-            <p>Native coordinate reference system is:<br />
+            <p class="card-text">Native coordinate reference system is:
             <strong>NAD 83 State Plane Indiana West Zone (1302) US Survey Feet EPSG:2966</strong>
             </p>
+            <dl class="row">
+                <dt class="col-sm-3">State Plane X / Y</dt>
+                <dd class="col-sm-9">{{ address.state_plane_x }}, {{ address.state_plane_y }}</dd>
+                <dt class="col-sm-3">Latitude / Longitude</dt>
+                <dd class="col-sm-9">{{ address.latitude }}, {{ address.longitude }}</dd>
+            </dl>
         </div>
-    </header>
-    <table>
-        <tr><th>State Plane X / Y</th>
-            <td>{{ address.state_plane_x }}, {{ address.state_plane_y }}</td>
-        </tr>
-        <tr><th>Latitude / Longitude</th>
-            <td>{{ address.latitude }}, {{ address.longitude }}</td>
-        </tr>
-    </table>
+    </div>
 </section>

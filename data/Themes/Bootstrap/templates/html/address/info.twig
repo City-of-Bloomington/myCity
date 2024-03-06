@@ -12,11 +12,7 @@
 <div id="info">
     <div id="map"></div>
         {{ include('html/address/partials/searchForm.twig', {'query': address.streetAddress}) }}
-        <div class="d-flex flex-wrap">
-            <h1 class="me-5">{{ address.streetAddress }}</h1>
-            <span class="{{ address.jurisdiction_name=='Bloomington' ? 'badge rounded-pill text-bg-success align-self-center' : 'county badge rounded-pill text-bg-warning' }}">{{ address.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }} Bloomington City Limits</span>
-        </div>
-        <section class="container">
+        <section class="container my-3">
             <details>
                 <summary>Jump to section</summary>
                 <nav>
@@ -44,6 +40,11 @@
                 </nav>
             </details>
         </section>
+        <div class="d-flex flex-wrap">
+            <h1 class="me-5">{{ address.streetAddress }}</h1>
+            <span class="{{ address.jurisdiction_name=='Bloomington' ? 'badge rounded-pill text-bg-success align-self-center' : 'county badge rounded-pill text-bg-warning align-self-center' }}">{{ address.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }} Bloomington City Limits</span>
+        </div>
+        <hr>
 {{ include('html/address/partials/address.twig'    ) }}
 {{ include('html/address/partials/sanitation.twig' ) }}
 {{ include('html/address/partials/elected.twig'    ) }}
