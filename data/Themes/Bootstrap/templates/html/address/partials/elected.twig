@@ -15,7 +15,7 @@
         {% set person = contact_info.mayor %}
         <div class="row g-0">
             <div class="col-md-3 align-self-center text-center">
-                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" />{% endif %}
+                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" alt="Photo of {{ person.name  }}"/>{% endif %}
             </div>
             <div class="col-md-9">
                 <h3 class="card-header">{{ person.name  }}</h3>
@@ -37,7 +37,7 @@
         {% set person = attribute(contact_info.council, purposes['CITY COUNCIL DISTRICT'][0]) %}
         <div class="row g-0">
             <div class="col-md-3 align-self-center text-center">
-                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" />{% endif %}
+                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" alt="Photo of {{ person.name  }}" />{% endif %}
             </div>
             <div class="col-md-9">
                 <h3 class="card-header">{{ person.name  }}</h3>
@@ -53,7 +53,7 @@
     <div id="at-large" class="card border-light mb-3">
         <div class="row g-0">
             <div class="col-md-3 align-self-center text-center">
-                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" />{% endif %}
+                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" alt="Photo of {{ person.name  }}" />{% endif %}
             </div>
             <div class="col-md-9">
                 <h3 class="card-header">{{ person.name  }}</h3>
@@ -69,7 +69,7 @@
        {% set person = contact_info.clerk %}
         <div class="row g-0">
             <div class="col-md-3 align-self-center text-center">
-                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" />{% endif %}
+                {% if person.image %}<img class="img-fluid border border-5 border-start-0 rounded-circle" src="{{ person.image }}" alt="Photo of {{ person.name  }}" />{% endif %}
             </div>
             <div class="col-md-9">
                 <h3 class="card-header">{{ person.name  }}</h3>
