@@ -25,9 +25,7 @@
                 <dd class="col-sm-9">{{ location.trash_day }}</dd>
                 {% if location.recycle_week %}
                 <dt class="col-sm-3">Yard Waste</dt>
-                    <dd class="col-sm-9"><a href="/sanitation/trash/{{ location.trash_day|lower }}-{{ location.recycle_week|lower }} ">Week {{ location.recycle_week }}</a>
-                        <p>Yard waste pickups are between April - December only.</p>
-                    </dd>
+                    <dd class="col-sm-9"><a href="/sanitation/trash/{{ location.trash_day|lower }}-{{ location.recycle_week|lower }} ">Week {{ location.recycle_week }}</a> - Yard waste pickups are between April - December only.</dd>
                 {% endif %}
             </dl>
         </div>
