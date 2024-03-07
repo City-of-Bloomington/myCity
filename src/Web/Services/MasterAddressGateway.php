@@ -25,15 +25,16 @@ class MasterAddressGateway extends WebService
             if ($loc['address_id'] != $address_id) {
                 return self::info($loc['address_id']);
             }
-
-            $out['address' ] = $res['address'];
-            $out['location'] = $loc;
-            $out['subunits'] = $res['subunits'];
-            $out['places'  ] = $res['places'];
-
-            foreach ($res['purposes'] as $p) {
-                $out['purposes'][$p['purpose_type']][] = $p['name'];
-            }
+        }
+        else {
+            $loc = $res['locations'][0] ?? [];
+        }
+        $out['address' ] = $res['address'];
+        $out['location'] = $loc;
+        $out['subunits'] = $res['subunits'];
+        $out['places'  ] = $res['places'];
+        foreach ($res['purposes'] as $p) {
+            $out['purposes'][$p['purpose_type']][] = $p['name'];
         }
 
         return $out;
@@ -44,5 +45,6 @@ class MasterAddressGateway extends WebService
         foreach ($response['locations'] as $l) {
             if ($l['active']) { return $l; }
         }
+        return [];
     }
 }

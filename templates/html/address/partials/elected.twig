@@ -28,6 +28,7 @@
                community’s residents.</p>
             {{ include('html/address/partials/contact.twig') }}
         </article>
+        {% if purposes['CITY COUNCIL DISTRICT'] is defined %}
         <article id="district">
             {% set person = attribute(contact_info.council, purposes['CITY COUNCIL DISTRICT'][0]) %}
             <header>
@@ -37,6 +38,7 @@
             </header>
             {{ include('html/address/partials/contact.twig') }}
         </article>
+        {% endif %}
         <div id="at-large">
         {% for person in contact_info.council.at_large %}
         <article>
