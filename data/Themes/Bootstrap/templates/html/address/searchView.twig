@@ -12,7 +12,6 @@
         <h1>Welcome</h1> 
         <span class="fst-italic">myBloomington provides information related to a given street address.</span>
     </header>
-    <div>
         {{ include('html/address/partials/searchForm.twig') }}
         {% if query and not results %}
         <p>No results found</p>
@@ -31,7 +30,6 @@
             </div>
             {% endfor %}
         {% endif %}
-    </div>
 </section>
 <script type="text/javascript">
     document.getElementById('query').focus();
