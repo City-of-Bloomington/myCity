@@ -17,15 +17,15 @@ class SearchController extends Controller
     {
         if (!empty($_GET['query'])) {
             $res   = MasterAddressGateway::search($_GET['query']);
-            $valid = self::validate($res);
+            #$valid = self::validate($res);
 
-            if ($valid) {
-                if (count($valid) == 1) {
-                    header('Location: '.View::generateUrl('address.info', ['id'=>$valid[0]['id'] ]));
+            if ($res) {
+                if (count($res) == 1) {
+                    header('Location: '.View::generateUrl('address.info', ['id'=>$res[0]['id'] ]));
                     exit();
                 }
 
-                return new SearchView($_GET['query'], $valid);
+                return new SearchView($_GET['query'], $res);
             }
             return new SearchView($_GET['query']);
         }
