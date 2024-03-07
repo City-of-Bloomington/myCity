@@ -1,5 +1,5 @@
 {#
- * @copyright 2022 City of Bloomington, Indiana
+ * @copyright 2024 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  * @param string query
  * @param array  results
@@ -9,7 +9,7 @@
 {% block content %}
 <section id="searchView" class="container my-3">
     <header>
-        <h1>Welcome</h1> 
+        <h1>Welcome</h1>
         <span class="fst-italic">myBloomington provides information related to a given street address.</span>
     </header>
         {{ include('html/address/partials/searchForm.twig') }}
@@ -20,13 +20,20 @@
         {% if results %}
             {% for a in results %}
             <div>
+                {% if a.status=='current' %}
                 <a href="{{ uri('address.info', {'id': a.id}) }}">
                 {{ a.streetAddress }}
-                <span class="{{ a.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
+                </a>
+                <span class="{{ a.jurisdiction_name=='Bloomington' ? 'badge rounded-pill text-bg-success align-self-center' : 'badge rounded-pill text-bg-warning align-self-center' }}">
                     {{ a.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
                     Bloomington City Limits
                 </span>
-                </a>
+                {% else %}
+                {{ a.streetAddress }}
+                <span class="badge rounded-pill text-bg-warning align-self-center">
+                {{ a.status }}
+                </span>
+                {% endif %}
             </div>
             {% endfor %}
         {% endif %}
