@@ -38,11 +38,7 @@
             <span class="{{ address.jurisdiction_name=='Bloomington' ? 'badge rounded-pill text-bg-success align-self-center' : 'county badge rounded-pill text-bg-warning align-self-center' }}">{{ address.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }} Bloomington City Limits</span>
         </div>
         <hr>
-        <section class="container">
-            <div class="ratio ratio-16x9">
-                <div id="map"></div>
-            </div>
-        </section>
+{{ include('html/address/partials/map.twig'    ) }}        
 {{ include('html/address/partials/address.twig'    ) }}
 {{ include('html/address/partials/sanitation.twig' ) }}
 {{ include('html/address/partials/elected.twig'    ) }}
@@ -50,10 +46,7 @@
 {{ include('html/address/partials/government.twig' ) }}
 </div>
 
-<script>
-    const LATITUDE  = {{ address.latitude }},
-          LONGITUDE = {{ address.longitude }};
-</script>
+<script> const LATITUDE  = {{ address.latitude }},LONGITUDE = {{ address.longitude }};</script>
 <script async src="https://maps.googleapis.com/maps/api/js?libraries=maps,places&key={{ GOOGLE_API_KEY }}&loading=async&v=weekly&callback=initMap"></script>
 <script src="{{ BASE_URI }}/js/map-{{ VERSION }}.js"></script>
 {% endblock %}
