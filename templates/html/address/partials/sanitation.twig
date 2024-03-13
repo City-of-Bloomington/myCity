@@ -1,5 +1,5 @@
 {#
- * @copyright 2022 City of Bloomington, Indiana
+ * @copyright 2024 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  * @param array location
 #}
@@ -26,7 +26,7 @@
         <tr><th>Trash &amp; Recycling</th><td>{{ location.trash_day }}</td></tr>
         {% if location.recycle_week %}
         <tr><th>Yard Waste</th>
-            <td><a href="/sanitation/trash/{{ location.trash_day|lower }}-{{ location.recycle_week|lower }} ">Week {{ location.recycle_week }}</a>
+            <td><a href="https://bloomington.in.gov/sanitation/trash/{{ location.trash_day|lower }}-{{ location.recycle_week|lower }} ">Week {{ location.recycle_week }}</a>
                 <p><strong>Yard waste</strong> pickups are <strong>between April - December only.</strong></p>
             </td>
         </tr>

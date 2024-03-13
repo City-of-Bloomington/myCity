@@ -7,7 +7,7 @@
     <div class="card card border-light mb-3">
         <h2 class="card-header">Sanitation Pickup</h2>
         <div class="card-body">
-            <p class="card-text"><em>Please see <a href="/trash">Trash &amp; Recycling Pickup</a> for details.</em></p>
+            <p class="card-text"><em>Please see <a href="https://bloomington.in.gov/trash">Trash &amp; Recycling Pickup</a> for details.</em></p>
             <p class="card-text"><em>Find out more by using
                 <a href="https://api.recollect.net/r/area/bloomingtonin">ReCollect</a>.
             </em></p>
@@ -25,7 +25,7 @@
                 <dd class="col-sm-9">{{ location.trash_day }}</dd>
                 {% if location.recycle_week %}
                 <dt class="col-sm-3">Yard Waste</dt>
-                    <dd class="col-sm-9"><a href="/sanitation/trash/{{ location.trash_day|lower }}-{{ location.recycle_week|lower }} ">Week {{ location.recycle_week }}</a> - Yard waste pickups are between April - December only.</dd>
+                    <dd class="col-sm-9"><a href="https://bloomington.in.gov/sanitation/trash/{{ location.trash_day|lower }}-{{ location.recycle_week|lower }} ">Week {{ location.recycle_week }}</a> - Yard waste pickups are between April - December only.</dd>
                 {% endif %}
             </dl>
         </div>
