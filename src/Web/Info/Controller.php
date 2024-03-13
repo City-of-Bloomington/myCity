@@ -4,21 +4,18 @@
  * @license https://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 declare (strict_types=1);
-namespace Web\Controllers;
+namespace Web\Info;
 
 use Web\Services\MasterAddressGateway as MA;
-use Web\Controller;
-use Web\View;
-use Web\Views\InfoView;
 
-class InfoController extends Controller
+class Controller extends \Web\Controller
 {
-    public function __invoke(array $params): View
+    public function __invoke(array $params): \Web\View
     {
         $res = MA::info((int)$params['id']);
 
         if ($res) {
-            return new InfoView($res);
+            return new View($res);
         }
         return new \Web\Views\NotFoundView();
     }

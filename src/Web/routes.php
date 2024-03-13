@@ -10,6 +10,6 @@ $map    = $ROUTES->getMap();
 
 $map->tokens(['id' => '\d+']);
 
-$map->get('home.index',    '/'    , Web\Controllers\SearchController::class);
-$map->get('home.help',     '/help', Web\Controllers\HelpController::class);
-$map->get('address.info',  '/{id}', Web\Controllers\InfoController::class);
+$map->get('home.index',    '/'    , Web\Search\Controller::class);
+$map->get('home.help',     '/help', Web\Help\Controller::class);
+$map->get('address.info',  '/{id}', Web\Info\Controller::class);

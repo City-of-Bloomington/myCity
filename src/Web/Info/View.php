@@ -4,11 +4,9 @@
  * @license https://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 declare (strict_types=1);
-namespace Web\Views;
+namespace Web\Info;
 
-use Web\View;
-
-class InfoView extends View
+class View extends \Web\View
 {
     public function __construct(array $address)
     {

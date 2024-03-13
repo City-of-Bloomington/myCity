@@ -1,14 +1,12 @@
 <?php
 /**
- * @copyright 2022 City of Bloomington, Indiana
+ * @copyright 2024 City of Bloomington, Indiana
  * @license https://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  */
 declare (strict_types=1);
-namespace Web\Views;
+namespace Web\Help;
 
-use Web\View;
-
-class HelpView extends View
+class View extends \Web\View
 {
     public function render(): string
     {
