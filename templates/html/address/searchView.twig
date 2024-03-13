@@ -13,33 +13,19 @@
         <h3>myBloomington provides information related to a given street address.</h3>
         <p>Enter an address to learn more:</p>
     </header>
-    <div>
-        {{ include('html/address/partials/searchForm.twig') }}
+    {{ include('html/address/partials/searchForm.twig') }}
+    <div id="searchResults">
         {% if query and not results %}
         <p>No results found</p>
         {% endif %}
 
         {% if results %}
-            {% for a in results %}
-            <div>
-                {% if a.status=='current' %}
-                <a href="{{ uri('address.info', {'id': a.id}) }}">
-                {{ a.streetAddress }}
-                <span class="{{ a.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
-                    {{ a.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
-                    Bloomington City Limits
-                </span>
-                </a>
-                {% else %}
-                {{ a.streetAddress }} {{ a.status }}
-                {%endif %}
-            </div>
-            {% endfor %}
+        {{ include('html/address/partials/searchResults.twig', { results: results }, with_context=false) }}
         {% endif %}
     </div>
 </section>
 <script type="text/javascript">
     document.getElementById('query').focus();
 </script>
-
+<script src="{{ BASE_URI }}/js/autocomplete-{{ VERSION }}.js"></script>
 {% endblock %}

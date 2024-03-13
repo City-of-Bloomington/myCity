@@ -12,38 +12,20 @@
         <h1>Welcome</h1>
         <span class="fst-italic">myBloomington provides information related to a given street address.</span>
     </header>
-        {{ include('html/address/partials/searchForm.twig') }}
+
+    {{ include('html/address/partials/searchForm.twig') }}
+    <div id="searchResults">
         {% if query and not results %}
         <p>No results found</p>
         {% endif %}
 
         {% if results %}
-            {% for a in results %}
-            <ul class="list-group list-group-flush w-50">
-                {% if a.status=='current' %}
-                <li class="list-group-item d-flex justify-content-between">
-                    <a href="{{ uri('address.info', {'id': a.id}) }}">
-                    {{ a.streetAddress }}
-                    </a>
-                    <span class="{{ a.jurisdiction_name=='Bloomington' ? 'badge rounded-pill text-bg-success align-self-center' : 'badge rounded-pill text-bg-warning align-self-center' }}">
-                        {{ a.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
-                        Bloomington City Limits
-                    </span>
-                </li>
-                {% else %}
-                <li class="list-group-item d-flex justify-content-between">
-                    {{ a.streetAddress }}
-                    <span class="badge rounded-pill text-bg-warning align-self-center">
-                    {{ a.status }}
-                    </span>
-                </li>
-                {% endif %}
-            </ul>
-            {% endfor %}
+        {{ include('html/address/partials/searchResults.twig', { results: results } , with_context=false) }}
         {% endif %}
+    </div>
 </section>
 <script type="text/javascript">
     document.getElementById('query').focus();
 </script>
-
+<script src="{{ BASE_URI }}/js/autocomplete-{{ VERSION }}.js"></script>
 {% endblock %}

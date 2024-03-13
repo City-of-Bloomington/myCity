@@ -1,0 +1,20 @@
+{#
+ # @copyright 2024 City of Bloomington, Indiana
+ # @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
+ # @param array results
+ #}
+{% for a in results %}
+<div>
+    {% if a.status=='current' %}
+    <a href="{{ uri('address.info', {'id': a.id}) }}">
+    {{ a.streetAddress }}
+    <span class="{{ a.jurisdiction_name=='Bloomington' ? 'city' : 'county' }}">
+        {{ a.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
+        Bloomington City Limits
+    </span>
+    </a>
+    {% else %}
+    {{ a.streetAddress }} {{ a.status }}
+    {%endif %}
+</div>
+{% endfor %}

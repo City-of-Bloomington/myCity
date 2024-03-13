@@ -14,6 +14,7 @@ class Controller extends \Web\Controller
     {
         if (!empty($_GET['query'])) {
             $res   = MasterAddressGateway::search($_GET['query']);
+            if (isset($_GET['partial'])) { return new ResultsOnlyView($res); }
 
             if ($res) {
                 if (count($res) == 1) {
