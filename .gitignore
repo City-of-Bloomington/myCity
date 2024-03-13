@@ -5,6 +5,7 @@ build
 dist
 vendor
 *.css*
+*-*.js
 *.mo
 .sass-cache
 *.cache
