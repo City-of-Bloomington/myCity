@@ -10,3 +10,4 @@ vendor
 .sass-cache
 *.cache
 make.conf
+data/Themes/Bootstrap/templates/html/address/.DS_Store

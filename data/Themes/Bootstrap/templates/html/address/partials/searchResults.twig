@@ -3,25 +3,27 @@
  # @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  # @param array results
  #}
+ <ul class="list-group list-group-flush">
 {% for a in results %}
-<ul class="list-group list-group-flush w-50">
     {% if a.status=='current' %}
-    <li class="list-group-item d-flex justify-content-between">
-        <a href="{{ uri('address.info', {'id': a.id}) }}">
+    <li class="list-group-item d-flex flex-wrap justify-content-between">
+        <a class="mb-1 me-5 w-75" href="{{ uri('address.info', {'id': a.id}) }}">
         {{ a.streetAddress }}
         </a>
-        <span class="{{ a.jurisdiction_name=='Bloomington' ? 'badge rounded-pill text-bg-success align-self-center' : 'badge rounded-pill text-bg-warning align-self-center' }}">
+        <div class="{{ a.jurisdiction_name=='Bloomington' ? 'badge rounded-pill text-bg-success align-self-center' : 'badge rounded-pill text-bg-warning align-self-center' }}">
             {{ a.jurisdiction_name=='Bloomington' ? 'Inside' : 'Outside' }}
             Bloomington City Limits
-        </span>
+        </div>
     </li>
     {% else %}
-    <li class="list-group-item d-flex justify-content-between">
-        {{ a.streetAddress }}
-        <span class="badge rounded-pill text-bg-warning align-self-center">
+    <li class="list-group-item d-flex flex-wrap disabled justify-content-between" aria-disabled="true">
+        <div class="mb-1 me-5 w-75">
+            {{ a.streetAddress }}
+        </div>
+        <div class="badge rounded-pill text-bg-secondary align-self-center">
         {{ a.status }}
-        </span>
+        </div>
     </li>
     {% endif %}
-</ul>
 {% endfor %}
+</ul>
