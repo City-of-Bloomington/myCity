@@ -12,9 +12,6 @@ use Web\Authentication\Auth;
 $startTime = microtime(true);
 
 include '../src/Web/bootstrap.php';
-ini_set('session.save_path', SITE_HOME.'/sessions');
-ini_set('session.cookie_path', BASE_URI);
-session_start();
 
 $matcher = $ROUTES->getMatcher();
 $route   = $matcher->match(GuzzleHttp\Psr7\ServerRequest::fromGlobals());
