@@ -11,3 +11,7 @@ vendor
 *.cache
 make.conf
 data/Themes/Bootstrap/templates/html/address/.DS_Store
+data/.DS_Store
+data/Themes/Bootstrap/.DS_Store
+data/Themes/COB/.DS_Store
+data/Themes/COB/public/.DS_Store
