@@ -16,7 +16,7 @@ async function initMap()
     });
 
     const pinScaled = new PinElement({
-        scale: 2.5,
+        scale: 1.5,
       });
 
     const marker = new AdvancedMarkerElement({
