@@ -2,9 +2,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ BASE_URI }}/Bootstrap/css/screen-{{ VERSION }}.css" />
     <title>{{ title is defined ? title : APPLICATION_NAME }}</title>
     <script type="text/javascript">
-        const BASE_URL = '{{ BASE_URL }}',
+        var BASE_URL = '{{ BASE_URL }}',
               BASE_URI = '{{ BASE_URI }}';
     </script>
 </head>
