@@ -18,18 +18,30 @@
                     <dt class="col-md-4">Township</dt>
                     <dd class="col-md-8">{{ address.township_name }}</dd>
                 </div>
-                {% for type,p in purposes %}
-                <div class="row pt-2">
-                    <div class="col-md-4">
-                        <dt>{{ type|title }}</dt>
-                    </div>
-                    <div class="col-md-8">
-                        {% for name in p %}
-                        <dd>{{ name|title }}
-                        {% endfor %}
-                        </dd>
-                    </div>
-                </div>
+                {% for type, p in purposes %}
+                    {% if type == 'CITY COUNCIL DISTRICT' %}
+                        <div class="row pt-2">
+                            <div class="col-md-4">
+                                <dt>City Council District</dt>
+                            </div>
+                            <div class="col-md-8">
+                                {% for name in p %}
+                                    <dd>{{ name|title }}</dd>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="row pt-2">
+                            <div class="col-md-4">
+                                <dt>{{ type|title }}</dt>
+                            </div>
+                            <div class="col-md-8">
+                                {% for name in p %}
+                                    <dd>{{ name|title }}</dd>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
                 <div class="row pt-2">
                     <dt class="col-md-4">Voter Registration</dt>
