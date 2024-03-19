@@ -1,9 +1,13 @@
 <nav class="navbar navbar-expand-sm shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ BASE_URI }}">
-            <img src="https://bloomington.in.gov/static/city-of-bloomington-logo.cfc9bd7.svg" alt="City of Bloomington Logo" style="padding-right:5%;" height="55">
-            {{ APPLICATION_NAME }}
-        </a>
+        <div class="navbar-brand">
+            <a class="navbar-brand"  href="https://bloomington.in.gov/">
+                <img src="https://bloomington.in.gov/static/cob-logo-horizontal.svg" alt="City of Bloomington Logo" style="padding-right:5%;" height="55" class="d-inline-block align-text-center">
+            </a>
+            <a class="navbar-brand" href="{{ BASE_URI }}">
+                {{ APPLICATION_NAME }}
+            </a>
+        </div>
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="{{ BASE_URI }}/help">Help</a>
