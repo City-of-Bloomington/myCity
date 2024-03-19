@@ -19,11 +19,15 @@
             <p class="card-text">Native coordinate reference system is:
             <strong>NAD 83 State Plane Indiana West Zone (1302) US Survey Feet EPSG:2966</strong>
             </p>
-            <dl class="row">
-                <dt class="col-sm-3">State Plane X / Y</dt>
-                <dd class="col-sm-9">{{ address.state_plane_x }}, {{ address.state_plane_y }}</dd>
-                <dt class="col-sm-3">Latitude / Longitude</dt>
-                <dd class="col-sm-9">{{ address.latitude }}, {{ address.longitude }}</dd>
+            <dl>
+                <div class="row pt-2">
+                    <dt class="col-sm-3">State Plane X / Y</dt>
+                    <dd class="col-sm-9">{{ address.state_plane_x }}, {{ address.state_plane_y }}</dd>
+                </div>
+                <div class="row pt-2">
+                    <dt class="col-sm-3">Latitude / Longitude</dt>
+                    <dd class="col-sm-9">{{ address.latitude }}, {{ address.longitude }}</dd>
+                </div>
             </dl>
         </div>
     </div>

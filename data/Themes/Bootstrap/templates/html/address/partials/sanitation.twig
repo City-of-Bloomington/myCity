@@ -25,12 +25,16 @@
             </p>
              {% endif %}
             {% if location.trash_day %}
-            <dl class="row">
-                <dt class="col-sm-3">Trash &amp; Recycling</dt>
-                <dd class="col-sm-9">{{ location.trash_day }}</dd>
+            <dl>
+                <div class="row pt-2">
+                    <dt class="col-sm-3">Trash &amp; Recycling</dt>
+                    <dd class="col-sm-9">{{ location.trash_day }}</dd>
+                </div>
                 {% if location.recycle_week %}
-                <dt class="col-sm-3">Yard Waste</dt>
+                <div class="row pt-2">
+                    <dt class="col-sm-3">Yard Waste</dt>
                     <dd class="col-sm-9"><a href="https://bloomington.in.gov/sanitation/trash/{{ location.trash_day|lower }}-{{ location.recycle_week|lower }} ">Week {{ location.recycle_week }}</a> - Yard waste pickups are between April - December only.</dd>
+                </div>
                 {% endif %}
             </dl>
         </div>

@@ -3,17 +3,25 @@
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE
  * @param array person
 #}
-<dl class="row">
-    <dt class="col-sm-3">Web</dt>
-    <dd class="col-sm-9"><a href="{{ person.url }}">{{ person.url }}</a></dd>
-    <dt class="col-sm-3">Email</dt>
-    <dd class="col-sm-9"><a href="mailto:{{ person.email }}">{{ person.email }}</a></dd>
-    <dt class="col-sm-3">Telephone</dt>
-    <dd class="col-sm-9">
-        {% for k,v in person.phone %}
-        <a href="tel:{{ v }}">{{ v }} - {{ k }}</a>
-        {% endfor %}
-    </dd>
-    <dt class="col-sm-3">Address</dt>
-    <dd class="col-sm-9">{{ person.address }}</dd>
+<dl>
+    <div class="row pt-2">
+        <dt class="col-sm-3">Web</dt>
+        <dd class="col-sm-9"><a href="{{ person.url }}">{{ person.url }}</a></dd>
+    </div>
+    <div class="row pt-2">
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9"><a href="mailto:{{ person.email }}">{{ person.email }}</a></dd>
+    </div>
+    <div class="row pt-2">
+        <dt class="col-sm-3">Telephone</dt>
+        <dd class="col-sm-9">
+            {% for k,v in person.phone %}
+            <a href="tel:{{ v }}">{{ v }} - {{ k }}</a>
+            {% endfor %}
+        </dd>
+    </div>
+    <div class="row pt-2">
+        <dt class="col-sm-3">Address</dt>
+        <dd class="col-sm-9">{{ person.address }}</dd>
+    </div>
 </dl>
