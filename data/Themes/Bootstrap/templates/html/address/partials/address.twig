@@ -20,13 +20,14 @@
                 </div>
                 {% for type, p in purposes %}
                     {% if type == 'CITY COUNCIL DISTRICT' %}
+                    {% set person = attribute(contact_info.council, purposes['CITY COUNCIL DISTRICT'][0]) %}
                         <div class="row pt-2">
                             <div class="col-md-4">
                                 <dt>City Council District</dt>
                             </div>
                             <div class="col-md-8">
                                 {% for name in p %}
-                                    <dd>{{ name|title }}</dd>
+                                    <dd><a href="{{ person.url }}">{{ name|title }}</a></dd>
                                 {% endfor %}
                             </div>
                         </div>
