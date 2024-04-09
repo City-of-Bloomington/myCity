@@ -64,6 +64,29 @@
                                 {% endfor %}
                             </div>
                         </div>
+                    {% elseif type == 'ECONOMIC DEVELOPMENT AREA' %}
+                        <div class="row pt-2">
+                            <div class="col-md-4">
+                                <dt>Economic Development Area</dt>
+                            </div>
+                            <div class="col-md-8">
+                                {% for name in p %}
+                                    {% if name == 'BEAD' %}
+                                        <dd><a href="https://bloomington.in.gov/arts/bead">{{ name|title }}</a></dd>
+                                    {% elseif name == 'BLOOMINGTON URBAN ENTERPRISE ZONE' %}
+                                        <dd><a href="https://bloomington.in.gov/business/buea">{{ name|title }}</a></dd>
+                                    {% elseif name == 'CERTIFIED TECHNOLOGY PARK' %}
+                                        <dd><a href="https://bloomington.in.gov/business/districts/ctp">{{ name|title }}</a></dd>
+                                    {% elseif name == 'DOWNTOWN CRED' %}
+                                        <dd><a href="https://bloomington.in.gov/business/districts/cred">{{ name|title }}</a></dd>
+                                    {% elseif name == 'DOWNTOWN TIF' %}
+                                        <dd><a href="https://bloomington.in.gov/business/districts/tif">{{ name|title }}</a></dd>
+                                    {% else %}
+                                        <dd>{{ name|title }}</dd>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
                     {% else %}
                         <div class="row pt-2">
                             <div class="col-md-4">
