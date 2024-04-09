@@ -6,7 +6,7 @@ async function initMap()
     const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
 
     const map = new Map(document.getElementById('map'), {
-        zoom:       20,
+        zoom:       18,
         center:     {lat:   LATITUDE,   lng:    LONGITUDE },
         mapId:      'myBloomington_map',
         mapTypeId:  'satellite',
